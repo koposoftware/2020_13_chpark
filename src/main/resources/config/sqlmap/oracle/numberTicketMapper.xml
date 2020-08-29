@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="numberTicket.dao.NumberTicketDAO">
+	<!-- 지도에 마커 찍기 -->
+	<select id="selectLatLng" resultType="numberTicket_LatLngVO">
+		select branch_id, branch_name, latitude as branch_latitude, longitude as branch_longitude
+		from branch
+	</select>
+</mapper>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member.dao.MemberDAO">
+
+	<select id="login" parameterType="memberVO" resultType="memberVO">
+		select USERS_ID id, USERS_PWD pwd, USERS_TYPE type
+		from USERS
+		where USERS_ID = #{id} and USERS_PWD = #{pwd}
+	</select>
+	
+	<insert id="signup" parameterType="memberVO">
+		insert into USERS(USERS_ID, USERS_PWD, USERS_NAME, USERS_SSN, USERS_SEX, USERS_PHONE, USERS_BIRTH, USERS_ADDRESS)
+      	values(#{id}, #{pwd}, #{name}, #{ssn}, #{sex}, #{phone}, #{birth}, #{address})
+	</insert>
+	
+	<select id="selectById" resultType="memberVO" parameterType="String">
+		select USERS_ID id, USERS_PWD pwd, USERS_NAME name, USERS_SSN ssn, USERS_SEX sex, USERS_PHONE phone, USERS_BIRTH birth, USERS_ADDRESS address 
+		from USERS
+		where USERS_ID = #{id}	
+	</select>
+	<update id="update" parameterType="memberVO">
+		update USERS set USERS_NAME = #{name}, USERS_PWD = #{pwd}, USERS_SSN = #{ssn}, USERS_SEX = #{sex}, USERS_PHONE = #{phone}, USERS_ADDRESS = #{address} 
+		where USERS_ID = #{id}
+	</update>
+</mapper>
