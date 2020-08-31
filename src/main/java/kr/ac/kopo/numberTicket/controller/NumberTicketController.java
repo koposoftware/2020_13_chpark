@@ -6,8 +6,11 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.numberTicket.service.NumberTicketService;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
@@ -39,4 +42,12 @@ public class NumberTicketController {
 		LatLng.put("positions", result);
 		return LatLng;
 	}
+	
+	@GetMapping("/location/reservation/{location}")
+	public ModelAndView reservation(@PathVariable("location") String location){
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("location", location);
+		mav.setViewName("/numberTicket/numberTicket_2");
+		return mav;
+	}	
 }

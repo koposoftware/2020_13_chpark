@@ -20,5 +20,11 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 		return LatLng;
 	}
 
+	@Override
+	public List<NumberTicket_LatLngVO> selectList(String location) {
+		List<NumberTicket_LatLngVO> BranchList = sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectBranchList", location);
+		return BranchList;
+	}
+
 	
 }

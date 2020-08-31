@@ -20,5 +20,11 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 		return LanLng;
 	}
 
+	@Override
+	public List<NumberTicket_LatLngVO> selectList(String location) {
+		List<NumberTicket_LatLngVO> BranchList = numberTicketDAO.selectList(location);
+		return BranchList;
+	}
+
 	
 }

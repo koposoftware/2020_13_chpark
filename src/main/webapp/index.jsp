@@ -123,62 +123,7 @@ Fixed Navigation
 <header>
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
-<!--  
-<section class="header  navigation" style="color: dee2e6">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.jsp">
-                        <img src="images/하나은행.png" alt="logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="tf-ion-android-menu"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
--->                            
-                            <!--  
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            -->
-<!--                             
-                            <li class="nav-item">
-                                <a class="nav-link" href="login.html">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="signup.html">회원가입</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="pricing.html">마이페이지</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="faq.html">손님의 소리</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">하나은행</a>
-                            </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    	모바일 번호표
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="team.html">번호표 발급</a>
-                                    <a class="dropdown-item" href="blog.html">번호표 확인</a>
-                                    <a class="dropdown-item" href="404.html">404 Page</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                
-            </div>
-        </div>
-    </div>
-</section>
--->
  <!--
 Welcome Slider
 ==================================== -->
@@ -208,137 +153,6 @@ Welcome Slider
 		</div>
 	</div>
 </section>	
-
-<section class="counter section-sm">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3 col-3">
-                <div class="counters-item">
-                    <span>$50B+</span>
-                    <p>Bitcoin Served</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-3">
-                <div class="counters-item">
-                    <span>10M+</span>
-                    <p>Server Build</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-3">
-                <div class="counters-item">
-                    <span>68</span>
-                    <p>Countries Supported</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-3">
-                <div class="counters-item kill-border">
-                    <span>10B</span>
-                    <p>Active Treades</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!--
-Start About Section
-==================================== -->
-<section class="about-2 section bg-gray" id="about">
-	<div class="container">
-		<div class="row">
-			<div class="col-12 col-md-6 align-self-center mb-4 mb-md-0">
-                <div class="align-self-center">
-    				<h2>A New Kind of Digital Currency to change the world what we think</h2>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae deleniti ipsa labore necessitatibus culpa veritatis quo accusantium, neque enim ea ad eaque iure, quas tempore velit, quibusdam dolor illo! Explicabo.</p>
-    				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid quisquam maiores iste soluta, nihil dolorem?</p>
-                    <a href="#" class="btn btn-main">Learn More</a>
-                </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div id="myDiv" class="bitcoin-graph">
-                    <p>Bitcoin graphs</p>
-				</div>
-			</div> 		
-		</div>
-	</div>
-</section>
-
-<section class="services section-xs"  id="services">
-	<div class="container">
-		<div class="row">
-			<!-- Single Service Item -->
-			<div class="col-md-4 col-sm-6 col-xs-12" >
-				<div class="service-block color-bg text-center">
-					<div class="service-icon text-center">
-						<img src="images/icons/bitcoin-safety-shield.png" alt="">
-					</div>
-					<h3>Easy & Secure</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-				</div>
-			</div>
-			<!-- End Single Service Item -->
-			
-			<!-- Single Service Item -->
-			<div class="col-md-4 col-sm-6 col-xs-12" >
-				<div class="service-block text-center">
-					<div class="service-icon text-center">
-						<img src="images/icons/bitcoin-exchange.png" alt="">
-					</div>
-					<h3>Instant Exchange</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-				</div>
-			</div>
-			<!-- End Single Service Item -->
-			
-			<!-- Single Service Item -->
-			<div class="col-md-4 col-sm-6 col-xs-12 mx-auto"  >
-				<div class="service-block color-bg text-center">
-					<div class="service-icon text-center">
-						<img src="images/icons/bitcoin-network.png" alt="">
-					</div>
-					<h3>Strong Network</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-				</div>
-			</div>
-            <!-- Single Service Item -->
-            <div class="col-md-4 col-sm-6 col-xs-12" >
-                <div class="service-block color-bg text-center">
-                    <div class="service-icon text-center">
-                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
-                    </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-                </div>
-            </div>
-            <!-- End Single Service Item -->
-            <!-- Single Service Item -->
-            <div class="col-md-4 col-sm-6 col-xs-12" >
-                <div class="service-block color-bg text-center">
-                    <div class="service-icon text-center">
-                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
-                    </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-                </div>
-            </div>
-            <!-- End Single Service Item -->
-            <!-- Single Service Item -->
-            <div class="col-md-4 col-sm-6 col-xs-12" >
-                <div class="service-block color-bg text-center">
-                    <div class="service-icon text-center">
-                        <img src="images/icons/bitcoin-safety-shield.png" alt="">
-                    </div>
-                    <h3>Easy & Secure</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur.. Sed id lorem eget orci dictum facilisis vel id tellus. Nullam iaculis arcu at mauris dapibus consectetur.</p>
-                </div>
-            </div>
-            <!-- End Single Service Item -->
-		</div> 		<!-- End row -->
-	</div>   	<!-- End container -->
-</section>   <!-- End section -->
-			
-			
-			
 
 <!--
 Start About Section
@@ -381,317 +195,18 @@ Start About Section
   </div>    <!-- End container -->
 </section>   <!-- End section -->
 
-<!--
-Start Call To Action
-==================================== -->
-<section class="call-to-action section-sm">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 text-center">
-				<h2>Open account for free and start trading Bitcoins now!</h2>
-				<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, <br> nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit.</p>
-				<a href="" class="btn btn-main">Get Started</a>
-			</div>
-		</div> 		<!-- End row -->
-	</div>   	<!-- End container -->
-</section>   <!-- End section -->
 
-<!-- Start Pricing section
-		=========================================== -->
-<section class="pricing-table section" id="pricing">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="title text-center">
-                    <h4>Easy Pricing</h4>
-                    <h2>Pricing.</h2>
-                    <span class="border"></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque,
-                        obcaecati atque sit!</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <ul class="nav nav-pills mb-6 pricing-tab justify-content-center" id="pills-tab" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab"
-                            aria-controls="pills-home" aria-selected="true">Buy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab"
-                            aria-controls="pills-profile" aria-selected="false">Sell</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€803</span>
-                                            <span class="sup">95</span>
-                                        </div>
-                                        <div class="progress" data-percent="45%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€283</span>
-                                            <span class="sup">15</span>
-                                        </div>
-                                        <div class="progress" data-percent="60%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€122</span>
-                                            <span class="sup">00</span>
-                                        </div>
-                                        <div class="progress" data-percent="75%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Buy</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <div class="row">
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€803</span>
-                                            <span class="sup">95</span>
-                                        </div>
-                                        <div class="progress" data-percent="45%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Sell</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€283</span>
-                                            <span class="sup">15</span>
-                                        </div>
-                                        <div class="progress" data-percent="60%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Sell</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 col-xs-12">
-                                <div class="pricing-item">
-                                    <h3>Get 0.112 ETH</h3>
-                                    <div class="pricing-body">
-                                        <div class="price">
-                                            <span>€122</span>
-                                            <span class="sup">00</span>
-                                        </div>
-                                        <div class="progress" data-percent="75%">
-                                            <div class="progress-bar"></div>
-                                        </div>
-                                        <p>You get 0.0364727 Bitcoins</p>
-                                        <a class="btn btn-main" href="#">Sell</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="custom-pricing text-center mt-30">
-                    <p>The price will be recalculated in 27 seconds</p>
-                    <p><a href="">How is the price calculated ?</a></p>
-                </div>
-            </div>
-        </div>
-        <form class="custom-pricing-form">
-            <h3 class="text-center">You can also input a custom amount:</h3>
-            <div class="form-row justify-content-center">
-                <div class="col-md-4">
-                    <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="BTC">
-                </div>
-                <div class="col-md-4">
-                    <input type="text" class="form-control mb-2" id="inlineFormInput2" placeholder="USD">
-                </div>
-                <div class="col-md-2">
-                    <button type="submit" class="btn btn-main mb-2">Buy</button>
-                </div>
-            </div>
-        </form>
-    </div> <!-- End container -->
-</section> <!-- End section -->
-
-<!-- Start Testimonial
-=========================================== -->
-		
-	<section class="testimonial section" id="testimonial">
-		<div class="container">
-			<div class="row">				
-				<div class="col-lg-12">
-					<!-- testimonial wrapper -->
-					<div class="testimonial-slider">
-						<!-- testimonial single -->
-						<div class="item">
-                            <div class="block">
-    							<!-- client info -->
-    							<div class="client-details">
-    								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et dicta eius, nesciunt laboriosam cumque odio veritatis hic quibusdam, impedit corporis libero tenetur blanditiis rem maiores mollitia, vero officiis nulla molestias.</p>
-    							</div>
-    							<!-- /client info -->
-    							<!-- client photo -->
-                                <div class="media client-meta">
-                                  <img class="mr-3 client-thumb" src="images/client-logo/clients-1.jpg" alt="Generic placeholder image">
-                                  <div class="media-body">
-                                    <h4 class="mt-0">Matt Cutts</h4>
-                                    <p>CEO, Themefisher</p>
-                                  </div>
-                                </div>
-    							
-    							<!-- /client photo -->
-                            </div>
-						</div>
-						<!-- /testimonial single -->
-                        <!-- testimonial single -->
-                        <div class="item">
-                            <div class="block">
-                                <!-- client info -->
-                                <div class="client-details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et dicta eius, nesciunt laboriosam cumque odio veritatis hic quibusdam, impedit corporis libero tenetur blanditiis rem maiores mollitia, vero officiis nulla molestias.</p>
-                                </div>
-                                <!-- /client info -->
-                                <!-- client photo -->
-                                <div class="media client-meta">
-                                  <img class="mr-3 client-thumb" src="images/client-logo/clients-1.jpg" alt="Generic placeholder image">
-                                  <div class="media-body">
-                                    <h4 class="mt-0">Matt Cutts</h4>
-                                    <p>CEO, Themefisher</p>
-                                  </div>
-                                </div>
-                                
-                                <!-- /client photo -->
-                            </div>
-                        </div>
-                        <!-- /testimonial single -->
-                        <!-- testimonial single -->
-                        <div class="item">
-                            <div class="block">
-                                <!-- client info -->
-                                <div class="client-details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et dicta eius, nesciunt laboriosam cumque odio veritatis hic quibusdam, impedit corporis libero tenetur blanditiis rem maiores mollitia, vero officiis nulla molestias.</p>
-                                </div>
-                                <!-- /client info -->
-                                <!-- client photo -->
-                                <div class="media client-meta">
-                                  <img class="mr-3 client-thumb" src="images/client-logo/clients-1.jpg" alt="Generic placeholder image">
-                                  <div class="media-body">
-                                    <h4 class="mt-0">Matt Cutts</h4>
-                                    <p>CEO, Themefisher</p>
-                                  </div>
-                                </div>
-                                
-                                <!-- /client photo -->
-                            </div>
-                        </div>
-                        <!-- /testimonial single -->
-                        <!-- testimonial single -->
-                        <div class="item">
-                            <div class="block">
-                                <!-- client info -->
-                                <div class="client-details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et dicta eius, nesciunt laboriosam cumque odio veritatis hic quibusdam, impedit corporis libero tenetur blanditiis rem maiores mollitia, vero officiis nulla molestias.</p>
-                                </div>
-                                <!-- /client info -->
-                                <!-- client photo -->
-                                <div class="media client-meta">
-                                  <img class="mr-3 client-thumb" src="images/client-logo/clients-1.jpg" alt="Generic placeholder image">
-                                  <div class="media-body">
-                                    <h4 class="mt-0">Matt Cutts</h4>
-                                    <p>CEO, Themefisher</p>
-                                  </div>
-                                </div>
-                                
-                                <!-- /client photo -->
-                            </div>
-                        </div>
-                        <!-- /testimonial single -->
-                        <!-- testimonial single -->
-                        <div class="item">
-                            <div class="block">
-                                <!-- client info -->
-                                <div class="client-details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et dicta eius, nesciunt laboriosam cumque odio veritatis hic quibusdam, impedit corporis libero tenetur blanditiis rem maiores mollitia, vero officiis nulla molestias.</p>
-                                </div>
-                                <!-- /client info -->
-                                <!-- client photo -->
-                                <div class="media client-meta">
-                                  <img class="mr-3 client-thumb" src="images/client-logo/clients-1.jpg" alt="Generic placeholder image">
-                                  <div class="media-body">
-                                    <h4 class="mt-0">Matt Cutts</h4>
-                                    <p>CEO, Themefisher</p>
-                                  </div>
-                                </div>
-                                
-                                <!-- /client photo -->
-                            </div>
-                        </div>
-                        <!-- /testimonial single -->
-					</div>
-				</div> 		<!-- end col lg 12 -->
-			</div>	    <!-- End row -->
-		</div>       <!-- End container -->
-	</section>    <!-- End Section -->
-
-<!--
-Start Blog Section
+<!-- Start 홍보 Section
 =========================================== -->
 <section class="blog section" id="blog">
 	<div class="container">
 		<div class="row">
 			<div class="col">
 				<div class="title text-center">
-					<h4>Our untold story</h4>
-					<h2>Bitcoin Knowledge Base.</h2>
+					<h4>하나 소식</h4>
+					<h2>하나의 소식을 전해드립니다</h2>
 					<span class="border"></span>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum reiciendis quasi itaque, obcaecati atque sit!</p>
+					<p>언론 보도 자료 모음 입니다.</p>
 				</div>
 			</div>
 		</div>
@@ -700,18 +215,27 @@ Start Blog Section
 			<article class="col-12 col-md-6" >
 				<div class="post-item">
 					<div class="post-thumb">
-					  	<img class="img-fluid shadow rounded" src="images/blog/post-1.jpg" alt="Generic placeholder image">
+					  	<img class="img-fluid shadow rounded" src="${ pageContext.request.contextPath }/resources/images/hana_ad2.jpg" alt="Generic placeholder image">
 					</div>
 			  		<div class="post-title">
-				    	<h3 class="mt-0"><a href="">Ten things about Business</a></h3>
+				    	<h3 class="mt-0"><a href="">폴리텍-하나금융, 디지털 뉴딜 선도 인재 양성 박차</a></h3>
 			  		</div>
 			  		<div class="post-meta">
-			  			<span>By</span> <a href="" class="">Jonathon Ive</a>
+			  			<div class="post-meta">
+				  			<ul class="list-inline">
+				  				<li class="list-inline-item">
+				  					<!-- <span>By</span> <a href="" class="">Jonathon Ive</a> -->		
+				  				</li>
+				  				<li class="list-inline-item">
+				  					<span>By</span> <span> 2020.07.29</span>		
+				  				</li>
+							</ul>
+				  		</div>
 			  		</div>
 			  		<div class="post-content">
-					    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est voluptatem accusantium dolorum, maxime eos blanditiis sint enim necessitatibus placeat dolor.</p>
+					    <p>지성규 하나은행장은 “디지털 인재 양성이 무엇보다 중요한 시기에 신기술·신산업 분야 교육훈련을 주도하는 폴리텍과 지속해서 협력해 나갈 것”이라며 “포스트 코로나 이후 한국판 뉴딜의 성공적 추진을 위해 하나금융그룹이 마중물 역할을 할 것”이라고 밝혔다.</p>
 			  		</div>
-				    <a class="btn btn-main" href="#">Read more</a>
+				    <a class="btn btn-main" href="http://www.epnc.co.kr/news/articleView.html?idxno=101203">Read more</a>
 				</div>
 			</article>
 			<!-- /single blog post -->
@@ -720,25 +244,26 @@ Start Blog Section
 				<article class="col-12 col-md-6" >
 					<div class="post-item">
 						<div class="post-thumb">
-						  	<img class="img-fluid shadow rounded" src="images/blog/post-2.jpg" alt="Generic placeholder image">
+						  	<img class="img-fluid shadow rounded" src="${ pageContext.request.contextPath }/resources/images/hana_ad1.jpg" alt="Generic placeholder image" 
+						  	style="height: 275px">
 						</div>
 				  		<div class="post-title">
-					    	<h3 class="mt-0"><a href="">Something I need to tell you</a></h3>
+					    	<h3 class="mt-0"><a href="">하나금융티아이, 차별화된 디지털·글로벌·데이터전략 추진</a></h3>
 				  		</div>
 				  		<div class="post-meta">
 				  			<ul class="list-inline">
 				  				<li class="list-inline-item">
-				  					<span>By</span> <a href="" class="">Jonathon Ive</a>		
+				  					<!-- <span>By</span> <a href="" class="">Jonathon Ive</a> -->		
 				  				</li>
 				  				<li class="list-inline-item">
-				  					<span>By</span> <span> 15th December 2017</span>		
+				  					<span>By</span> <span> 2020.06.26</span>		
 				  				</li>
 							</ul>
 				  		</div>
 				  		<div class="post-content">
-						    <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est voluptatem accusantium dolorum, maxime eos blanditiis sint enim necessitatibus placeat dolor.</p>
+						    <p>하나금융티아이는 하나금융그룹의 '앞서가는 디지털 금융그룹, 손님 중심의 데이터 기반 정보회사'로 발돋움하기 위한 중추적 역할을 수행하고 있다.특히 2020년 창립 30주년을 맞아 새로운 경영 슬로건 'Next 3·2·1- 함께 이룬 30년, 새롭게 여는 2020, 가치를 높이는 1000명'을 선포하고 디지털·글로벌·데이터전략 실행을 위한 거버넌스와 사업 포트폴리오 혁신을 추진하고 있다.</p>
 				  		</div>
-					    <a class="btn btn-main" href="#">Read more</a>
+					    <a class="btn btn-main" href="https://www.mk.co.kr/news/special-edition/view/2020/06/654335/">Read more</a>
 					</div>
 				</article>
 			<!-- end single blog post -->
@@ -755,9 +280,9 @@ Start Call To Action
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
-				<h2>Open account for free and start trading Bitcoins now!</h2>
-				<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicudin bibendum auctor, <br> nisi elit consequat ipsum, nesagittis sem nid elit. Duis sed odio sitain elit.</p>
-				<a href="" class="btn btn-main">Get Started</a>
+				<h2>모두의 기쁨 그 하나를 위하여!</h2>
+				<p>직원, 손님, 사회 모두가  행복한 금융 <br> 함께 성장하며 행복을 나누는 금융 하나금융그룹이 앞장서겠습니다.</p>
+				<a href="https://www.hanafn.com:8002/info/aboutus.do" class="btn btn-main">그룹소개</a>
 			</div>
 		</div> 		<!-- End row -->
 	</div>   	<!-- End container -->
@@ -767,92 +292,6 @@ Start Call To Action
 		<%--include forward .xml은 root = / 가 Mission-WEB/ 임 --%>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>
-<!--  
-<footer id="footer" class="bg-one">
-  <div class="top-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>INFORMATION</h3>
-          <ul>
-            <li><a href="#">Payment Option</a></li>
-            <li><a href="#">Free Schedule</a></li>
-            <li><a href="#">Getting Started</a></li>
-            <li><a href="#">Bitcoin Calculator</a></li>
-          </ul>
-        </div>
--->        
-        <!-- End of .col-sm-3 -->
-<!--
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Our Services</h3>
-          <ul>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-          </ul>
-        </div>
--->        
-        <!-- End of .col-sm-3 -->
-<!--
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Badges</a></li>
-          </ul>
-        </div>
--->        
-        <!-- End of .col-sm-3 -->
-<!--
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Follow Us</h3>
-          <ul>
-              <li>
-                  <a href="">
-                      Facebook
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Twitter
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Linkedin
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Google PLus
-                  </a>
-              </li>
-          </ul>
-        </div>
--->        
-        <!-- End of .col-sm-3 -->
-<!--
-      </div>
-    </div> 
--->    
-    <!-- end container -->
-<!--
-  </div>
-  <div class="footer-bottom">
-    <h5>Copyright 2020. All rights reserved.</h5>
-    <h6>Design and Developed by <a href="https://github.com/park-cheonho">박천호</a></h6>
-  </div>
-</footer> -->
-	<!-- end footer -->
-
-
-    <!-- end Footer Area
-    ========================================== -->
-
-
     
     <!-- 
     Essential Scripts

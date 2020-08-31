@@ -8,4 +8,11 @@
 		select branch_id, branch_name, latitude as branch_latitude, longitude as branch_longitude
 		from branch
 	</select>
+	
+	<select id="selectBranchList" parameterType="String" resultType="numberTicket_LatLngVO">
+		select branch_id, branch_name, branch_address, branch_open, branch_close, latitude as branch_latitude, longitude as branch_longitude
+		from branch
+		where branch_name = #{location}
+	</select>
+	
 </mapper>

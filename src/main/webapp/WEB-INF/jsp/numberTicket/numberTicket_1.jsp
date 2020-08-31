@@ -25,14 +25,33 @@
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style.css"></head>
   <script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
 <body>
+
 <header>
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-<div style="width:1300px;height:600px; border:1px solid green; ">
+<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
 
-<div style="width:500px;height:400px; border:1px solid red; float:left;">
-안
+<div style="width:500px;height:400px; border:1px solid red; float:left;" class="col-md-6">
+<h2 style="text-align: left">지점 검색</h2>
+<hr>
+<ul>
+<li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
+<li class="list-group-item" style="float: left">지점명</li>
+</ul>
+<form id="form">
+<div id="input">
+<input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 250px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
+</div>
+<!-- <input type="submit" value="검색" style="height: 48px" id="search"><br>
+ -->
+ </form>
+<button id="test" class="btn btn-main mb-2" style="height: 48px;">검색</button>
+<h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
+
+<div id="branchList">
+
+</div>
 </div>
 <div id="map" style="width:50%;height:400px; float:left;"></div>
 </div>
@@ -83,6 +102,23 @@
         
         clusterer.addMarkers(markers);
     });
+    
+    function setCenter() {            
+        // 이동할 위도 경도 위치를 생성합니다 
+        var moveLatLon = new kakao.maps.LatLng(33.452613, 126.570888);
+        
+        // 지도 중심을 이동 시킵니다
+        map.setCenter(moveLatLon);
+    }
+
+    function panTo() {
+        // 이동할 위도 경도 위치를 생성합니다 
+        var moveLatLon = new kakao.maps.LatLng(33.450580, 126.574942);
+        
+        // 지도 중심을 부드럽게 이동시킵니다
+        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+        map.panTo(moveLatLon);            
+    }        
     
     /*
     // infodata.지점코드 해서 정보를 가지고 온다.
@@ -135,6 +171,59 @@
       }
     
     */
+    
+    var branch;
+    $(document).on('click', "#test", function(){
+    	$.ajax({
+    		url : '${ pageContext.request.contextPath }/location/' + $('#InputName').val(),	
+    		type : 'get',
+    		success : function (data){
+    			$('#branchList').empty();
+    			branch = JSON.parse(data);
+    			
+    			let content = '';
+    			
+    			content +=     '<table class="table table-hover" style="text-align:center">';
+    			content +=         '<thead>';
+    			content +=             '<tr>'
+    			content +=                 '<th scope="col">지점명</th>';
+    			content +=                 '<th scope="col">주소</th>';
+    			content +=                 '<th scope="col">오픈시간</th>';
+    			content +=                 '<th scope="col">마감시간</th>';
+    			content +=             '</tr>';
+    			content +=         '</thead>';
+    			content +=         '<tbody>';
+    			content +=	    		'<tr class="chooselocation" id=' + branch.data[0].branch_name + '>';
+    			content +=             		'<td>' + branch.data[0].branch_name + '</td>';
+    			content +=             		'<td>' + branch.data[0].branch_address + '</td>';
+    			content +=             		'<td>' + branch.data[0].branch_open + '</td>';
+    			content +=             		'<td>' + branch.data[0].branch_close + '</td>';
+    			content +=	    		'</tr>';
+    			content +=         '</tbody>';
+    			content +=     '</table>';
+    			$('#branchList').append(content);
+    			
+    			// 이동할 위도 경도 위치를 생성합니다 
+    	        var moveLatLon = new kakao.maps.LatLng(branch.data[0].branch_latitude, branch.data[0].branch_longitude);
+    	        
+    	        // 지도 중심을 부드럽게 이동시킵니다
+    	        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+    	        map.panTo(moveLatLon);
+    			
+    		},
+    		error : function() {
+    			alert('실패')
+    		}
+    	})
+    })
+    
+    $(document).on('click', ".chooselocation", function(){
+    	let location = $(this).attr('id');
+    	alert(location);
+    	location.href = "${ pageContext.request.contextPath }/location/reservation/"+location
+    })
+
+  
 </script>
 
  	<!-- Essential Scripts

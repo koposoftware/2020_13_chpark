@@ -34,14 +34,14 @@
 
 
 
-<div class="map_wrap">
+<div class="map_wrap" align="center">
     <div id="map" style="width:80%;height:80%;position:relative;overflow:hidden;"></div>
 
-    <div id="menu_wrap" class="bg_white">
+    <div id="menu_wrap" class="bg_white" align="left">
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="하나은행" id="keyword" size="15"> 
+                    키워드 : <input type="text" value="종로구 하나은행" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -64,8 +64,8 @@ var markers = [];
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표
-        level: 5 // 지도의 확대 레벨
+        center: new kakao.maps.LatLng(37.5720063, 126.9742753), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
     };  
 
 // 지도를 생성합니다    
