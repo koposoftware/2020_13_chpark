@@ -15,4 +15,28 @@
 		where branch_name = #{location}
 	</select>
 	
+	<select id="selectStandBy100" parameterType="String" resultType="numberTicket_NumberTicketVO">
+		select count(*) as standby
+		from numberticket
+		where branch_name = #{location} and service_id = 100
+	</select>
+	
+	<select id="selectStandBy200" parameterType="String" resultType="numberTicket_NumberTicketVO">
+		select count(*) as standby
+		from numberticket
+		where branch_name = #{location} and service_id = 200
+	</select>
+	
+	<select id="selectStandBy300" parameterType="String" resultType="numberTicket_NumberTicketVO">
+		select count(*) as standby
+		from numberticket
+		where branch_name = #{location} and service_id = 300
+	</select>
+
+	<select id="selectStandBy400" parameterType="String" resultType="numberTicket_NumberTicketVO">
+		select count(*) as standby
+		from numberticket
+		where branch_name = #{location} and service_id = 400
+	</select>
+	
 </mapper>

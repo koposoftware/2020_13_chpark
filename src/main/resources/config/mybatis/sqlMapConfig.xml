@@ -8,5 +8,8 @@
 		<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="memberVO"/>
 		<!--  <typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicketVO" alias="numberTicketVO"/> -->
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO" alias="numberTicket_LatLngVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_ServiceVO" alias="numberTicket_ServiceVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_TellerVO" alias="numberTicket_TellerVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO" alias="numberTicket_NumberTicketVO"/>
 	</typeAliases>
 </configuration>

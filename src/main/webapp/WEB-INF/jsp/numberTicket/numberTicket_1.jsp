@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>지점 선택</title>
 <!-- Mobile Specific Meta
   ================================================== -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -61,7 +61,7 @@
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff2a5b564a26a1c55986504a754e4916&libraries=services,clusterer,drawing""></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=카카오api키&libraries=services,clusterer,drawing""></script>
 <script>
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 
@@ -218,9 +218,10 @@
     })
     
     $(document).on('click', ".chooselocation", function(){
-    	let location = $(this).attr('id');
-    	alert(location);
-    	location.href = "${ pageContext.request.contextPath }/location/reservation/"+location
+    	let locations = $(this).attr('id');
+    	<%--alert(location);--%>
+    	location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
+
     })
 
   

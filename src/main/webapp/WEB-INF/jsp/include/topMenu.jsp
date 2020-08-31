@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12">
                 <nav class="navbar navbar-expand-lg">
-                    <a class="navbar-brand" href="index.jsp">
+                    <a class="navbar-brand" href="${ pageContext.request.contextPath }/index.jsp">
                         <img src="${ pageContext.request.contextPath }/resources/images/하나은행.png" alt="logo">
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,8 +49,9 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
-                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }">번호표 확인</a>
+                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
                                     <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
+                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
                                 </div>
                             </li>
                         </ul>
