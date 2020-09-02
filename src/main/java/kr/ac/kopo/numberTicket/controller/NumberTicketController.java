@@ -18,6 +18,8 @@ import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.numberTicket.service.NumberTicketService;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
+import kr.ac.kopo.numberTicket.vo.TicketVO;
 
 @Controller
 public class NumberTicketController {
@@ -37,6 +39,18 @@ public class NumberTicketController {
 		return "numberTicket/numberTicket_1";
 	}
 	
+	@RequestMapping("/numberTicket_my")
+	public String numberTicket_my() {
+		
+		return "numberTicket/numberTicket_my";
+	}
+	
+	@RequestMapping("/numberTicket_admin")
+	public String numberTicket_admin() {
+		
+		return "numberTicket/numberTicket_admin";
+	}
+	
 	@RequestMapping("/numberTicket/LatLng.json")
 	@ResponseBody
 	public Map<String, List<NumberTicket_LatLngVO>> resJsonBody(){
@@ -54,6 +68,9 @@ public class NumberTicketController {
 		NumberTicket_NumberTicketVO nt200 = numberTicketService.selectStandBy200(locations);
 		NumberTicket_NumberTicketVO nt300 = numberTicketService.selectStandBy300(locations);
 		NumberTicket_NumberTicketVO nt400 = numberTicketService.selectStandBy400(locations);
+		
+		List<ServiceDescVO> serviceDescList = numberTicketService.selectListServiceDesc();
+		
 		mav.addObject("locations", locations);
 		mav.addObject("nt100", nt100);
 		System.out.println(nt100);
@@ -63,45 +80,10 @@ public class NumberTicketController {
 		System.out.println(nt300);
 		mav.addObject("nt400", nt400);
 		System.out.println(nt400);
+		mav.addObject("serviceDescList", serviceDescList);
+		System.out.println(serviceDescList);
 		mav.setViewName("/numberTicket/numberTicket_2");
 		return mav;
 	}	
-	
-	@RequestMapping("/numberservice/{locations}/{service}")
-	public ModelAndView ticket(@PathVariable("locations") String locations, @PathVariable("service") String service, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		//numberTicketService.insertNumberTicket(locations, service, session);
-		NumberTicket_NumberTicketVO nt = numberTicketService.insertSelectNumberTicket(locations, service, session);
-		NumberTicket_NumberTicketVO nt100 = numberTicketService.selectStandBy100(locations);
-		NumberTicket_NumberTicketVO nt200 = numberTicketService.selectStandBy200(locations);
-		NumberTicket_NumberTicketVO nt300 = numberTicketService.selectStandBy300(locations);
-		NumberTicket_NumberTicketVO nt400 = numberTicketService.selectStandBy400(locations);
-		System.out.println(locations);
-		System.out.println(service);
-		MemberVO login = (MemberVO)session.getAttribute("loginVO"); 
-		System.out.println(".....");
-		System.out.println(login);
-		System.out.println(nt);
-		mav.addObject("login", login);
-		mav.addObject("locations", locations);
-		mav.addObject("service", service);
-		mav.setViewName("/numberTicket/numberTicket_my");
-		mav.addObject("nt", nt);
-		mav.addObject("nt100", nt100);
-		mav.addObject("nt200", nt200);
-		mav.addObject("nt300", nt300);
-		mav.addObject("nt400", nt400);
-
-		return mav;
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }

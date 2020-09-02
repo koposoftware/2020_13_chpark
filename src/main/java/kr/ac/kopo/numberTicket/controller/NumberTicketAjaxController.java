@@ -4,13 +4,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
+import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.member.vo.TellerVO;
 import kr.ac.kopo.numberTicket.service.NumberTicketService;
+import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
+import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
+import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.TicketVO;
+import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
 @RestController
 public class NumberTicketAjaxController {
@@ -26,5 +36,93 @@ public class NumberTicketAjaxController {
 		BranchList.put("data", result);
 		return BranchList;
 	}	
+
+	@GetMapping("/numberservice/{locations}/{service}")
+	public Map<String, TicketVO> ticket(@PathVariable("locations") String locations, @PathVariable("service") String service, HttpSession session) {
+		
+		//numberTicketService.insertNumberTicket(locations, service, session);
+		System.out.println(locations);
+		System.out.println(service);
+		NumberTicket_NumberTicketVO nt = numberTicketService.insertSelectNumberTicket(locations, service, session);
+		
+		NumberTicket_NumberTicketVO countVO = null;
+		if(service.equals("100")) {
+			countVO = numberTicketService.selectStandBy100(locations);
+		}else if(service.equals("200")) {
+			countVO = numberTicketService.selectStandBy200(locations);	
+		}else if(service.equals("300")) {
+			countVO = numberTicketService.selectStandBy300(locations);
+		}else if(service.equals("400")) {
+			countVO = numberTicketService.selectStandBy400(locations);
+		}
+		
+		Map<String,TicketVO> returnVal = new HashMap<>();
+		
+		TicketVO vo = new TicketVO();
+		
+		vo.setServiceName(nt.getService_name());
+		vo.setBranchName(nt.getBranch_name());
+		vo.setNumberticketNumber(nt.getNumberticket_number());
+		vo.setStandby(countVO.getStandby());
+		
+		returnVal.put("data", vo);
+		
+		return returnVal;
+	}
+	
+	
+	@GetMapping("/numberservice/userTicket")
+	public List<UserTicketVO> userTicket(HttpSession session) {
+		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.userTicket(loginVO.getId());
+	}
+	
+	@GetMapping("/numberservice/adminTicket")
+	public List<AdminTicketVO> adminTicket(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.adminTicket(loginVO.getTellerId());
+	}
+	
+	@GetMapping("/numberservice/ticketupdate/{numberticketSeq}")
+	public int adminTicketUpdate(@PathVariable("numberticketSeq") int numberticketSeq,HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		NumberTicket_NumberTicketVO vo = new NumberTicket_NumberTicketVO();
+		vo.setTeller_id(loginVO.getTellerId());
+		vo.setNumberticket_seq(numberticketSeq);
+		System.out.println(vo);
+		return numberTicketService.adminTicketUpdate(vo);
+	}
+	
+	@GetMapping("/numberservice/ticketdelete/{numberticketSeq}")
+	public int adminTicketDelete(@PathVariable("numberticketSeq") int numberticketSeq,HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		NumberTicket_NumberTicketVO vo = new NumberTicket_NumberTicketVO();
+		vo.setNumberticket_seq(numberticketSeq);
+
+		NumberTicket_NumberTicketVO info = numberTicketService.selectTicket(vo);
+		
+		AnalysisVO analysisvo = new AnalysisVO();
+		analysisvo.setAnalysisDate(info.getNumberticket_date());
+		analysisvo.setAnalysisNumber(info.getNumberticket_number());
+		analysisvo.setAnalysisTime(info.getNumberticket_time());
+		analysisvo.setBranchId(info.getBranch_id());
+		analysisvo.setBranchName(info.getBranch_name());
+		analysisvo.setServiceId(info.getService_id());
+		analysisvo.setTellerId(info.getTeller_id());
+		analysisvo.setUsersId(info.getUsers_id());
+		analysisvo.setUsersName(info.getUser_name());
+		
+		numberTicketService.insertAnalysis(analysisvo);
+		
+		numberTicketService.deleteTicket(vo);
+		
+		return 1;
+	}
+	
+	
 	
 }

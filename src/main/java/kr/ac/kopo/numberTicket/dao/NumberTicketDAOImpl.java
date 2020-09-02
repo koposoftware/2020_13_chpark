@@ -11,8 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
+import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
+import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
 @Repository
 public class NumberTicketDAOImpl implements NumberTicketDAO{
@@ -75,6 +79,41 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 	public String selectServiceName(String service_id) {
 		String service_name = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectService", service_id);
 		return service_name;
+	}
+
+	@Override
+	public List<ServiceDescVO> selectListServiceDesc() {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectListServiceDesc");
+	}
+
+	@Override
+	public List<UserTicketVO> userTicket(String id) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.userTicket",id);
+	}
+
+	@Override
+	public List<AdminTicketVO> adminTicket(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket",tellerId);
+	}
+
+	@Override
+	public int adminTicketUpdate(NumberTicket_NumberTicketVO vo) {
+		return sqlSession.update("numberTicket.dao.NumberTicketDAO.adminTicketUpdate",vo);
+	}
+
+	@Override
+	public NumberTicket_NumberTicketVO selectTicket(NumberTicket_NumberTicketVO vo) {
+		return sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectTicket",vo);
+	}
+
+	@Override
+	public void insertAnalysis(AnalysisVO analysisvo) {
+		sqlSession.insert("numberTicket.dao.NumberTicketDAO.insertAnalysis",analysisvo);
+	}
+
+	@Override
+	public void deleteTicket(NumberTicket_NumberTicketVO vo) {
+		sqlSession.delete("numberTicket.dao.NumberTicketDAO.deleteTicket",vo);
 	}
 	
 	

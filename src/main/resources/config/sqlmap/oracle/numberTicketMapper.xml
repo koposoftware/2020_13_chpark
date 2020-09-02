@@ -55,4 +55,78 @@
 		from service
 		where service_id = #{service_id}
 	</select>
+	
+	<select id="selectListServiceDesc" resultType="serviceDescVO"> 
+		SELECT 
+			A.SERVICE_ID AS serviceId,
+			B.SERVICE_NAME AS serviceName, 
+			A.seq AS seq, 
+			A.name as name,
+			A.etc as etc
+		FROM SERVICE_DESC A , SERVICE B
+		WHERE A.SERVICE_ID = B.SERVICE_ID 
+	</select>
+	
+	<select id="userTicket" parameterType="String" resultType="userTicketVO">
+		SELECT
+		    A.BRANCH_NAME as branchName,
+		    A.SERVICE_ID AS serviceId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_SEQ AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_TIME as numberticketTime,
+            (SELECT COUNT(*) FROM NUMBERTICKET C WHERE A.SERVICE_ID = C.SERVICE_ID AND A.BRANCH_NAME = A.BRANCH_NAME) AS standby
+		FROM NUMBERTICKET A,SERVICE B
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+		AND A.USERS_ID = #{id}
+		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+	<select id="adminTicket" parameterType="String" resultType="adminTicketVO">
+		SELECT
+		    E.USERS_NAME as userName,
+		    A.SERVICE_ID AS serviceId,
+		    A.TELLER_ID as tellerId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_NUMBER AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_SEQ as numberticketSeq,
+		    A.NUMBERTICKET_TIME as numberticketTime
+		FROM NUMBERTICKET A,SERVICE B,USERS E
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+        AND A.USERS_ID = E.USERS_ID
+		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
+		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+	<update id="adminTicketUpdate" parameterType="numberTicket_NumberTicketVO">
+		update NUMBERTICKET set TELLER_ID = #{teller_id} 
+		where NUMBERTICKET_SEQ = #{numberticket_seq}
+	</update>
+	
+	<select id="selectTicket" parameterType="numberTicket_NumberTicketVO" resultType="numberTicket_NumberTicketVO">
+		SELECT
+			*
+		FROM NUMBERTICKET
+		WHERE NUMBERTICKET_SEQ = #{numberticket_seq}
+	</select>
+	
+	<insert id="insertAnalysis" parameterType="analysisVO">
+		INSERT INTO ANALYSIS VALUES (
+		 (SELECT NVL(COUNT(*),0)+1 FROM ANALYSIS) ,
+		 #{analysisNumber},
+		 #{analysisDate, jdbcType=VARCHAR},
+		 #{analysisTime, jdbcType=VARCHAR},
+		 #{usersId , jdbcType=VARCHAR},
+		 #{usersName, jdbcType=VARCHAR},
+		 #{branchId, jdbcType=VARCHAR},
+		 #{tellerId, jdbcType=VARCHAR},
+		 #{serviceId, jdbcType=VARCHAR},
+		 #{branchName, jdbcType=VARCHAR}
+		)
+	</insert>
+	
+	<delete id="deleteTicket" parameterType="numberTicket_NumberTicketVO">
+		DELETE FROM NUMBERTICKET WHERE NUMBERTICKET_SEQ = #{numberticket_seq}
+	</delete>
 </mapper>

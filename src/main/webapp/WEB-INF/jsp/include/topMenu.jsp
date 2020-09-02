@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
+<style>
+	*{
+    font-family: "Roboto", sans-serif !important;
+	}
+</style>
 <section class="header  navigation" style="color: dee2e6">
     <div class="container">
         <div class="row">
@@ -38,14 +42,16 @@
 		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
 		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
 		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
-		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
 		                                </div>
 		                            </li>
 							    </c:when>
 							    <c:otherwise>
 							    	<c:if test="${loginVO.type eq 'A'}">
 								    	<li class="nav-item">
-			                                <a class="nav-link" href="${ pageContext.request.contextPath }">대기인원확인</a>
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/numberTicket_admin">대기인원확인</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
 			                            </li>
 							    	</c:if>
 							    	
@@ -71,7 +77,6 @@
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
-			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
 			                                </div>
 			                            </li>
 							    	</c:if>

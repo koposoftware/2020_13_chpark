@@ -28,17 +28,136 @@
   <link rel="stylesheet" href="/Project-spring-mvc/resources/plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/Project-spring-mvc/resources/css/style.css">
-<script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript">
+  
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
+  
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>
 
-$(document).on('click', ".btn-main", function(){
-	let service = $(this).attr('id');
-	<%--alert(location);--%>
-	location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
+  <script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript">
 
-})
+	$(function(){
+		var dialog = new ax5.ui.dialog();
+		var mask = new ax5.ui.mask();
+		dialog.setConfig({
+		     title: "번호표 확인",
+		     lang : {
+		    	 ok : '확인'
+		     },
+		     onStateChanged: function () {
+		         if (this.state === "open") {
+		             mask.open();
+		         }
+		         else if (this.state === "close") {
+		             mask.close();
+		         }
+		     }
+		});
+		
+		$(document).on('click', ".tdBtn", function(){
+			let service = $(this).attr('id');
+			
+			///numberservice/{locations}/{service}
+			$.ajax({
+	    		url : '${ pageContext.request.contextPath }/numberservice/${ locations }/' + service,	
+	    		type : 'get',
+	    		success : function (data){
+	    			
+	    			var json = JSON.parse(data)['data'];
 
-</script>
+	    			var tableTag = "";
+	    			tableTag+='<table style="width: 100%;">';
+	    			
+	    			tableTag+='<colgroup>';
+	    			tableTag+='<col style="width:100px;">';
+	    			tableTag+='<col>';
+	    			tableTag+='</colgroup>';
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>지점</th>';
+	    			tableTag+='<td>'+json['branchName']+'</td>';
+	    			tableTag+='</tr>';
+	    			
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>창구</th>';
+	    			tableTag+='<td>'+json['serviceName']+'</td>';
+	    			tableTag+='</tr>';
+	    			
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>번호</th>';
+	    			tableTag+='<td>'+json['numberticketNumber']+'</td>';
+	    			tableTag+='</tr>';
+	    			
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>대기인원</th>';
+	    			tableTag+='<td>'+json['standby']+'</td>';
+	    			tableTag+='</tr>';
+	    			tableTag+='</table>';
+	    			dialog.alert(tableTag);
+	    		}
+    		});
+			//location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
+		})
+		
+		$(document).on('click', ".type", function(){
+			let service = $(this).attr('name');
+			
+			firstGrid.setData(dataMap[service]);
+		})
+		
+		var firstGrid = new ax5.ui.grid();
+		
+	    firstGrid.setConfig({
+            target: $('[data-ax5grid="first-grid"]'),
+            columns: [
+                {key: "col1", label: "업무" ,width :'30%'},
+                {key: "col2", label: "필요서류" , width :'70%'},
+            ]
+        });
+	    
+	    
+	    var dataMap = {
+		    	100 : [],
+		    	200 : [],
+		    	300 : [],
+		    	400 : []
+		    };
+		    
+	    <c:forEach items="${ serviceDescList }" var="serviceDesc" varStatus="loop">
+	    	dataMap['${serviceDesc.serviceId}'].push({col1:'${serviceDesc.name}',col2:'${serviceDesc.etc}'});
+	 	</c:forEach>
+	 	firstGrid.setData(dataMap[100]);
+	 	
+	})
+	
+	
+  </script>
+<style type="text/css">
+	table td,th{
+		border:1px solid rgba(0,0,0,.1);
+		padding: 5px;
+	}
+
+	.type{
+		cursor: pointer;
+	}
+	.tdBtn{
+		background: #31BB9E;
+		color: #fff;
+		cursor: pointer;
+	}
+	
+	.ax5-ui-dialog .ax-dialog-header,.btn-default,.btn-default:hover,.btn-default:focus{
+		background: #31BB9E;
+		color: #fff;
+		border: none;
+	}
+	
+</style>
 </head>
 <body id="body">
 
@@ -70,32 +189,56 @@ $(document).on('click', ".btn-main", function(){
 </header>
 
 
-<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
-<h2>${ locations } 지점 현황 </h2>
-<h2 style="text-align: left">대기 손님 현황</h2>
-<hr>
-<ul>
-<li style="text-align: left;"><span style="color: red;">원하시는 업무</span>를 선택해주세요</li>
-</ul>
-<table style="text-align:center; border:1px solid black;">
-	<tr>
-		<th>입출금</th>
-		<td>${ nt100.standby } 명 <button class="btn-main" id="100">번호표발급</button> </td>
-	</tr>
-	<tr>
-		<th>대출</th>
-		<td>${ nt200.standby } 명 <button class="btn-main" id="200">번호표발급</button></td>
-	</tr>
-	<tr>
-		<th>외환</th>
-		<td>${ nt300.standby } 명 <button class="btn-main" id="300">번호표발급</button></td>
-	</tr>	
-	<tr>
-		<th>기업</th>
-		<td>${ nt400.standby } 명<button class="btn-main" id="400">번호표발급</button></td>
-	</tr>
+<div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+	<h2>${ locations } 지점 현황 </h2>
+	<hr>
+	<div style="width: 50%;height:100%;float: left;">
+		
+		<h2 style="text-align: center;">대기 손님 현황</h2>
+		<hr>
+		<table style="width: 100%;height:calc(100% - 120px);">
+			<colgroup>
+				<col style="width:150px;">
+				<col>
+				<col style="width:160px;">
+			</colgroup>
+			<tr>
+				<th colspan="3">
+					<span style="color: red;">원하시는 업무</span>를 선택해주세요
+				</th>
+			</tr>
+			
+			<tr>
+				<th class="type" name="100">입출금 업무</th>
+				<td>${ nt100.standby } 명</td>
+				<td  id="100" class="tdBtn">번호표발급</td>
+			</tr>
+			<tr>
+				<th class="type" name="200">대출 업무</th>
+				<td>${ nt200.standby } 명</td>
+				<td  id="200" class="tdBtn">번호표발급</td>
+			</tr>
+			<tr>
+				<th class="type" name="300">외환 업무</th>
+				<td>${ nt300.standby } 명</td>
+				<td  id="300" class="tdBtn">번호표발급</td>
+			</tr>	
+			<tr>
+				<th class="type" name="400">기업 업무</th>
+				<td>${ nt400.standby } 명</td>
+				<td  id="400" class="tdBtn">번호표발급</td>
+			</tr>
+			
+		</table>
 	
-</table>
+
+	</div>
+
+	<div style="width: 50%;float: left;height: 100%;">
+		<h2 style="text-align: center;">구비서류</h2>
+		<hr>
+		<div data-ax5grid="first-grid" style="height: calc(100% - 120px);padding-left: 10px;"></div>
+	</div>
 </div>
 
 <footer>

@@ -44,7 +44,7 @@ public class MemberController {
 			mav.setViewName("redirect:/login");
 		}
 		//로그인 성공 
-		System.out.println(loginVO);
+		
 		mav.setViewName("redirect:/");
 		mav.addObject("loginVO", loginVO);
 		return mav;

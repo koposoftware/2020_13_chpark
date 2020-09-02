@@ -14,5 +14,12 @@
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_ServiceVO" alias="numberTicket_ServiceVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_TellerVO" alias="numberTicket_TellerVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO" alias="numberTicket_NumberTicketVO"/>
+		
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.ServiceDescVO" alias="serviceDescVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.UserTicketVO" alias="userTicketVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.AdminTicketVO" alias="adminTicketVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.AnalysisVO" alias="analysisVO"/>
+		
+		
 	</typeAliases>
 </configuration>

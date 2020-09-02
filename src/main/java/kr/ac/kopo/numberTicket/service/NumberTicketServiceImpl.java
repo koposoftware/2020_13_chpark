@@ -8,8 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.ac.kopo.numberTicket.dao.NumberTicketDAO;
+import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
+import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
+import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
 @Service
 public class NumberTicketServiceImpl implements NumberTicketService{
@@ -60,6 +64,41 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 		String service_name = numberTicketDAO.selectServiceName(nt.getService_id());
 		nt.setService_name(service_name);
 		return nt;
+	}
+	
+	@Override
+	public List<ServiceDescVO> selectListServiceDesc() {
+		return numberTicketDAO.selectListServiceDesc();
+	}
+
+	@Override
+	public List<UserTicketVO> userTicket(String id) {
+		return numberTicketDAO.userTicket(id);
+	}
+
+	@Override
+	public List<AdminTicketVO> adminTicket(String tellerId) {
+		return numberTicketDAO.adminTicket(tellerId);
+	}
+
+	@Override
+	public int adminTicketUpdate(NumberTicket_NumberTicketVO vo) {
+		return numberTicketDAO.adminTicketUpdate(vo);
+	}
+
+	@Override
+	public NumberTicket_NumberTicketVO selectTicket(NumberTicket_NumberTicketVO vo) {
+		return numberTicketDAO.selectTicket(vo);
+	}
+
+	@Override
+	public void insertAnalysis(AnalysisVO analysisvo) {
+		numberTicketDAO.insertAnalysis(analysisvo);
+	}
+
+	@Override
+	public void deleteTicket(NumberTicket_NumberTicketVO vo) {
+		numberTicketDAO.deleteTicket(vo);
 	}
 	
 //	@Override

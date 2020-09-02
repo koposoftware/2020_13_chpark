@@ -42,10 +42,21 @@
 
 <style type="text/css">
 	.ax5-ui-dialog .ax-dialog-header,.btn-default,.btn-default:hover,.btn-default:focus{
-		background: #31BB9E;
-		color: #fff;
-		border: none;
+		background: #31BB9E !important;
+		color: #fff !important;
+		border: none !important;
 	}
+	
+	.gridBtn{
+		background: #31BB9E !important;
+		color: #fff !important; 
+		cursor: pointer;
+	}
+	.gridRedBtn{
+		background: #f8d2cb !important;
+		cursor: pointer;
+	}
+	 
 
 </style>
 <script type="text/javascript">
@@ -73,57 +84,64 @@
 	    firstGrid.setConfig({
             target: $('[data-ax5grid="first-grid"]'),
             columns: [
-                {key: "branchName", label: "지점" ,width :'20%'},
-                {key: "serviceName", label: "업무" , width :'20%'},
-                {key: "numberticketNumber", label: "번호" , width :'20%'},
-                {key: "numberticketDate", label: "일자" , width :'20%'},
-                {key: "numberticketTime", label: "시간" , width :'20%'}
+                {key: "serviceName", label: "업무" , width :'16%'},
+                {key: "numberticketNumber", label: "번호" , width :'16%'},
+                {key: "userName", label: "사용자" , width :'16%'},
+                {key: "numberticketDate", label: "일자" , width :'16%'},
+                {key: "numberticketTime", label: "시간" , width :'16%'},
+                {key: "status", label: "상태" , width :'16%' ,styleClass: function () {
+                    return (this.item.status === "상담") ? "gridBtn" : "gridRedBtn";
+                }},
+                
             ],
             body: {
-            	onDBLClick: function(){
+            	onClick: function(){
             		var json = this.list[this.dindex];
-	    			var tableTag = "";
-	    			tableTag+='<table style="width: 100%;">';
-	    			
-	    			tableTag+='<colgroup>';
-	    			tableTag+='<col style="width:100px;">';
-	    			tableTag+='<col>';
-	    			tableTag+='</colgroup>';
-	    			tableTag+='<tr>';
-	    			tableTag+='<th>지점</th>';
-	    			tableTag+='<td>'+json['branchName']+'</td>';
-	    			tableTag+='</tr>';
-	    			
-	    			tableTag+='<tr>';
-	    			tableTag+='<th>창구</th>';
-	    			tableTag+='<td>'+json['serviceName']+'</td>';
-	    			tableTag+='</tr>';
-	    			
-	    			tableTag+='<tr>';
-	    			tableTag+='<th>번호</th>';
-	    			tableTag+='<td>'+json['numberticketNumber']+'</td>';
-	    			tableTag+='</tr>';
-	    			
-	    			tableTag+='<tr>';
-	    			tableTag+='<th>대기인원</th>';
-	    			tableTag+='<td>'+json['standby']+'</td>';
-	    			tableTag+='</tr>';
-	    			tableTag+='</table>';
-	    			dialog.alert(tableTag);
+            		
+            		if(this.value =='상담'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketupdate/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select();
+            	    		}	
+           	    		})
+            		}else if(this.value =='종료'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketdelete/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select();
+            	    		}	
+           	    		})
+            		}
+            		
                 },
             }
         });
 	    
 	    
-	    $.ajax({
-    		url : '${ pageContext.request.contextPath }/numberservice/userTicket',	
-    		type : 'get',
-    		success : function (data){
-    			var json = JSON.parse(data);
-    			firstGrid.setData(json);
-    		}
-	    })
+	    function select(){
+	    	$.ajax({
+	    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket',	
+	    		type : 'get',
+	    		success : function (data){
+	    			var json = JSON.parse(data);
+	    			
+	    			json.forEach(function(item){
+	   				  if(item['tellerId'] == null){
+		   				item['status'] = '상담';
+		    		  }else{
+		    			item['status'] = '종료';
+		    		  }
+	   				})
+	   				
+	    			firstGrid.setData(json);
+	    		}
+		    })
+	    }
 	    
+	    select();
 	})
 </script>
 </head>
