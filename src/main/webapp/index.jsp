@@ -133,7 +133,7 @@ Welcome Slider
 		<div class="row">
 			<div class="col-lg-6 align-self-center mb-4 mb-lg-0">
 				<div class="video-player">
-					<img class="img-fluid rounded" src="images/slider/slider-bg-2.jpg" alt="">
+					<img class="img-fluid rounded" src="${ pageContext.request.contextPath }/resources/images/slider/slider-bg-2.jpg" alt="">
 					<a class="play-icon">
 						<i class="tf-ion-ios-play" data-video="https://www.youtube.com/embed/g3-VxLQO7do?autoplay=1"></i>
 					</a>

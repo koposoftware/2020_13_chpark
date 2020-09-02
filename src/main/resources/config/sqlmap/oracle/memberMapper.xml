@@ -5,9 +5,19 @@
 <mapper namespace="member.dao.MemberDAO">
 
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select USERS_ID id, USERS_PWD pwd, USERS_TYPE type
+		select USERS_ID id, USERS_PWD pwd, USERS_TYPE type, USERS_NAME name
 		from USERS
 		where USERS_ID = #{id} and USERS_PWD = #{pwd}
+	</select>
+	
+	<select id="adminLogin" parameterType="tellerVO" resultType="tellerVO">
+		SELECT 
+			TELLER_ID as tellerId,
+			TELLER_PWD as tellerPwd,
+			TELLER_NAME as tellerdName,
+			BRANCH_ID as branchId
+		from teller
+		WHERE TELLER_ID = #{tellerId} AND TELLER_PWD = #{tellerPwd} 
 	</select>
 	
 	<insert id="signup" parameterType="memberVO">

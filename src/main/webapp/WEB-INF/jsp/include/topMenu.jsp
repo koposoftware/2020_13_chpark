@@ -15,45 +15,71 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <!--  
-                            <li class="nav-item active">
-                                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            -->
-                           	<c:if test="${ empty loginVO }">
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/login">로그인</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/signup">회원가입</a>
-                            </li>
-                           	</c:if>
-                           	<c:if test="${ not empty loginVO }">
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/mypage/${loginVO.id}">마이페이지</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
-                            </li>
-                           	</c:if>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="${ pageContext.request.contextPath }/">하나은행</a>
-                            </li>
+                            <c:choose>
+							    <c:when test="${empty loginVO }">
+       	                            <li class="nav-item">
+		                                <a class="nav-link" href="${ pageContext.request.contextPath }/login">로그인</a>
+		                            </li>
+		                            <li class="nav-item">
+		                                <a class="nav-link" href="${ pageContext.request.contextPath }/signup">회원가입</a>
+		                            </li>
+		                            <li class="nav-item">
+		                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
+		                            </li>
+		                            <li class="nav-item">
+		                                <a class="nav-link" href="${ pageContext.request.contextPath }/">하나은행</a>
+		                            </li>
+		
+		                            <li class="nav-item dropdown">
+		                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                    	모바일 번호표
+		                                </a>
+		                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
+		                                </div>
+		                            </li>
+							    </c:when>
+							    <c:otherwise>
+							    	<c:if test="${loginVO.type eq 'A'}">
+								    	<li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }">대기인원확인</a>
+			                            </li>
+							    	</c:if>
+							    	
+							    	<c:if test="${loginVO.type eq 'U'}">
+								    	<li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/mypage/${loginVO.id}">마이페이지</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/">하나은행</a>
+			                            </li>
+			
+			                            <li class="nav-item dropdown">
+			                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                                    	모바일 번호표
+			                                </a>
+			                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
+			                                </div>
+			                            </li>
+							    	</c:if>
+							    </c:otherwise>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    	모바일 번호표
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
-                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
-                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
-                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_paper">구비서류</a>
-                                </div>
-                            </li>
+							</c:choose>	
+
+                           	
                         </ul>
                     </div>
                 </nav>

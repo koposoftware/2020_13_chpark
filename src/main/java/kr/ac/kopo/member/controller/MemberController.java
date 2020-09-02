@@ -1,7 +1,5 @@
 package kr.ac.kopo.member.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +10,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.ModelAndView;
 
-import kr.ac.kopo.board.service.BoardService;
 import kr.ac.kopo.member.service.MemberService;
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.member.vo.TellerVO;
 
 @SessionAttributes({"loginVO"})
 @Controller
@@ -27,6 +25,12 @@ public class MemberController {
 	public String loginForm() {
 		
 		return "/login/login";
+	}
+	
+	@GetMapping("/adminLogin")
+	public String adminLoginForm() {
+		
+		return "/login/adminLogin";
 	}
 	
 	@PostMapping("/login")
@@ -45,6 +49,24 @@ public class MemberController {
 		mav.addObject("loginVO", loginVO);
 		return mav;
 	}
+	
+	@PostMapping("/adminLogin")
+	public ModelAndView adminLogin(TellerVO teller) {
+	
+		TellerVO tellerVO = memberService.adminLogin(teller);
+		ModelAndView mav = new ModelAndView();
+		
+		//로그인 실패
+		if(tellerVO == null) {
+			mav.setViewName("redirect:/adminLogin");
+		}
+		tellerVO.setType("A");
+		System.out.println(tellerVO);
+		mav.setViewName("redirect:/");
+		mav.addObject("loginVO", tellerVO);
+		return mav;
+	}
+	
 	
 	@RequestMapping("/logout")
 	//public String logout(HttpSession session) {

@@ -1,11 +1,16 @@
 package kr.ac.kopo.numberTicket.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 
@@ -50,5 +55,27 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 		NumberTicket_NumberTicketVO nt400 = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectStandBy400", location);
 		return nt400;
 	}
+
+	@Override
+	public NumberTicket_NumberTicketVO insertSelectNumberTicket(String locations, String service, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("loginVO");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("locations", locations);
+		map.put("service", service);
+		map.put("id", user.getId());
+		map.put("name", user.getName());
+		sqlSession.insert("numberTicket.dao.NumberTicketDAO.insertNumberTicket", map);
+		NumberTicket_NumberTicketVO nt = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectNumberTicket", map);
+		System.out.println(locations);
+		System.out.println(nt);
+		return nt;
+	}
+
+	@Override
+	public String selectServiceName(String service_id) {
+		String service_name = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectService", service_id);
+		return service_name;
+	}
+	
 	
 }

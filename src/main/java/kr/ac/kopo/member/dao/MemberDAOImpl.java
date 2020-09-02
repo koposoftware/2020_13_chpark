@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.member.vo.TellerVO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO{
@@ -41,6 +42,12 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public void update(MemberVO member) {
 		sqlSession.update("member.dao.MemberDAO.update", member);
+	}
+
+	@Override
+	public TellerVO adminLogin(TellerVO teller) {
+
+		return sqlSession.selectOne("member.dao.MemberDAO.adminLogin",teller);
 	}
 	
 	

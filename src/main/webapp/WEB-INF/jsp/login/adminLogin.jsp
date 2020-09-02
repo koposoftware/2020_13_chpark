@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +9,7 @@
 <meta name="description" content="Bingo One page parallax responsive HTML Template ">
 <meta name="author" content="Themefisher.com">
 <meta charset="UTF-8">
-<title>번호표 발급</title>
+<title>관리자 로그인</title>
 <link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/images/favicon/favicon.ico" />
 <!-- Mobile Specific Meta
   ================================================== -->
@@ -28,17 +29,18 @@
   <link rel="stylesheet" href="/Project-spring-mvc/resources/plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="/Project-spring-mvc/resources/css/style.css">
-<script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript">
-
-$(document).on('click', ".btn-main", function(){
-	let service = $(this).attr('id');
-	<%--alert(location);--%>
-	location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
-
-})
-
-</script>
+  
+  <script type="text/javascript">
+	function checkForm() {
+		
+		var f = document.lForm;
+		
+		if(isNull(f.id, '아이디를 입력하세요'))
+			return false;
+		if(isNull(f.password, '비밀번호를 입력하세요'))
+			return false;
+			}
+	</script>
 </head>
 <body id="body">
 
@@ -64,40 +66,37 @@ $(document).on('click', ".btn-main", function(){
   <!--
   End Preloader
   ==================================== -->
-  
+
+
 <header>
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-
-<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
-<h2>${ locations } 지점 현황 </h2>
-<h2 style="text-align: left">대기 손님 현황</h2>
-<hr>
-<ul>
-<li style="text-align: left;"><span style="color: red;">원하시는 업무</span>를 선택해주세요</li>
-</ul>
-<table style="text-align:center; border:1px solid black;">
-	<tr>
-		<th>입출금</th>
-		<td>${ nt100.standby } 명 <button class="btn-main" id="100">번호표발급</button> </td>
-	</tr>
-	<tr>
-		<th>대출</th>
-		<td>${ nt200.standby } 명 <button class="btn-main" id="200">번호표발급</button></td>
-	</tr>
-	<tr>
-		<th>외환</th>
-		<td>${ nt300.standby } 명 <button class="btn-main" id="300">번호표발급</button></td>
-	</tr>	
-	<tr>
-		<th>기업</th>
-		<td>${ nt400.standby } 명<button class="btn-main" id="400">번호표발급</button></td>
-	</tr>
-	
-</table>
-</div>
-
+<section class="signin-page account">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="block">
+                    <h2 class="text-center">관리자 로그인</h2>
+                    
+         				<form action="${ pageContext.request.contextPath }/adminLogin" method="post" onsubmit="return checkForm()" name="lform">
+                        <div class="form-group">
+                            <input type="text" class="form-control"  placeholder="ID" name="tellerId">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" name="tellerPwd">
+                        </div>
+                        <button type="submit" class="btn btn-main" >로그인</button>
+                        
+                    </form>
+                    <p class="mt-20">New in this site ?<a href="${ pageContext.request.contextPath }/signup"> 회원가입 </a></p>
+                    <!--  <p><a href="forget-password.html"> Forgot your password?</a></p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+   
 <footer>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>

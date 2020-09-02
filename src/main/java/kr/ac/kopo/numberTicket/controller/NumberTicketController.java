@@ -69,11 +69,29 @@ public class NumberTicketController {
 	
 	@RequestMapping("/numberservice/{locations}/{service}")
 	public ModelAndView ticket(@PathVariable("locations") String locations, @PathVariable("service") String service, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		//numberTicketService.insertNumberTicket(locations, service, session);
+		NumberTicket_NumberTicketVO nt = numberTicketService.insertSelectNumberTicket(locations, service, session);
+		NumberTicket_NumberTicketVO nt100 = numberTicketService.selectStandBy100(locations);
+		NumberTicket_NumberTicketVO nt200 = numberTicketService.selectStandBy200(locations);
+		NumberTicket_NumberTicketVO nt300 = numberTicketService.selectStandBy300(locations);
+		NumberTicket_NumberTicketVO nt400 = numberTicketService.selectStandBy400(locations);
 		System.out.println(locations);
 		System.out.println(service);
 		MemberVO login = (MemberVO)session.getAttribute("loginVO"); 
+		System.out.println(".....");
 		System.out.println(login);
-		ModelAndView mav = new ModelAndView();
+		System.out.println(nt);
+		mav.addObject("login", login);
+		mav.addObject("locations", locations);
+		mav.addObject("service", service);
+		mav.setViewName("/numberTicket/numberTicket_my");
+		mav.addObject("nt", nt);
+		mav.addObject("nt100", nt100);
+		mav.addObject("nt200", nt200);
+		mav.addObject("nt300", nt300);
+		mav.addObject("nt400", nt400);
+
 		return mav;
 	}
 	

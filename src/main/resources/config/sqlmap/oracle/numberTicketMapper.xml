@@ -38,5 +38,21 @@
 		from numberticket
 		where branch_name = #{location} and service_id = 400
 	</select>
+
+	<insert id="insertNumberTicket" parameterType="HashMap">
+		insert into numberticket(numberticket_seq, numberticket_number, numberticket_date, numberticket_time, users_id, user_name, branch_name, service_id)		
+		values(seq_numberticket_seq.nextval, seq_numberticket_number.nextval, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), TO_CHAR(SYSDATE, 'HH24:MI:SS'), #{id}, #{name}, #{locations}, #{service})
+	</insert>
+
+	<select id="selectNumberTicket" parameterType="HashMap" resultType="numberTicket_NumberTicketVO">
+		select numberticket_seq, numberticket_number, numberticket_date, numberticket_time, users_id, user_name, branch_name, service_id
+		from numberticket
+		where numberticket_seq=(select max(numberticket_seq) from numberticket where users_id = #{id})
+	</select>
 	
+	<select id="selectService" parameterType="String" resultType="String"> 
+		select service_name
+		from service
+		where service_id = #{service_id}
+	</select>
 </mapper>

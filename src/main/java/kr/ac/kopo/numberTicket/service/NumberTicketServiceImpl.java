@@ -2,6 +2,8 @@ package kr.ac.kopo.numberTicket.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -50,5 +52,20 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 		NumberTicket_NumberTicketVO nt400 = numberTicketDAO.selectStandBy400(location);
 		return nt400;
 	}
+	
+	@Override
+	public NumberTicket_NumberTicketVO insertSelectNumberTicket(String locations, String service, HttpSession session) {
+		//numberTicketDAO.insertNumberTicket(locations, service, session);
+		NumberTicket_NumberTicketVO nt = numberTicketDAO.insertSelectNumberTicket(locations, service, session);
+		String service_name = numberTicketDAO.selectServiceName(nt.getService_id());
+		nt.setService_name(service_name);
+		return nt;
+	}
+	
+//	@Override
+//	public NumberTicket_NumberTicketVO selectNumberticket(String locations, String service, HttpSession session) {
+//		NumberTicket_NumberTicketVO nt = numberTicketDAO.selectNumberTicket(locations, service, session);
+//		return nt;
+//	}
 	
 }
