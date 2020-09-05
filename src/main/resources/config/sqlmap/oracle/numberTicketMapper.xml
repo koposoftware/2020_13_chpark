@@ -5,7 +5,7 @@
 <mapper namespace="numberTicket.dao.NumberTicketDAO">
 	<!-- 지도에 마커 찍기 -->
 	<select id="selectLatLng" resultType="numberTicket_LatLngVO">
-		select branch_id, branch_name, latitude as branch_latitude, longitude as branch_longitude
+		select branch_id, branch_name, branch_address, branch_open, branch_close, latitude as branch_latitude, longitude as branch_longitude
 		from branch
 	</select>
 	

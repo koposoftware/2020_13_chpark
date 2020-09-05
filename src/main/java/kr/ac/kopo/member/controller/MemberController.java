@@ -44,9 +44,10 @@ public class MemberController {
 			mav.setViewName("redirect:/login");
 		}
 		//로그인 성공 
-		
-		mav.setViewName("redirect:/");
-		mav.addObject("loginVO", loginVO);
+		else {
+			mav.setViewName("redirect:/");
+			mav.addObject("loginVO", loginVO);
+		}
 		return mav;
 	}
 	
@@ -59,11 +60,12 @@ public class MemberController {
 		//로그인 실패
 		if(tellerVO == null) {
 			mav.setViewName("redirect:/adminLogin");
+		}else {
+			tellerVO.setType("A");
+			System.out.println(tellerVO);
+			mav.setViewName("redirect:/");
+			mav.addObject("loginVO", tellerVO);
 		}
-		tellerVO.setType("A");
-		System.out.println(tellerVO);
-		mav.setViewName("redirect:/");
-		mav.addObject("loginVO", tellerVO);
 		return mav;
 	}
 	

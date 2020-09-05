@@ -12,12 +12,14 @@
 	
 	<select id="adminLogin" parameterType="tellerVO" resultType="tellerVO">
 		SELECT 
-			TELLER_ID as tellerId,
-			TELLER_PWD as tellerPwd,
-			TELLER_NAME as tellerdName,
-			BRANCH_ID as branchId
-		from teller
-		WHERE TELLER_ID = #{tellerId} AND TELLER_PWD = #{tellerPwd} 
+			A.TELLER_ID as tellerId,
+			A.TELLER_PWD as tellerPwd,
+			A.TELLER_NAME as tellerName,
+			A.BRANCH_ID as branchId,
+			B.BRANCH_NAME as branchName
+		from TELLER A, BRANCH B
+		WHERE A.BRANCH_ID = B.BRANCH_ID 
+		AND TELLER_ID = #{tellerId} AND TELLER_PWD = #{tellerPwd} 
 	</select>
 	
 	<insert id="signup" parameterType="memberVO">

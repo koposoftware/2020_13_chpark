@@ -103,35 +103,35 @@ function goMemberDetail() {
           <h2 class="text-center">개인정보</h2>
           <form class="text-left clearfix mt-30" action="${ pageContext.request.contextPath }/mypageUpdate/${loginVO.id}" method="post" name="mForm" onsubmit="return doModify()">
             <div class="form-group">
-                  <table border="1">
+                <table border="1">
 				<tr>
-					<th>성함</th>
-					<td><input type="text" name="name" size="50" value="${ memberVO.name }"></td>
+					<th class="form-control">성함</th>
+					<td><input type="text" name="name" size="50" value="${ memberVO.name }" class="form-control"></td>
 				</tr>
 				<tr>
-					<th>아이디</th>
+					<th class="form-control">아이디</th>
 					<input type="hidden" name="id" value="${ loginVO.id }">
 					<td> ${ loginVO.id } </td>
 				</tr>
 				<tr>
-					<th>비밀번호</th>
-					<td><input type="text" name="pwd" size="50" value="${ memberVO.pwd }"></td>
+					<th class="form-control">비밀번호</th>
+					<td><input type="text" name="pwd" size="50" value="${ memberVO.pwd }" class="form-control"></td>
 				</tr>
 				<tr>
-					<th>주민등록번호</th>
-					<td><input type="text" name="ssn" size="50" value="${ memberVO.ssn }"></td>
+					<th class="form-control">주민등록번호</th>
+					<td><input type="text" name="ssn" size="50" value="${ memberVO.ssn }" class="form-control"></td>
 				</tr>
 				<tr>
-					<th>성별</th>
-					<td><input type="text" name="sex" size="25" value="${ memberVO.sex }"></td>
+					<th class="form-control">성별</th>
+					<td><input type="text" name="sex" size="25" value="${ memberVO.sex }" class="form-control"></td>
 				</tr>
 				<tr>
-					<th>주소</th>
-					<td><input type="text" name="address" size="30" value="${ memberVO.address }"></td>
+					<th class="form-control">주소</th>
+					<td><input type="text" name="address" size="30" value="${ memberVO.address }" class="form-control"></td>
 				</tr>
 				<tr>
-					<th>연락처</th>
-					<td><input type="text" name="phone" size="30" value="${ memberVO.phone }"></td>
+					<th class="form-control">연락처</th>
+					<td><input type="text" name="phone" size="30" value="${ memberVO.phone }" class="form-control"></td>
 				</tr>
 			</table>     
             </div>

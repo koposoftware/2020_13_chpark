@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>   
-  
+<style>
+	.top-footer {
+  		background-color: #222222;
+  		border-top: 1px solid #404040;
+  		padding: 30px 0 30px;
+	}	
+</style>  
 <footer id="footer" class="bg-one">
   <div class="top-footer">
     <div class="container">

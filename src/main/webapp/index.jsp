@@ -27,6 +27,19 @@
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style.css">
+<style>
+.hero-area {
+  padding: 150px 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("${ pageContext.request.contextPath }/resources/images/hana_main.png");*/
+  background-size: cover;
+  background-attachment: fixed;
+  position: relative;
+}
+</style>  
 </head>
 <body id="body">
 
@@ -133,9 +146,10 @@ Welcome Slider
 		<div class="row">
 			<div class="col-lg-6 align-self-center mb-4 mb-lg-0">
 				<div class="video-player">
-					<img class="img-fluid rounded" src="${ pageContext.request.contextPath }/resources/images/slider/slider-bg-2.jpg" alt="">
+					<img class="img-fluid rounded" src="${ pageContext.request.contextPath }/resources/images/hana_cf.png" alt="">
 					<a class="play-icon">
-						<i class="tf-ion-ios-play" data-video="https://www.youtube.com/embed/g3-VxLQO7do?autoplay=1"></i>
+						<!--  <i class="tf-ion-ios-play" data-video="https://www.youtube.com/embed/Sl03DlC0HNw"></i>-->
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/Sl03DlC0HNw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</a>
 				</div>
 			</div>
@@ -173,8 +187,8 @@ Start About Section
       <div class="col-md-4 p-0">
         <div class="service-item text-center">
             <span class="count">1.</span>
-            <h4>지점과 업무 선택</h4>
-            <p>손님이 원하시는 지점과 이용하시는 업무를 정해주세요</p>
+            <h4>지점선택과 대기인원 파악</h4>
+            <p>손님이 원하시는 지점의 대기 인원을 미리 확인 하세요</p>
         </div>
       </div>
       <div class="col-md-4 p-0">

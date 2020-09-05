@@ -7,6 +7,20 @@ public class TellerVO {
 	private String tellerName;
 	private String branchId;
 	private String type;
+	private String branchName;
+	public TellerVO(String tellerId, String tellerPwd, String tellerName, String branchId, String type,
+			String branchName) {
+		super();
+		this.tellerId = tellerId;
+		this.tellerPwd = tellerPwd;
+		this.tellerName = tellerName;
+		this.branchId = branchId;
+		this.type = type;
+		this.branchName = branchName;
+	}
+	public TellerVO() {
+		super();
+	}
 	public String getTellerId() {
 		return tellerId;
 	}
@@ -21,6 +35,9 @@ public class TellerVO {
 	}
 	public String getType() {
 		return type;
+	}
+	public String getBranchName() {
+		return branchName;
 	}
 	public void setTellerId(String tellerId) {
 		this.tellerId = tellerId;
@@ -37,24 +54,14 @@ public class TellerVO {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public TellerVO(String tellerId, String tellerPwd, String tellerName, String branchId, String type) {
-		super();
-		this.tellerId = tellerId;
-		this.tellerPwd = tellerPwd;
-		this.tellerName = tellerName;
-		this.branchId = branchId;
-		this.type = type;
-	}
-	public TellerVO() {
-		super();
+	public void setBranchName(String branchName) {
+		this.branchName = branchName;
 	}
 	@Override
 	public String toString() {
 		return "TellerVO [tellerId=" + tellerId + ", tellerPwd=" + tellerPwd + ", tellerName=" + tellerName
-				+ ", branchId=" + branchId + ", type=" + type + "]";
+				+ ", branchId=" + branchId + ", type=" + type + ", branchName=" + branchName + "]";
 	}
-	
-	
 
 			
 	

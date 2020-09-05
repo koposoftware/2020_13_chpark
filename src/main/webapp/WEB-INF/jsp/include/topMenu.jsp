@@ -53,6 +53,9 @@
 			                            <li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
 			                            </li>
+			                            <li class="nav-item">
+			                               [${ loginVO.branchName }지점 ${ loginVO.tellerName } 님]
+			                            </li>
 							    	</c:if>
 							    	
 							    	<c:if test="${loginVO.type eq 'U'}">
@@ -78,6 +81,9 @@
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
 			                                </div>
+			                            </li>
+			                            <li class="nav-item">
+			                                [${ loginVO.name }님 환영합니다.]
 			                            </li>
 							    	</c:if>
 							    </c:otherwise>

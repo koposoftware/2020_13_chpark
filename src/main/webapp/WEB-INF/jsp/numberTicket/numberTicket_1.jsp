@@ -27,38 +27,39 @@
 <body>
 
 <header>
-		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
+      <jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
+<div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+   <h2 style="text-align: center;">지점 선택</h2>
+   <hr>
+   <div style="width: 50%;height:80%;float: left;" class="col-md-6">
+   
+      <h2 style="text-align: left">지점 검색</h2>
+      <hr>
+      <ul>
+      <li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
+      <li class="list-group-item" style="float: left">지점명</li>
+      </ul>
+      <form id="form">
+      <div id="input">
+      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 250px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
+      </div>
+      </form>
+      <button id="test" class="btn btn-main mb-2" style="height: 48px;">검색</button>
+      <h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
 
-<div style="width:500px;height:400px; border:1px solid red; float:left;" class="col-md-6">
-<h2 style="text-align: left">지점 검색</h2>
-<hr>
-<ul>
-<li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
-<li class="list-group-item" style="float: left">지점명</li>
-</ul>
-<form id="form">
-<div id="input">
-<input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 250px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
-</div>
-<!-- <input type="submit" value="검색" style="height: 48px" id="search"><br>
- -->
- </form>
-<button id="test" class="btn btn-main mb-2" style="height: 48px;">검색</button>
-<h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
+      <div id="branchList">
 
-<div id="branchList">
-
-</div>
-</div>
-<div id="map" style="width:50%;height:400px; float:left;"></div>
+      </div>
+      </div>
+      
+      <div id="map" style="width:50%;height:80%; float:left;"></div>
 </div>
 
 <footer>
-		<%--include forward .xml은 root = / 가 Mission-WEB/ 임 --%>
-		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
+      <%--include forward .xml은 root = / 가 Mission-WEB/ 임 --%>
+      <%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>   
 </footer>
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키&libraries=services,clusterer,drawing""></script>
@@ -72,8 +73,8 @@
     imageSize = new kakao.maps.Size(30, 30), // 마커이미지의 크기입니다
     imageOption = {offset: new kakao.maps.Point(27, 69)}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.
       
-	// 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
-	var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+   // 마커의 이미지정보를 가지고 있는 마커이미지를 생성합니다
+   var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
     // 마커 클러스터러를 생성합니다 
     var clusterer = new kakao.maps.MarkerClusterer({
@@ -94,10 +95,12 @@
                 image : markerImage
             });
         });
-		for(var i=0 ; i<data.positions.length; i++){
-			console.log(data.positions[i].branch_name)
-			//displayInfo(markers[i], data.positions[i])
-		}
+      for(var i=0 ; i<data.positions.length; i++){
+         //console.log(data.positions[i].branch_name)
+         console.log(data.positions[i])
+         
+        displayInfo(markers[i], data.positions[i])
+      }
         // 클러스터러에 마커들을 추가합니다
         
         clusterer.addMarkers(markers);
@@ -119,30 +122,70 @@
         // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
         map.panTo(moveLatLon);            
     }        
-    
+ 	var infoCheck = null;
+    //infodata.지점코드 해서 정보를 가지고 온다.
+  	 function displayInfo(infomarker, infodata) {
+  		var iwContent = '<div style="text-align: center; padding:5px;">'
+  						+ '<div><b>지점명<b> :'
+  						+ infodata.branch_name 
+  						+ '</div>'
+  						+ '<div><b>주소<b> :'
+  						+ infodata.branch_address 
+  						+ '</div>'
+  						+ '<div><b>오픈시간<b> :'
+  						+ infodata.branch_open 
+  						+ '</div>'
+  						+ '<div><b>마감시간<b> :'
+  						+ infodata.branch_close 
+  						+ '</div>'
+  						+ '</div>'
+  		,
+     	iwPosition = new kakao.maps.LatLng(infodata.branch_latitude,infodata.branch_longitude)
+	  // 인포윈도우를 생성합니다
+	     var infowindow = new kakao.maps.InfoWindow({
+	         position : iwPosition, 
+	         content : iwContent 
+	     });
+  		console.log('displayInfo')
+  		kakao.maps.event.addListener(infomarker, 'click', function(){
+  			if(infoCheck){
+  				infoCheck.setMap(null);// param이 null ==> 지도에서 infoCheck를 제. 
+  			}
+  			infowindow.open(map, infomarker);
+  			infoCheck = infowindow
+  		})
+    }
+
     /*
-    // infodata.지점코드 해서 정보를 가지고 온다.
-	function displayInfo(infomarker, infodata) {
-         $.ajax({
-        	 //매핑을한다. return 값이 NumberTocketVO여야 한다.
-            url : '${pageContext.request.contextPath}/  /  /' + infodata.지점코드,
-            type : 'get',
-            success : function(data) {
-            	// NumberTicketVO 오빠는 이런형식으로 data가 날라옴
-               console.log(data)
+  	function displayOverlay(infomarker, content, data) {
+
+        var customOverlay = new kakao.maps.CustomOverlay({
+           content : content,
+           position : infomarker.getPosition(position.branch_latitude, position.branch_longitude) // 마커의 lat lng 
+        });
+        
+        //이벤트 핸드러를 등록한다.
+        kakao.maps.event.addListener(infomarker, 'click', function() {
+           
+        	//customOverlay.setMap(map); // 오버레이를 지도에 올린다.
+           //customOverlay.setZIndex(3); //커스텀overlay z-index 변경
+           //map.panTo(infomarker.getPosition(position.branch_latitude, position.branch_longitude)); //중심좌표 이동
+        });
+     } 
+  	*/
+    /*
                var content = '<div class="wrap">' + 
-               				 '    <div class="info">' + 
-               				 '        <div class="title">' + 
-               				 				data.aptBasicVO=.kaptName + 
-               				 '            <div class="close" onclick="closeCustomOverlay()" title="닫기"></div>' + 
-               				 '        </div>' + 
-               				 '        <div class="body">' + 
-               				 '            <div class="desc">' + 
-               				 '                <div class="ellipsis"> <b>(주소)</b><br>' + 
-               				 						data.지점주소 + '</div>' + 
-               				 '                <div class="ellipsis"> <b>(도로명)</b><br>' + 
-               				 							data.aptDetailVO.doroJuso + '</div>' + '                <div class="jibun ellipsis">| 동수 | ' + data.aptDetailVO.kaptDongCnt + ' |세대수 | ' + data.aptDetailVO.kaptDaCnt + '</div>' + '            </div>' + '        </div>' + '    </div>' + '</div>';
-               displayOverlay(infomarker, content)
+                            '    <div class="info">' + 
+                            '        <div class="title">' + 
+                                        data.aptBasicVO=.kaptName + 
+                            '            <div class="close" onclick="closeCustomOverlay()" title="닫기"></div>' + 
+                            '        </div>' + 
+                            '        <div class="body">' + 
+                            '            <div class="desc">' + 
+                            '                <div class="ellipsis"> <b>(주소)</b><br>' + 
+                                              data.지점주소 + '</div>' + 
+                            '                <div class="ellipsis"> <b>(도로명)</b><br>' + 
+                                                 data.aptDetailVO.doroJuso + '</div>' + '                <div class="jibun ellipsis">| 동수 | ' + data.aptDetailVO.kaptDongCnt + ' |세대수 | ' + data.aptDetailVO.kaptDaCnt + '</div>' + '            </div>' + '        </div>' + '    </div>' + '</div>';
             }
          })
       }
@@ -172,62 +215,64 @@
     
     */
     
+    
+    
     var branch;
     $(document).on('click', "#test", function(){
-    	$.ajax({
-    		url : '${ pageContext.request.contextPath }/location/' + $('#InputName').val(),	
-    		type : 'get',
-    		success : function (data){
-    			$('#branchList').empty();
-    			branch = JSON.parse(data);
-    			
-    			let content = '';
-    			
-    			content +=     '<table class="table table-hover" style="text-align:center">';
-    			content +=         '<thead>';
-    			content +=             '<tr>'
-    			content +=                 '<th scope="col">지점명</th>';
-    			content +=                 '<th scope="col">주소</th>';
-    			content +=                 '<th scope="col">오픈시간</th>';
-    			content +=                 '<th scope="col">마감시간</th>';
-    			content +=             '</tr>';
-    			content +=         '</thead>';
-    			content +=         '<tbody>';
-    			content +=	    		'<tr class="chooselocation" id=' + branch.data[0].branch_name + '>';
-    			content +=             		'<td>' + branch.data[0].branch_name + '</td>';
-    			content +=             		'<td>' + branch.data[0].branch_address + '</td>';
-    			content +=             		'<td>' + branch.data[0].branch_open + '</td>';
-    			content +=             		'<td>' + branch.data[0].branch_close + '</td>';
-    			content +=	    		'</tr>';
-    			content +=         '</tbody>';
-    			content +=     '</table>';
-    			$('#branchList').append(content);
-    			
-    			// 이동할 위도 경도 위치를 생성합니다 
-    	        var moveLatLon = new kakao.maps.LatLng(branch.data[0].branch_latitude, branch.data[0].branch_longitude);
-    	        
-    	        // 지도 중심을 부드럽게 이동시킵니다
-    	        // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
-    	        map.panTo(moveLatLon);
-    			
-    		},
-    		error : function() {
-    			alert('실패')
-    		}
-    	})
+       $.ajax({
+          url : '${ pageContext.request.contextPath }/location/' + $('#InputName').val(),   
+          type : 'get',
+          success : function (data){
+             $('#branchList').empty();
+             branch = JSON.parse(data);
+             
+             let content = '';
+             
+             content +=     '<table class="table table-hover" style="text-align:center">';
+             content +=         '<thead>';
+             content +=             '<tr>'
+             content +=                 '<th scope="col">지점명</th>';
+             content +=                 '<th scope="col">주소</th>';
+             content +=                 '<th scope="col">오픈시간</th>';
+             content +=                 '<th scope="col">마감시간</th>';
+             content +=             '</tr>';
+             content +=         '</thead>';
+             content +=         '<tbody>';
+             content +=             '<tr class="chooselocation" id=' + branch.data[0].branch_name + '>';
+             content +=                   '<td>' + branch.data[0].branch_name + '</td>';
+             content +=                   '<td>' + branch.data[0].branch_address + '</td>';
+             content +=                   '<td>' + branch.data[0].branch_open + '</td>';
+             content +=                   '<td>' + branch.data[0].branch_close + '</td>';
+             content +=             '</tr>';
+             content +=         '</tbody>';
+             content +=     '</table>';
+             $('#branchList').append(content);
+             
+             // 이동할 위도 경도 위치를 생성합니다 
+               var moveLatLon = new kakao.maps.LatLng(branch.data[0].branch_latitude, branch.data[0].branch_longitude);
+               
+               // 지도 중심을 부드럽게 이동시킵니다
+               // 만약 이동할 거리가 지도 화면보다 크면 부드러운 효과 없이 이동합니다
+               map.panTo(moveLatLon);
+             
+          },
+          error : function() {
+             alert('실패')
+          }
+       })
     })
     
     $(document).on('click', ".chooselocation", function(){
-    	let locations = $(this).attr('id');
-    	<%--alert(location);--%>
-    	location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
+       let locations = $(this).attr('id');
+       <%--alert(location);--%>
+       location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
 
     })
 
   
 </script>
 
- 	<!-- Essential Scripts
+    <!-- Essential Scripts
     =====================================-->
     
     <!-- Main jQuery -->

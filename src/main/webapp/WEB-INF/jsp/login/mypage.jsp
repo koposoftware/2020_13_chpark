@@ -43,6 +43,27 @@ function doAction(type) {
 	}
 }
 </script>  
+<style type="text/css">
+	table td,th{
+		border:1px solid rgba(0,0,0,.1);
+		padding: 5px;
+	}
+
+	.type{
+		cursor: pointer;
+	}
+	.tdBtn{
+		background: #31BB9E;
+		color: #fff;
+		cursor: pointer;
+	}
+	
+	.ax5-ui-dialog .ax-dialog-header,.btn-default,.btn-default:hover,.btn-default:focus{
+		background: #31BB9E;
+		color: #fff;
+		border: none;
+	}
+</style>
 </head>
 <body id="body">
 
@@ -77,12 +98,13 @@ function doAction(type) {
   <div class="container">
     <div class="row">
       <div class="col-md-6 mx-auto">
-        <div class="block text-center">
+        <div class="block">
           <h2 class="text-center">개인정보</h2>
-            <div class="form-group">
-                  <table border="1">
+            <form class="text-center clearfix mt-30" style="text-align: center" >
+             <div class="form-group" style="text-align: center">
+               <table border="1" style="width: 90%; text-align: center; margin-left: auto; margin-right: auto;">
 				<tr>
-					<th>성함</th>
+					<th style="width: 35%">성함</th>
 					<td>${ member.name }</td>
 				</tr>
 				<tr>
@@ -105,14 +127,16 @@ function doAction(type) {
 					<th>연락처</th>
 					<td>${ member.phone }</td>
 				</tr>
-			</table>     
-            </div>
+			</table> 
+			<br>    
         	<input type="button" value="회원 탈퇴" onclick="doAction('D')" class="btn btn-main text-center">
 			<input type="button" value="정보 수정" onclick="doAction('M')" class="btn btn-main text-center">
+             </div>
+             </form>
+              </div>
+            </div>
          </div>
       </div>
-    </div>
-  </div>
 </section>
 
 
