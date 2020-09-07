@@ -30,6 +30,10 @@ public interface NumberTicketService {
 	public List<UserTicketVO> userTicket(String id);
 
 	public List<AdminTicketVO> adminTicket(String tellerId);
+	public List<AdminTicketVO> adminTicket100(String tellerId);
+	public List<AdminTicketVO> adminTicket200(String tellerId);
+	public List<AdminTicketVO> adminTicket300(String tellerId);
+	public List<AdminTicketVO> adminTicket400(String tellerId);
 
 	public int adminTicketUpdate(NumberTicket_NumberTicketVO vo);
 
@@ -38,4 +42,6 @@ public interface NumberTicketService {
 	public void insertAnalysis(AnalysisVO analysisvo);
 
 	public void deleteTicket(NumberTicket_NumberTicketVO vo);
+	
+	public List<AnalysisVO> selectAnalysis(String tellerId);
 }

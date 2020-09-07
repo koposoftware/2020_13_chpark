@@ -23,4 +23,17 @@ public interface BoardDAO {
 	 */
 	public BoardVO selectByNo(int no);
 	
+	/**
+	 * 해당 게시물의 댓글 카운트 증가
+	 * @param no 증가시킬 게시물 번호
+	 * 
+	 */
+	public void incrementReplyCnt(int no);
+	
+	/**
+	 * 해당 게시물의 댓글 카운트 감소
+	 * @param no 감소시킬 게시물 번호
+	 * 
+	 */
+	public void reduceReplyCnt(int no);
 }

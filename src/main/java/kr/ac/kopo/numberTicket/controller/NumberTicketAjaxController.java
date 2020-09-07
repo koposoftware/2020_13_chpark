@@ -85,6 +85,35 @@ public class NumberTicketAjaxController {
 		return numberTicketService.adminTicket(loginVO.getTellerId());
 	}
 	
+	@GetMapping("/numberservice/adminTicket100")
+	public List<AdminTicketVO> adminTicket100(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.adminTicket100(loginVO.getTellerId());
+	}
+	
+	@GetMapping("/numberservice/adminTicket200")
+	public List<AdminTicketVO> adminTicket200(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.adminTicket200(loginVO.getTellerId());
+	}
+	
+	@GetMapping("/numberservice/adminTicket300")
+	public List<AdminTicketVO> adminTicket300(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.adminTicket300(loginVO.getTellerId());
+	}
+	
+	@GetMapping("/numberservice/adminTicket400")
+	public List<AdminTicketVO> adminTicket400(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.adminTicket400(loginVO.getTellerId());
+	}
+	
+	
 	@GetMapping("/numberservice/ticketupdate/{numberticketSeq}")
 	public int adminTicketUpdate(@PathVariable("numberticketSeq") int numberticketSeq,HttpSession session) {
 		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
@@ -123,6 +152,11 @@ public class NumberTicketAjaxController {
 		return 1;
 	}
 	
-	
+	@GetMapping("/numberservice/selectAnalysis")
+	public List<AnalysisVO> selectAnalysis(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		
+		return numberTicketService.selectAnalysis(loginVO.getTellerId());
+	}
 	
 }

@@ -95,6 +95,23 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 	public List<AdminTicketVO> adminTicket(String tellerId) {
 		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket",tellerId);
 	}
+	
+	@Override
+	public List<AdminTicketVO> adminTicket100(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket100",tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket200(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket200",tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket300(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket300",tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket400(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.adminTicket400",tellerId);
+	}
 
 	@Override
 	public int adminTicketUpdate(NumberTicket_NumberTicketVO vo) {
@@ -114,6 +131,11 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 	@Override
 	public void deleteTicket(NumberTicket_NumberTicketVO vo) {
 		sqlSession.delete("numberTicket.dao.NumberTicketDAO.deleteTicket",vo);
+	}
+
+	@Override
+	public List<AnalysisVO> selectAnalysis(String tellerId) {
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectAnalysis");
 	}
 	
 	

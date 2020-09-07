@@ -80,6 +80,23 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	public List<AdminTicketVO> adminTicket(String tellerId) {
 		return numberTicketDAO.adminTicket(tellerId);
 	}
+	
+	@Override
+	public List<AdminTicketVO> adminTicket100(String tellerId) {
+		return numberTicketDAO.adminTicket100(tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket200(String tellerId) {
+		return numberTicketDAO.adminTicket200(tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket300(String tellerId) {
+		return numberTicketDAO.adminTicket300(tellerId);
+	}
+	@Override
+	public List<AdminTicketVO> adminTicket400(String tellerId) {
+		return numberTicketDAO.adminTicket400(tellerId);
+	}
 
 	@Override
 	public int adminTicketUpdate(NumberTicket_NumberTicketVO vo) {
@@ -100,6 +117,13 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	public void deleteTicket(NumberTicket_NumberTicketVO vo) {
 		numberTicketDAO.deleteTicket(vo);
 	}
+
+	@Override
+	public List<AnalysisVO> selectAnalysis(String tellerId) {
+		return numberTicketDAO.selectAnalysis(tellerId);
+	}
+	
+	
 	
 //	@Override
 //	public NumberTicket_NumberTicketVO selectNumberticket(String locations, String service, HttpSession session) {

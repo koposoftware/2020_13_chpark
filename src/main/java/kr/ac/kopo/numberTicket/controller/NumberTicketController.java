@@ -86,4 +86,10 @@ public class NumberTicketController {
 		return mav;
 	}	
 	
+	@RequestMapping("/numberTicket/analysis")
+	public String numberTicket_analysis() {
+		
+		return "numberTicket/numberTicket_manager";
+	}
+	
 }

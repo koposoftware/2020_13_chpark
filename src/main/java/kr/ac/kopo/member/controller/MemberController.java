@@ -1,5 +1,7 @@
 package kr.ac.kopo.member.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +36,7 @@ public class MemberController {
 	}
 	
 	@PostMapping("/login")
-	public ModelAndView login(MemberVO member) {
+	public ModelAndView login(MemberVO member, HttpSession session) {
 	
 		MemberVO loginVO = memberService.login(member);
 		ModelAndView mav = new ModelAndView();
@@ -44,8 +46,18 @@ public class MemberController {
 			mav.setViewName("redirect:/login");
 		}
 		//로그인 성공 
+		//로그인 성공 스프링 방법 모델앤뷰
+		//dest라는 uri 값있으면 
 		else {
-			mav.setViewName("redirect:/");
+			String dest =(String)session.getAttribute("dest");
+			if(dest == null) {
+				mav.setViewName("redirect:/");
+			} else {
+				mav.setViewName("redirect:" + dest);
+				session.removeAttribute("dest");
+			}
+			// loginVO 는 리퀘스트가 아니라 세션에 저장되어야지 리다이렉트 사용가능 -> @sessionAttribute 
+			// 모델앤뷰에 등록되는 객체의 이름이 loginVO인 경우에는 리퀘스트가 아닌 세션에 등록시켜라는 어노테이션 -> 이렇게 하면 invalidate로 삭제가 안됨 -> SessionStatus status
 			mav.addObject("loginVO", loginVO);
 		}
 		return mav;
@@ -60,7 +72,9 @@ public class MemberController {
 		//로그인 실패
 		if(tellerVO == null) {
 			mav.setViewName("redirect:/adminLogin");
-		}else {
+		}
+		//로그인 성공 
+		else {
 			tellerVO.setType("A");
 			System.out.println(tellerVO);
 			mav.setViewName("redirect:/");
