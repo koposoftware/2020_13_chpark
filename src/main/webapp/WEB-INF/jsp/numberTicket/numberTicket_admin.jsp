@@ -120,7 +120,6 @@
             }
         });
 	    
-	    
 	    function select(){
 	    	$.ajax({
 	    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket',	
@@ -135,15 +134,371 @@
 		    			item['status'] = '종료';
 		    		  }
 	   				})
-	   				
 	    			firstGrid.setData(json);
 	    		}
 		    })
 	    }
-	    
 	    select();
 	})
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////1
+	
+		$(function(){
+		var dialog100 = new ax5.ui.dialog();
+		var mask100 = new ax5.ui.mask();
+		dialog100.setConfig({
+		     title: "번호표 확인",
+		     lang : {
+		    	 ok : '확인'
+		     },
+		     onStateChanged: function () {
+		         if (this.state === "open") {
+		             mask100.open();
+		         }
+		         else if (this.state === "close") {
+		             mask100.close();
+		         }
+		     }
+		});
+		
+		var firstGrid100 = new ax5.ui.grid();
+		
+	    firstGrid100.setConfig({
+            target: $('[data-ax5grid="first-grid100"]'),
+            columns: [
+                {key: "serviceName", label: "업무" , width :'16%'},
+                {key: "numberticketNumber", label: "번호" , width :'16%'},
+                {key: "userName", label: "사용자" , width :'16%'},
+                {key: "numberticketDate", label: "일자" , width :'16%'},
+                {key: "numberticketTime", label: "시간" , width :'16%'},
+                {key: "status", label: "상태" , width :'16%' ,styleClass: function () {
+                    return (this.item.status === "상담") ? "gridBtn" : "gridRedBtn";
+                }},
+                
+            ],
+            body: {
+            	onClick: function(){
+            		var json = this.list[this.dindex];
+            		
+            		if(this.value =='상담'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketupdate/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select100();
+            	    		}	
+           	    		})
+            		}else if(this.value =='종료'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketdelete/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select100();
+            	    		}	
+           	    		})
+            		}
+            		
+                },
+            }
+        });
+	    
+	    function select100(){
+	    	$.ajax({
+	    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket100',	
+	    		type : 'get',
+	    		success : function (data){
+	    			var json100 = JSON.parse(data);
+	    			
+	    			json100.forEach(function(item){
+	   				  if(item['tellerId'] == null){
+		   				item['status'] = '상담';
+		    		  }else{
+		    			item['status'] = '종료';
+		    		  }
+	   				})
+	   				
+	    			firstGrid100.setData(json100);
+	    		}
+		    })
+	    }
+	    select100();
+	})
+	
+	
+		
+	
+	
+	/////////////////////////////////////////////////////////////////////2
+	
+		$(function(){
+		var dialog200 = new ax5.ui.dialog();
+		var mask200 = new ax5.ui.mask();
+		dialog200.setConfig({
+		     title: "번호표 확인",
+		     lang : {
+		    	 ok : '확인'
+		     },
+		     onStateChanged: function () {
+		         if (this.state === "open") {
+		             mask200.open();
+		         }
+		         else if (this.state === "close") {
+		             mask200.close();
+		         }
+		     }
+		});
+		
+		var firstGrid200 = new ax5.ui.grid();
+		
+	    firstGrid200.setConfig({
+            target: $('[data-ax5grid="first-grid200"]'),
+            columns: [
+                {key: "serviceName", label: "업무" , width :'16%'},
+                {key: "numberticketNumber", label: "번호" , width :'16%'},
+                {key: "userName", label: "사용자" , width :'16%'},
+                {key: "numberticketDate", label: "일자" , width :'16%'},
+                {key: "numberticketTime", label: "시간" , width :'16%'},
+                {key: "status", label: "상태" , width :'16%' ,styleClass: function () {
+                    return (this.item.status === "상담") ? "gridBtn" : "gridRedBtn";
+                }},
+                
+            ],
+            body: {
+            	onClick: function(){
+            		var json = this.list[this.dindex];
+            		
+            		if(this.value =='상담'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketupdate/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select200();
+            	    		}	
+           	    		})
+            		}else if(this.value =='종료'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketdelete/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select200();
+            	    		}	
+           	    		})
+            		}
+            		
+                },
+            }
+        });
+	    
+	    function select200(){
+	    	$.ajax({
+	    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket200',	
+	    		type : 'get',
+	    		success : function (data){
+	    			var json200 = JSON.parse(data);
+	    			
+	    			json200.forEach(function(item){
+	   				  if(item['tellerId'] == null){
+		   				item['status'] = '상담';
+		    		  }else{
+		    			item['status'] = '종료';
+		    		  }
+	   				})
+	   				
+	    			firstGrid200.setData(json200);
+	    		}
+		    })
+	    }
+	    select200();
+	})
+	
+	
+	
+		
+	
+		
+	
+	
+	/////////////////////////////////////////////////////////////////////3
+	
+		$(function(){
+		var dialog300 = new ax5.ui.dialog();
+		var mask300 = new ax5.ui.mask();
+		dialog300.setConfig({
+		     title: "번호표 확인",
+		     lang : {
+		    	 ok : '확인'
+		     },
+		     onStateChanged: function () {
+		         if (this.state === "open") {
+		             mask300.open();
+		         }
+		         else if (this.state === "close") {
+		             mask300.close();
+		         }
+		     }
+		});
+		
+		var firstGrid300 = new ax5.ui.grid();
+		
+	    firstGrid300.setConfig({
+            target: $('[data-ax5grid="first-grid300"]'),
+            columns: [
+                {key: "serviceName", label: "업무" , width :'16%'},
+                {key: "numberticketNumber", label: "번호" , width :'16%'},
+                {key: "userName", label: "사용자" , width :'16%'},
+                {key: "numberticketDate", label: "일자" , width :'16%'},
+                {key: "numberticketTime", label: "시간" , width :'16%'},
+                {key: "status", label: "상태" , width :'16%' ,styleClass: function () {
+                    return (this.item.status === "상담") ? "gridBtn" : "gridRedBtn";
+                }},
+                
+            ],
+            body: {
+            	onClick: function(){
+            		var json = this.list[this.dindex];
+            		
+            		if(this.value =='상담'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketupdate/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select300();
+            	    		}	
+           	    		})
+            		}else if(this.value =='종료'){
+            			$.ajax({
+            	    		url : '${ pageContext.request.contextPath }/numberservice/ticketdelete/' + json['numberticketSeq'],	
+            	    		type : 'get',
+            	    		success : function (data){
+            	    			select300();
+            	    		}	
+           	    		})
+            		}
+            		
+                },
+            }
+        });
+	    
+	    function select300(){
+	    	$.ajax({
+	    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket300',	
+	    		type : 'get',
+	    		success : function (data){
+	    			var json300 = JSON.parse(data);
+	    			
+	    			json300.forEach(function(item){
+	   				  if(item['tellerId'] == null){
+		   				item['status'] = '상담';
+		    		  }else{
+		    			item['status'] = '종료';
+		    		  }
+	   				})
+	   				
+	    			firstGrid300.setData(json300);
+	    		}
+		    })
+	    }
+	    select300();
+	})
+	
+	
+	
+	
+	
+	
+	
+	/////////////////////////////////////////////////////////////////////4
+	
+	$(function(){
+	var dialog400 = new ax5.ui.dialog();
+	var mask400 = new ax5.ui.mask();
+	dialog400.setConfig({
+	     title: "번호표 확인",
+	     lang : {
+	    	 ok : '확인'
+	     },
+	     onStateChanged: function () {
+	         if (this.state === "open") {
+	             mask400.open();
+	         }
+	         else if (this.state === "close") {
+	             mask400.close();
+	         }
+	     }
+	});
+	
+	var firstGrid400 = new ax5.ui.grid();
+	
+    firstGrid400.setConfig({
+        target: $('[data-ax5grid="first-grid400"]'),
+        columns: [
+            {key: "serviceName", label: "업무" , width :'16%'},
+            {key: "numberticketNumber", label: "번호" , width :'16%'},
+            {key: "userName", label: "사용자" , width :'16%'},
+            {key: "numberticketDate", label: "일자" , width :'16%'},
+            {key: "numberticketTime", label: "시간" , width :'16%'},
+            {key: "status", label: "상태" , width :'16%' ,styleClass: function () {
+                return (this.item.status === "상담") ? "gridBtn" : "gridRedBtn";
+            }},
+            
+        ],
+        body: {
+        	onClick: function(){
+        		var json = this.list[this.dindex];
+        		
+        		if(this.value =='상담'){
+        			$.ajax({
+        	    		url : '${ pageContext.request.contextPath }/numberservice/ticketupdate/' + json['numberticketSeq'],	
+        	    		type : 'get',
+        	    		success : function (data){
+        	    			select400();
+        	    		}	
+       	    		})
+        		}else if(this.value =='종료'){
+        			$.ajax({
+        	    		url : '${ pageContext.request.contextPath }/numberservice/ticketdelete/' + json['numberticketSeq'],	
+        	    		type : 'get',
+        	    		success : function (data){
+        	    			select400();
+        	    		}	
+       	    		})
+        		}
+        		
+            },
+        }
+    });
+    
+    function select400(){
+    	$.ajax({
+    		url : '${ pageContext.request.contextPath }/numberservice/adminTicket400',	
+    		type : 'get',
+    		success : function (data){
+    			var json400 = JSON.parse(data);
+    			
+    			json400.forEach(function(item){
+   				  if(item['tellerId'] == null){
+	   				item['status'] = '상담';
+	    		  }else{
+	    			item['status'] = '종료';
+	    		  }
+   				})
+   				
+    			firstGrid400.setData(json400);
+    		}
+	    })
+    }
+    select400();
+})
 </script>
+
+<style type="text/css">
+	.container {
+		width : 100%;
+		max-width: 1400px;
+	}
+</style>
 </head>
 <body id="body">
 
@@ -174,9 +529,32 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
-	<div data-ax5grid="first-grid" style="height: 100%;"></div>
-</div>
+<section class="service-2 section bg-gray">
+  <div class="container">
+    <div style="display: inline-block; text-align: center;" id="box">
+	
+	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left;">
+		<div data-ax5grid="first-grid100" style="height: 100%;" ></div>
+	</div>
+	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-left: 5px;">
+		<div data-ax5grid="first-grid200" style="height: 100%;"></div>
+	</div>
+	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-top: 5px;">
+		<div data-ax5grid="first-grid300" style="height: 100%;"></div>
+	</div>
+	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-left: 5px; margin-top: 5px;">
+		<div data-ax5grid="first-grid400" style="height: 100%;"></div>
+	</div>
+	
+	</div>
+
+	<div style="width:100%;height:400px; border:1px solid green; text-align: center; margin: 0 auto;">
+		<div data-ax5grid="first-grid" style="height: 100%;"></div>
+	</div>
+	
+  </div>    <!-- End container -->
+</section>   <!-- End section -->
+
 
 <footer>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	

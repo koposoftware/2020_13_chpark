@@ -54,6 +54,9 @@
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
 			                            </li>
 			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/numberTicket/analysis">분석</a>
+			                            </li>
+			                            <li class="nav-item">
 			                               [${ loginVO.branchName }지점 ${ loginVO.tellerName } 님]
 			                            </li>
 							    	</c:if>

@@ -39,7 +39,31 @@ function doAction(boardNo){
 	
 
 </head>
-<body>
+<body id="body">
+
+	<!--
+  Start Preloader
+  ==================================== -->
+  <div id="preloader">
+    <div class="preloader">
+      <div class="sk-circle1 sk-child"></div>
+      <div class="sk-circle2 sk-child"></div>
+      <div class="sk-circle3 sk-child"></div>
+      <div class="sk-circle4 sk-child"></div>
+      <div class="sk-circle5 sk-child"></div>
+      <div class="sk-circle6 sk-child"></div>
+      <div class="sk-circle7 sk-child"></div>
+      <div class="sk-circle8 sk-child"></div>
+      <div class="sk-circle9 sk-child"></div>
+      <div class="sk-circle10 sk-child"></div>
+      <div class="sk-circle11 sk-child"></div>
+      <div class="sk-circle12 sk-child"></div>
+    </div>
+  </div> 
+  <!--
+  End Preloader
+  ==================================== -->
+  
 	<header>
 		<%-- contextPath 밑에 webapp가 루트 --%>
 		<%-- 지시자는 복붙 액션은 메소드 호출 화면 자체는 같음  --%>
@@ -47,9 +71,10 @@ function doAction(boardNo){
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 	</header>
 
-   <div align="center">
+	<section class="service-2 section bg-gray">
+   	 <div align="center" class="container">
          <hr width="80%">
-         <h2>게시판 목록</h2>
+         <h2>손님의 소리</h2>
          <hr width="80%">
          <table border="1" style="width: 80%;">
             <tr>
@@ -76,6 +101,8 @@ function doAction(boardNo){
             <button onClick="goWriteForm()">새글 등록</button>
          </c:if>
       </div>
+	</section>
+
      <footer>
 		<%-- contextPath 밑에 webapp가 루트 --%>
 		<%@include file="/WEB-INF/jsp/include/footerBottom.jsp" %>

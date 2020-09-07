@@ -25,4 +25,18 @@
 		insert into t_board(no, title, writer, content)
       	values(seq_t_board_no.nextval, #{title}, #{writer}, #{content})
 	</insert>
+	
+	<!-- 댓글 카운트 증가 -->
+	<update id="incrementReplyCnt" parameterType="int">
+		update t_board 
+			set reply_cnt = reply_cnt + 1
+		where no = #{no}	
+	</update>
+	
+	<!-- 댓글 카운트 감소 -->
+	<update id="reduceReplyCnt" parameterType="int">
+		update t_board 
+			set reply_cnt = reply_cnt - 1
+		where no = #{no}	
+	</update>
 </mapper>

@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context   
     http://www.springframework.org/schema/context/spring-context.xsd
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-	<context:component-scan base-package="kr.ac.kopo" />
-	
+	<context:component-scan
+		base-package="kr.ac.kopo" />
+
 	<!-- 어노테이션 쓰겟다는 것 -->
-    <mvc:annotation-driven >
+	<mvc:annotation-driven>
 		<mvc:message-converters>
-			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
 						<value>text/html; charset=UTF-8</value>
@@ -23,54 +25,74 @@
 					</list>
 				</property>
 			</bean>
-		
-			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
 				<property name="supportedMediaTypes">
 					<list>
 						<value>text/html; charset=UTF-8</value>
 					</list>
 				</property>
-			</bean>		
-		</mvc:message-converters>    
-    </mvc:annotation-driven>
-    
-    <!--  
-    <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 
-    	   id="multipartResolver">
-    	   <property name="maxUploadSize" value="10485760" />
-    </bean>
-    -->
-    
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-    	<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-    	<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
-    	<property name="username" value="project" />
-    	<property name="password" value="1111" />
-    </bean>
-    
-	<bean id ="sqlSessionFactory" class ="org.mybatis.spring.SqlSessionFactoryBean">
-       <!-- 세터주입  -->
-       <property name ="dataSource" ref = "dataSource"></property>
-       <property name ="configLocation" value = "classpath:config/mybatis/sqlMapConfig.xml"></property>
-       <property name="mapperLocations" value="classpath:config/sqlmap/oracle/*.xml"></property>
-    </bean> 
-    
-    <bean id = "sqlSessionTemplete" class = "org.mybatis.spring.SqlSessionTemplate">
-       <constructor-arg ref ="sqlSessionFactory"></constructor-arg>
-    
-    </bean>
-	    
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver" 
+		id="multipartResolver"> <property name="maxUploadSize" value="10485760" /> 
+		</bean> -->
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName"
+			value="oracle.jdbc.driver.OracleDriver" />
+		<property name="url"
+			value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="username" value="project" />
+		<property name="password" value="1111" />
+	</bean>
+
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 세터주입 -->
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation"
+			value="classpath:config/mybatis/sqlMapConfig.xml"></property>
+		<property name="mapperLocations"
+			value="classpath:config/sqlmap/oracle/*.xml"></property>
+	</bean>
+
+	<bean id="sqlSessionTemplete"
+		class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+
+	</bean>
+
 	<mvc:default-servlet-handler />
-	
-	<!--  
-	<mvc:view-controller path="/file/fileUploadForm.do" view-name="file/fileUploadForm"/>
-	-->
-	
-	<!-- 요청은 서블릿이 응답은 화면에 나오는 애들은 jsp가 고정  -->
+
+	<!-- <mvc:view-controller path="/file/fileUploadForm.do" view-name="file/fileUploadForm"/> -->
+
+	<!-- 요청은 서블릿이 응답은 화면에 나오는 애들은 jsp가 고정 -->
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/jsp/" suffix=".jsp" />
 	</mvc:view-resolvers>
 
-	
+	<bean class="kr.ac.kopo.interceptor.LoginInterceptor"
+		id="LoginInterceptor" />
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- /**/ 어떤 뎁스든지 간에 로그인으로 보냄 -> 예외처리 필요 -->
+			<mvc:mapping path="/**/" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/adminLogin" />
+			<mvc:exclude-mapping path="/numberTicket_admin" />
+			<mvc:exclude-mapping path="/numberservice/**" />
+			<mvc:exclude-mapping path="/numberTicket/**" />
+			<mvc:exclude-mapping path="/logout" />
+			<mvc:exclude-mapping path="/board" />
+			<mvc:exclude-mapping path="/resources/**" />
+			<ref bean="LoginInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 
 </beans>

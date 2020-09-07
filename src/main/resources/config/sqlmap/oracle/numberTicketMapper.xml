@@ -96,6 +96,78 @@
 		WHERE A.SERVICE_ID = B.SERVICE_ID
         AND A.USERS_ID = E.USERS_ID
 		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
+		ORDER BY B.SERVICE_NAME desc,A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+	<select id="adminTicket100" parameterType="String" resultType="adminTicketVO">
+		SELECT
+		    E.USERS_NAME as userName,
+		    A.SERVICE_ID AS serviceId,
+		    A.TELLER_ID as tellerId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_NUMBER AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_SEQ as numberticketSeq,
+		    A.NUMBERTICKET_TIME as numberticketTime
+		FROM NUMBERTICKET A,SERVICE B,USERS E
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+		AND A.SERVICE_ID = '100'
+        AND A.USERS_ID = E.USERS_ID
+		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
+		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+		<select id="adminTicket200" parameterType="String" resultType="adminTicketVO">
+		SELECT
+		    E.USERS_NAME as userName,
+		    A.SERVICE_ID AS serviceId,
+		    A.TELLER_ID as tellerId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_NUMBER AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_SEQ as numberticketSeq,
+		    A.NUMBERTICKET_TIME as numberticketTime
+		FROM NUMBERTICKET A,SERVICE B,USERS E
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+		AND A.SERVICE_ID = '200'
+        AND A.USERS_ID = E.USERS_ID
+		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
+		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+		<select id="adminTicket300" parameterType="String" resultType="adminTicketVO">
+		SELECT
+		    E.USERS_NAME as userName,
+		    A.SERVICE_ID AS serviceId,
+		    A.TELLER_ID as tellerId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_NUMBER AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_SEQ as numberticketSeq,
+		    A.NUMBERTICKET_TIME as numberticketTime
+		FROM NUMBERTICKET A,SERVICE B,USERS E
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+		AND A.SERVICE_ID = '300'
+        AND A.USERS_ID = E.USERS_ID
+		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
+		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
+	</select>
+	
+		<select id="adminTicket400" parameterType="String" resultType="adminTicketVO">
+		SELECT
+		    E.USERS_NAME as userName,
+		    A.SERVICE_ID AS serviceId,
+		    A.TELLER_ID as tellerId,
+		    B.SERVICE_NAME as serviceName,
+		    A.NUMBERTICKET_NUMBER AS numberticketNumber,
+		    A.NUMBERTICKET_DATE as numberticketDate,
+		    A.NUMBERTICKET_SEQ as numberticketSeq,
+		    A.NUMBERTICKET_TIME as numberticketTime
+		FROM NUMBERTICKET A,SERVICE B,USERS E
+		WHERE A.SERVICE_ID = B.SERVICE_ID
+		AND A.SERVICE_ID = '400'
+        AND A.USERS_ID = E.USERS_ID
+		AND A.BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID =#{tellerId})
 		ORDER BY A.NUMBERTICKET_DATE desc,A.NUMBERTICKET_TIME desc
 	</select>
 	
@@ -129,4 +201,16 @@
 	<delete id="deleteTicket" parameterType="numberTicket_NumberTicketVO">
 		DELETE FROM NUMBERTICKET WHERE NUMBERTICKET_SEQ = #{numberticket_seq}
 	</delete>
+	
+	<select id="selectAnalysis" resultType="analysisVO">
+		select 
+    		BRANCH_NAME as branchName,
+    		SERVICE_ID as serviceId,
+    		ANALYSIS_NUMBER as analysisNumber,
+    		USER_NAME as usersName,
+    		TELLER_ID as tellerId,
+    		ANALYSIS_DATE as analysisDate,
+    		ANALYSIS_TIME as analysisTime
+		FROM ANALYSIS
+	</select>
 </mapper>

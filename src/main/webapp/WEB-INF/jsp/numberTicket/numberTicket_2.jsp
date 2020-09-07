@@ -188,8 +188,8 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-
-<div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+<section class="service-2 section bg-gray">
+ <div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
 	<h2>${ locations } 지점 현황 </h2>
 	<hr>
 	<div style="width: 50%;height:100%;float: left;">
@@ -239,7 +239,8 @@
 		<hr>
 		<div data-ax5grid="first-grid" style="height: calc(100% - 120px);padding-left: 10px;"></div>
 	</div>
-</div>
+ </div>
+ </section>   <!-- End section -->
 
 <footer>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	

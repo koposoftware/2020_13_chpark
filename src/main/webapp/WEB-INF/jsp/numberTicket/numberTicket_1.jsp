@@ -30,7 +30,8 @@
       <jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-<div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+<section class="service-2 section bg-gray">
+ <div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
    <h2 style="text-align: center;">지점 선택</h2>
    <hr>
    <div style="width: 50%;height:80%;float: left;" class="col-md-6">
@@ -55,14 +56,15 @@
       </div>
       
       <div id="map" style="width:50%;height:80%; float:left;"></div>
-</div>
+ </div>
+</section>   <!-- End section -->
 
 <footer>
       <%--include forward .xml은 root = / 가 Mission-WEB/ 임 --%>
       <%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>   
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=키&libraries=services,clusterer,drawing""></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services,clusterer,drawing""></script>
 <script>
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 
@@ -214,8 +216,6 @@
       }
     
     */
-    
-    
     
     var branch;
     $(document).on('click', "#test", function(){
