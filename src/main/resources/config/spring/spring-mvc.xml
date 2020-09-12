@@ -82,9 +82,12 @@
 		<mvc:interceptor>
 			<!-- /**/ 어떤 뎁스든지 간에 로그인으로 보냄 -> 예외처리 필요 -->
 			<mvc:mapping path="/**/" />
+			<mvc:exclude-mapping path="/indexBasketList" />
 			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/signup/**" />
 			<mvc:exclude-mapping path="/adminLogin" />
 			<mvc:exclude-mapping path="/numberTicket_admin" />
+			<mvc:exclude-mapping path="/location/**" />
 			<mvc:exclude-mapping path="/numberservice/**" />
 			<mvc:exclude-mapping path="/numberTicket/**" />
 			<mvc:exclude-mapping path="/logout" />

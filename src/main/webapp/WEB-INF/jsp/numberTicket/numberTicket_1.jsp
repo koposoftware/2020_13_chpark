@@ -44,10 +44,11 @@
       </ul>
       <form id="form">
       <div id="input">
-      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 250px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
+      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 300px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
       </div>
       </form>
       <button id="test" class="btn btn-main mb-2" style="height: 48px;">검색</button>
+      <!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
       <h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
 
       <div id="branchList">
@@ -64,7 +65,7 @@
       <%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>   
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services,clusterer,drawing""></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff2a5b564a26a1c55986504a754e4916&libraries=services,clusterer,drawing""></script>
 <script>
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 

@@ -98,7 +98,7 @@ function doAction(boardNo){
          </table>
          <br>
          <c:if test="${ not empty loginVO }">
-            <button onClick="goWriteForm()">새글 등록</button>
+            <button onClick="goWriteForm()" class="btn btn-main">새글 등록</button>
          </c:if>
       </div>
 	</section>

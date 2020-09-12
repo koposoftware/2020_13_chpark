@@ -5,6 +5,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="kr.ac.kopo.board.vo.BoardVO" alias="boardVO"/>
+		
 		<typeAlias type="kr.ac.kopo.reply.vo.ReplyVO" alias="replyVO"/>
 		
 		<typeAlias type="kr.ac.kopo.member.vo.MemberVO" alias="memberVO"/>
@@ -21,6 +22,7 @@
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.UserTicketVO" alias="userTicketVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.AdminTicketVO" alias="adminTicketVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.AnalysisVO" alias="analysisVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.BasketVO" alias="basketVO"/>
 		
 		
 	</typeAliases>

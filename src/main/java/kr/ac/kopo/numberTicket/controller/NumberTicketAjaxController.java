@@ -10,6 +10,7 @@ import org.omg.CORBA.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import kr.ac.kopo.member.vo.MemberVO;
@@ -17,6 +18,7 @@ import kr.ac.kopo.member.vo.TellerVO;
 import kr.ac.kopo.numberTicket.service.NumberTicketService;
 import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
+import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 import kr.ac.kopo.numberTicket.vo.TicketVO;
@@ -64,6 +66,7 @@ public class NumberTicketAjaxController {
 		vo.setBranchName(nt.getBranch_name());
 		vo.setNumberticketNumber(nt.getNumberticket_number());
 		vo.setStandby(countVO.getStandby());
+		vo.setStandbyTime(countVO.getStandbyTime());
 		
 		returnVal.put("data", vo);
 		
@@ -159,4 +162,27 @@ public class NumberTicketAjaxController {
 		return numberTicketService.selectAnalysis(loginVO.getTellerId());
 	}
 	
+	@GetMapping("/location/basket/{locations}")
+	public void insertBasket(HttpSession session, @PathVariable("locations") String locations) {
+		numberTicketService.insertBasket(session, locations);
+	}
+	
+	@GetMapping("/location/basketList")
+	@ResponseBody
+	public List<BasketVO> selectBasketList(HttpSession session) {
+		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		List<BasketVO> basketList = numberTicketService.selectBasketList(loginVO.getId());
+		System.out.println(basketList);
+		return basketList;
+	}
+	@GetMapping("/indexBasketList")
+	@ResponseBody
+	public List<BasketVO> selectIndexBasketList(HttpSession session) {
+		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		List<BasketVO> basketList = numberTicketService.selectBasketList(loginVO.getId());
+		System.out.println(basketList);
+		return basketList;
+	}
 }

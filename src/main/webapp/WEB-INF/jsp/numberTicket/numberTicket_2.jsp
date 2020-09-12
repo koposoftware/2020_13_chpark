@@ -94,7 +94,12 @@
 	    			
 	    			tableTag+='<tr>';
 	    			tableTag+='<th>대기인원</th>';
-	    			tableTag+='<td>'+json['standby']+'</td>';
+	    			tableTag+='<td>'+(json['standby']-1)+'명</td>';
+	    			tableTag+='</tr>';
+	    			
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>예상시간</th>';
+	    			tableTag+='<td>약'+json['standbyTime']+'분</td>';
 	    			tableTag+='</tr>';
 	    			tableTag+='</table>';
 	    			dialog.alert(tableTag);
@@ -131,8 +136,26 @@
 	    	dataMap['${serviceDesc.serviceId}'].push({col1:'${serviceDesc.name}',col2:'${serviceDesc.etc}'});
 	 	</c:forEach>
 	 	firstGrid.setData(dataMap[100]);
+	
 	 	
+	 	$(document).on('click', ".basket", function(){
+	        let locations = $(this).attr('id');
+	        
+	        <%--location.href = "${ pageContext.request.contextPath }/location/basket/" + locations--%>
+			
+	        $.ajax({
+	    		url : '${ pageContext.request.contextPath }/location/basket/' + locations,	
+	    		type : 'get',
+	    		success : function (data){
+	    			alert(locations+"지점을 즐겨찾기에 등록 했습니다.")
+    			}
+	        });
+			//location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
+		})
+	       
 	})
+	
+	
 	
 	
   </script>
@@ -189,10 +212,11 @@
 </header>
 
 <section class="service-2 section bg-gray">
- <div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+ <div style="width:1200px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
 	<h2>${ locations } 지점 현황 </h2>
+	<button id=${ locations } class="btn btn-main mb-2 basket" style="height: 40px; ">즐겨찾기에 등록</button>
 	<hr>
-	<div style="width: 50%;height:100%;float: left;">
+	<div style="width: 50%;height:85%;float: left;">
 		
 		<h2 style="text-align: center;">대기 손님 현황</h2>
 		<hr>
@@ -234,7 +258,7 @@
 
 	</div>
 
-	<div style="width: 50%;float: left;height: 100%;">
+	<div style="width: 50%;float: left;height: 85%;">
 		<h2 style="text-align: center;">구비서류</h2>
 		<hr>
 		<div data-ax5grid="first-grid" style="height: calc(100% - 120px);padding-left: 10px;"></div>

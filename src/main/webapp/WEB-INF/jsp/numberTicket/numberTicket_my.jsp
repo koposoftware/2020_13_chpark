@@ -77,7 +77,7 @@
                 {key: "serviceName", label: "업무" , width :'20%'},
                 {key: "numberticketNumber", label: "번호" , width :'20%'},
                 {key: "numberticketDate", label: "일자" , width :'20%'},
-                {key: "numberticketTime", label: "시간" , width :'20%'}
+                {key: "numberticketTime", label: "발급시간" , width :'20%'}
             ],
             body: {
             	onDBLClick: function(){
@@ -106,7 +106,12 @@
 	    			
 	    			tableTag+='<tr>';
 	    			tableTag+='<th>대기인원</th>';
-	    			tableTag+='<td>'+json['standby']+'</td>';
+	    			tableTag+='<td>'+json['standby']+'명</td>';
+	    			tableTag+='</tr>';
+	    			
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>대기시간</th>';
+	    			tableTag+='<td>약'+json['standbyTime']+'분</td>';
 	    			tableTag+='</tr>';
 	    			tableTag+='</table>';
 	    			dialog.alert(tableTag);

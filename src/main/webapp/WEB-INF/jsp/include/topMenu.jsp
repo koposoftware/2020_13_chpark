@@ -77,7 +77,7 @@
 			
 			                            <li class="nav-item dropdown">
 			                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                                    	모바일 번호표
+			                                    	디지털 번호표
 			                                </a>
 			                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import kr.ac.kopo.numberTicket.dao.NumberTicketDAO;
 import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
+import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
@@ -121,6 +122,16 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	@Override
 	public List<AnalysisVO> selectAnalysis(String tellerId) {
 		return numberTicketDAO.selectAnalysis(tellerId);
+	}
+
+	@Override
+	public void insertBasket(HttpSession session, String locations) {
+		numberTicketDAO.insertBasket(session, locations);
+	}
+
+	@Override
+	public List<BasketVO> selectBasketList(String id) {
+		return numberTicketDAO.selectBasketList(id);
 	}
 	
 	

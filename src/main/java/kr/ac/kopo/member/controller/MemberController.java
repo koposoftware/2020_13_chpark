@@ -50,11 +50,14 @@ public class MemberController {
 		//dest라는 uri 값있으면 
 		else {
 			String dest =(String)session.getAttribute("dest");
+			System.out.println(dest);
 			if(dest == null) {
 				mav.setViewName("redirect:/");
+				System.out.println("dest == null");
 			} else {
 				mav.setViewName("redirect:" + dest);
 				session.removeAttribute("dest");
+				System.out.println("dest != null");
 			}
 			// loginVO 는 리퀘스트가 아니라 세션에 저장되어야지 리다이렉트 사용가능 -> @sessionAttribute 
 			// 모델앤뷰에 등록되는 객체의 이름이 loginVO인 경우에는 리퀘스트가 아닌 세션에 등록시켜라는 어노테이션 -> 이렇게 하면 invalidate로 삭제가 안됨 -> SessionStatus status

@@ -5,6 +5,14 @@ public class TicketVO {
 	private int standby;
 	private String serviceName;
 	private String branchName;
+	private int standbyTime;
+	
+	public int getStandbyTime() {
+		return standbyTime;
+	}
+	public void setStandbyTime(int standbyTime) {
+		this.standbyTime = standbyTime;
+	}
 	public int getNumberticketNumber() {
 		return numberticketNumber;
 	}
@@ -29,12 +37,13 @@ public class TicketVO {
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
 	}
-	public TicketVO(int numberticketNumber, int standby, String serviceName, String branchName) {
+	public TicketVO(int numberticketNumber, int standby, String serviceName, String branchName, int standbyTime) {
 		super();
 		this.numberticketNumber = numberticketNumber;
 		this.standby = standby;
 		this.serviceName = serviceName;
 		this.branchName = branchName;
+		this.standbyTime = standbyTime;
 	}
 	public TicketVO() {
 		super();
@@ -42,7 +51,7 @@ public class TicketVO {
 	@Override
 	public String toString() {
 		return "TicketVO [numberticketNumber=" + numberticketNumber + ", standby=" + standby + ", serviceName="
-				+ serviceName + ", branchName=" + branchName + "]";
+				+ serviceName + ", branchName=" + branchName + ", standbyTime=" + standbyTime + "]";
 	}
 	
 	

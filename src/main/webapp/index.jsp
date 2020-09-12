@@ -166,9 +166,36 @@ Welcome Slider
 			</div>
 		</div>
 	</div>
-</section>	
+</section>
 
-<!--
+
+	<c:if test="${loginVO.type eq 'U'}">
+		<section class="services section-xs" id="services">
+			<div class="container"> 
+				<div class="row">
+					<div class="col">
+						<div class="title text-center">
+							<h4>하 나 은 행</h4>
+							<h2>${ loginVO.name }님이 즐겨 찾는 지점</h2>
+							<span class="border"></span>
+							<p>즐겨찾기에 등록한 지점에서 바로 번호표 발급하세요!</p>
+						</div>
+					</div>
+				</div>
+				<!-- End row -->
+
+				<div style="width: 100%; height: 85%; text-align: center" id="basket" class="title text-center">
+
+				</div>
+
+			</div>
+			<!-- End container -->
+		</section>
+		<!-- End section -->
+	</c:if>
+
+
+	<!--
 Start About Section
 ==================================== -->
 <section class="service-2 section bg-gray">
@@ -326,4 +353,51 @@ Start Call To Action
     <script src="${ pageContext.request.contextPath }/resources/js/script.js"></script>
 
   </body>
+  <script type="text/javascript">
+  	$(document).ready(function() {
+  		<c:if test="${ not empty loginVO}">
+  		let ii;
+  		$.ajax({
+/*     		url : '${ pageContext.request.contextPath }/location/basketList', */	
+    		url : '${ pageContext.request.contextPath }/indexBasketList',	
+    		type : 'get',
+    		success : function (data){
+    			var json = JSON.parse(data);
+    			ii = json;
+    			let content = '';
+                content +=     '<h3 style="text-align: center;">즐겨찾기 리스트</h3>';
+                content +=     '<hr>';
+                content +=     '<table class="table table-hover" style="text-align:center">';
+                content +=         '<thead>';
+                content +=             '<tr>'
+                content +=                 '<th scope="col">즐겨찾는 지점</th>';
+                content +=                 '<th scope="col">번호표 발급</th>';
+                content +=             '</tr>';
+                content +=         '</thead>';
+                content +=         '<tbody>';
+                console.log(ii)
+                for(let i = 0; i < json.length; i++){
+            	content +=         '<tr>';
+                content +=             '<td>' + json[i].branchName + '</td>';
+                content +=             '<td><button id="' + json[i].branchName + '" class="branch btn btn-main"">번호표 발급</button></td>';
+                content +=         '</tr>';
+            	}
+                content +=         '</tbody>';
+                content +=     '</table>';
+                content += '</div>';
+				
+                $('#basket').append(content);
+			}
+        	});
+  			
+        
+        $(document).on('click', ".branch", function(){
+            let locations = $(this).attr('id');
+            <%--alert(location);--%>
+            location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
+
+        });
+        </c:if>
+  	});	   
+  </script>
   </html>

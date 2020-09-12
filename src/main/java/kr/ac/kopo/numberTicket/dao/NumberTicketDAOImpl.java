@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import kr.ac.kopo.member.vo.MemberVO;
 import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
+import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
@@ -136,6 +137,23 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 	@Override
 	public List<AnalysisVO> selectAnalysis(String tellerId) {
 		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectAnalysis");
+	}
+
+	@Override
+	public void insertBasket(HttpSession session, String locations) {
+		MemberVO user = (MemberVO)session.getAttribute("loginVO");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("locations", locations);
+		map.put("id", user.getId());
+		sqlSession.insert("numberTicket.dao.NumberTicketDAO.insertBasket",map);
+	}
+
+	@Override
+	public List<BasketVO> selectBasketList(String id) {
+		System.out.println("dao의"+id);
+		List<BasketVO> basketList = sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectBasketList",id);
+		System.out.println(basketList);
+		return basketList;
 	}
 	
 	

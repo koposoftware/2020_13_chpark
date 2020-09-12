@@ -8,6 +8,15 @@ public class UserTicketVO {
 	private String numberticketDate;
 	private String numberticketTime;
 	private int standby;
+	private int standbyTime;
+	
+	
+	public int getStandbyTime() {
+		return standbyTime;
+	}
+	public void setStandbyTime(int standbyTime) {
+		this.standbyTime = standbyTime;
+	}
 	public int getNumberticketNumber() {
 		return numberticketNumber;
 	}
@@ -51,7 +60,7 @@ public class UserTicketVO {
 		this.standby = standby;
 	}
 	public UserTicketVO(int numberticketNumber, String serviceName, String serviceId, String branchName,
-			String numberticketDate, String numberticketTime, int standby) {
+			String numberticketDate, String numberticketTime, int standby, int standbyTime) {
 		super();
 		this.numberticketNumber = numberticketNumber;
 		this.serviceName = serviceName;
@@ -60,6 +69,7 @@ public class UserTicketVO {
 		this.numberticketDate = numberticketDate;
 		this.numberticketTime = numberticketTime;
 		this.standby = standby;
+		this.standbyTime = standbyTime;
 	}
 	public UserTicketVO() {
 		super();
@@ -68,9 +78,9 @@ public class UserTicketVO {
 	public String toString() {
 		return "UserTicketVO [numberticketNumber=" + numberticketNumber + ", serviceName=" + serviceName
 				+ ", serviceId=" + serviceId + ", branchName=" + branchName + ", numberticketDate=" + numberticketDate
-				+ ", numberticketTime=" + numberticketTime + ", standby=" + standby + "]";
+				+ ", numberticketTime=" + numberticketTime + ", standby=" + standby + ", standbyTime=" + standbyTime
+				+ "]";
 	}
-	
 	
 		
 }

@@ -14,6 +14,7 @@ public class NumberTicket_NumberTicketVO {
 	private String branch_name;
 	private int standby;
 	private String service_name;
+	private int standbyTime;
 	
 	public NumberTicket_NumberTicketVO() {
 		super();
@@ -21,7 +22,7 @@ public class NumberTicket_NumberTicketVO {
 
 	public NumberTicket_NumberTicketVO(int numberticket_seq, int numberticket_number, String numberticket_date,
 			String numberticket_time, String users_id, String user_name, String branch_id, String teller_id,
-			String service_id, String branch_name, int standby, String service_name) {
+			String service_id, String branch_name, int standby, String service_name, int standbyTime) {
 		super();
 		this.numberticket_seq = numberticket_seq;
 		this.numberticket_number = numberticket_number;
@@ -35,6 +36,15 @@ public class NumberTicket_NumberTicketVO {
 		this.branch_name = branch_name;
 		this.standby = standby;
 		this.service_name = service_name;
+		this.standbyTime = standbyTime;
+	}
+
+	public int getStandbyTime() {
+		return standbyTime;
+	}
+
+	public void setStandbyTime(int standbyTime) {
+		this.standbyTime = standbyTime;
 	}
 
 	public int getNumberticket_seq() {
@@ -139,7 +149,7 @@ public class NumberTicket_NumberTicketVO {
 				+ numberticket_number + ", numberticket_date=" + numberticket_date + ", numberticket_time="
 				+ numberticket_time + ", users_id=" + users_id + ", user_name=" + user_name + ", branch_id=" + branch_id
 				+ ", teller_id=" + teller_id + ", service_id=" + service_id + ", branch_name=" + branch_name
-				+ ", standby=" + standby + ", service_name=" + service_name + "]";
+				+ ", standby=" + standby + ", service_name=" + service_name + ", standbyTime=" + standbyTime + "]";
 	}
 	
 }

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
+import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
@@ -44,4 +45,8 @@ public interface NumberTicketDAO {
 	public void deleteTicket(NumberTicket_NumberTicketVO vo);
 	
 	public List<AnalysisVO> selectAnalysis(String tellerId);
+	
+	public void insertBasket(HttpSession session, String locations);
+	
+	public List<BasketVO> selectBasketList(String id);
 }
