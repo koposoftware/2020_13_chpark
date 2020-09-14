@@ -212,16 +212,23 @@
 		DELETE FROM NUMBERTICKET WHERE NUMBERTICKET_SEQ = #{numberticket_seq}
 	</delete>
 	
-	<select id="selectAnalysis" resultType="analysisVO">
+	<select id="selectAnalysis" parameterType="String" resultType="analysisVO">
 		select 
-    		BRANCH_NAME as branchName,
-    		SERVICE_ID as serviceId,
-    		ANALYSIS_NUMBER as analysisNumber,
-    		USER_NAME as usersName,
-    		TELLER_ID as tellerId,
-    		ANALYSIS_DATE as analysisDate,
-    		ANALYSIS_TIME as analysisTime
-		FROM ANALYSIS
+    		a.BRANCH_NAME as branchName,
+    		a.SERVICE_ID as serviceId,
+            b.SERVICE_NAME as serviceName,
+    		a.ANALYSIS_NUMBER as analysisNumber,
+    		a.USER_NAME as usersName,
+    		a.TELLER_ID as tellerId,
+    		c.TELLER_NAME as tellerName,
+    		a.ANALYSIS_DATE as analysisDate,
+    		a.ANALYSIS_TIME as analysisTime
+		FROM ANALYSIS a, service b, teller c
+		where BRANCH_NAME = (select D.BRANCH_name from TELLER C,BRANCH D where C.BRANCH_ID = D.BRANCH_ID AND C.TELLER_ID = #{tellerId})
+        and a.service_id = b.SERVICE_ID
+        and a.TELLER_ID = c.TELLER_ID
+		and ANALYSIS_DATE = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		ORDER BY A.ANALYSIS_DATE desc,A.ANALYSIS_TIME desc
 	</select>
 	
 	<insert id="insertBasket" parameterType="HashMap">
@@ -235,4 +242,42 @@
 		where USERS_ID = #{id}
 	</select>
 	
+	<select id="selectAnalysisTotal" parameterType="String" resultType="analysisVO">
+		select count(*) as todayTotal
+		from ANALYSIS
+		where analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		and BRANCH_NAME = #{locations}
+	</select>
+	
+	<select id="selectAnalysis100" parameterType="String" resultType="analysisVO">
+		select count(*) as today100
+		from ANALYSIS 
+		where SERVICE_ID = 100
+		and analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		and BRANCH_NAME = #{locations}      
+	</select>
+	
+	<select id="selectAnalysis200" parameterType="String" resultType="analysisVO">
+		select count(*) as today200
+		from ANALYSIS 
+		where SERVICE_ID = 200
+		and analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		and BRANCH_NAME = #{locations}      
+	</select>
+	
+	<select id="selectAnalysis300" parameterType="String" resultType="analysisVO">
+		select count(*) as today300
+		from ANALYSIS 
+		where SERVICE_ID = 300
+		and analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		and BRANCH_NAME = #{locations}      
+	</select>
+	
+	<select id="selectAnalysis400" parameterType="String" resultType="analysisVO">
+		select count(*) as today400
+		from ANALYSIS 
+		where SERVICE_ID = 400
+		and analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
+		and BRANCH_NAME = #{locations}      
+	</select>
 </mapper>

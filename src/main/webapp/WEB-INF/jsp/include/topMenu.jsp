@@ -31,7 +31,7 @@
 		                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
 		                            </li>
 		                            <li class="nav-item">
-		                                <a class="nav-link" href="${ pageContext.request.contextPath }/">하나은행</a>
+		                                <a class="nav-link" href="http://pr.kebhana.com/contents/kor/index.jsp">하나은행 소개</a>
 		                            </li>
 		
 		                            <li class="nav-item dropdown">
@@ -49,6 +49,9 @@
 							    	<c:if test="${loginVO.type eq 'A'}">
 								    	<li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/numberTicket_admin">대기인원확인</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
 			                            </li>
 			                            <li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/logout">로그아웃</a>
@@ -72,7 +75,7 @@
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
 			                            </li>
 			                            <li class="nav-item">
-			                                <a class="nav-link" href="${ pageContext.request.contextPath }/">하나은행</a>
+			                                <a class="nav-link" href="http://pr.kebhana.com/contents/kor/index.jsp">하나은행 소개</a>
 			                            </li>
 			
 			                            <li class="nav-item dropdown">

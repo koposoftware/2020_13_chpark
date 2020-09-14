@@ -172,73 +172,78 @@
 	</header>
 
 	<section class="service-2 section bg-gray">
-		<div align="center">
-			<hr>
-			<h2>게시판 상세 페이지</h2>
-			<hr>
-			<br>
-			<table border="1" style="width: 80%"
-				class="table table-striped table-condensed">
-				<tr>
-					<th width="25%">번호</th>
-					<td>${ board.no }</td>
-				</tr>
-				<tr>
-					<th width="25%">제목</th>
-					<td><c:out value="${ board.title }" /></td>
-				</tr>
-				<tr>
-					<th width="25%">글쓴이</th>
-					<td>${ board.writer }</td>
-				</tr>
-				<tr>
-					<th width="25%">내용</th>
-					<td>${ board.content }</td>
-				</tr>
-				<tr>
-					<th width="25%">조회수</th>
-					<td>${ board.viewCnt }</td>
-				</tr>
-				<tr>
-					<th width="25%">등록일</th>
-					<td>${ board.regDate }</td>
-				</tr>
-				<tr>
-					<th width="25%">첨부파일</th>
-					<td><c:forEach items="${ fileList }" var="file">
-							<a href="/Mission-WEB/upload/${ file.fileSaveName }"> ${ file.fileOriName }
-							</a>
-				(${ file.fileSize } bytes)<br>
-						</c:forEach></td>
-				</tr>
-			</table>
-			<br>
-			<c:if test="${ loginVO.id == board.writer }">
-				<input type="button" value="수정" id="modify" onclick="doAction('M')"
-					class="btn btn-primary py-1 px-3 m-3">&nbsp;&nbsp;	
-	<input type="button" value="삭제" onclick="doAction('D')"
-					class="btn btn-primary py-1 px-3 m-3">&nbsp;&nbsp;	
-	</c:if>
-			<input type="button" value="목록" onclick="doAction('L')"
-				class="btn btn-primary py-1 px-3 m-3">&nbsp;&nbsp;
-			<c:if test="${ loginVO.type eq 'S'}">
-				<input type="button" value="삭제" onclick="doAction('D')"
-					class="btn btn-primary py-1 px-3 m-3">&nbsp;&nbsp;
-	<input type="button" value="답글" onclick="doAction('R')"
-					class="btn btn-primary py-1 px-3 m-3">&nbsp;&nbsp;
-	</c:if>
+		<div align="center" class="container">
+			<div class="row">
+				<div class="col-md-12 mx-auto">
+					<div class="block text-center">
+						<h2>게시판 상세 페이지</h2>
+						<br>
 
-			<br>
-			<hr>
-			<form name="rform">
-				댓글 : <input type="text" name="content" size="50"> 이름 : <input
-					type="text" name="writer" size="10">
-				<%-- 서밋을 쓰면 post니까 피하려고 --%>
-				<input type="button" value="댓글추가" id="replyAddBtn">
-			</form>
+						<table border="1" style="width: 100%" class="table table-bordered">
+							<tr>
+								<th width="25%">번호</th>
+								<td>${ board.no }</td>
+							</tr>
+							<tr>
+								<th width="25%">제목</th>
+								<td><c:out value="${ board.title }" /></td>
+							</tr>
+							<tr>
+								<th width="25%">글쓴이</th>
+								<td>${ board.writer }</td>
+							</tr>
+							<tr>
+								<th width="25%">내용</th>
+								<td>${ board.content }</td>
+							</tr>
+							<tr>
+								<th width="25%">조회수</th>
+								<td>${ board.viewCnt }</td>
+							</tr>
+							<tr>
+								<th width="25%">등록일</th>
+								<td>${ board.regDate }</td>
+							</tr>
+							<tr>
+								<th width="25%">첨부파일</th>
+								<td>
+								<c:forEach items="${ fileList }" var="file">
+									<a href="/Mission-WEB/upload/${ file.fileSaveName }"> ${ file.fileOriName }</a>
+									(${ file.fileSize } bytes)<br>
+								</c:forEach>
+								</td>
+							</tr>
+						</table>
+						<br>
+						<c:if test="${ loginVO.id == board.writer }">
+							<input type="button" value="수정" id="modify" onclick="doAction('M')" class="btn btn-main mb-2">&nbsp;&nbsp;	
+							<input type="button" value="삭제" onclick="doAction('D')" class="btn btn-main mb-2">&nbsp;&nbsp;	
+						</c:if>
+						<c:if test="${ loginVO.tellerId == board.writer }">
+							<input type="button" value="수정" id="modify" onclick="doAction('M')" class="btn btn-main mb-2">&nbsp;&nbsp;	
+							<input type="button" value="삭제" onclick="doAction('D')" class="btn btn-main mb-2">&nbsp;&nbsp;	
+						</c:if>
+							<input type="button" value="목록" onclick="doAction('L')" class="btn btn-main mb-2">&nbsp;&nbsp;
+						<c:if test="${ loginVO.type eq 'A'}">
+							<input type="button" value="삭제" onclick="doAction('D')" class="btn btn-main mb-2">&nbsp;&nbsp;
+							<input type="button" value="답글" onclick="doAction('R')" class="btn btn-main mb-2">&nbsp;&nbsp;
+						</c:if>
 
-			<div id="replyList"></div>
+						<br>
+						<hr>
+						<form name="rform" class="text-center clearfix mt-30">
+							댓글 : <input type="text" name="content" size="50" style="height: 43px;">&nbsp;&nbsp; 
+							이름 : <input type="text" name="writer" size="10" style="height: 43px;">&nbsp;&nbsp;&nbsp;
+							<%-- 서밋을 쓰면 post니까 피하려고 --%>
+							<input type="button" value="댓글추가" id="replyAddBtn" class="btn btn-main mb-2">
+						</form>
 
+						<div id="replyList" class="text-center">
+						</div>
+
+					</div>
+				</div>
+			</div>
 		</div>
 	</section>
 	<footer>

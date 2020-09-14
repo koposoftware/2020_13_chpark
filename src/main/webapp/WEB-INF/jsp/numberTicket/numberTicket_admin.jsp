@@ -533,12 +533,26 @@
   <div class="container">
     <div style="display: inline-block; text-align: center;" id="box">
 	
+	<div style="text-align: center; width:50%; float: left;">
+	<h2>입출금</h2>
+	</div>
+	<div style="text-align: center; width:50%; float: right;">
+	<h2>대출</h2>
+	</div>
 	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left;">
 		<div data-ax5grid="first-grid100" style="height: 100%;" ></div>
 	</div>
 	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-left: 5px;">
 		<div data-ax5grid="first-grid200" style="height: 100%;"></div>
 	</div>
+	
+	<div style="text-align: center; width:50%; float: left;">
+	<h2>외환</h2>
+	</div>
+	<div style="text-align: center; width:50%; float: right;">
+	<h2>기업</h2>
+	</div>
+	
 	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-top: 5px;">
 		<div data-ax5grid="first-grid300" style="height: 100%;"></div>
 	</div>
@@ -547,7 +561,10 @@
 	</div>
 	
 	</div>
-
+	
+	<div style="text-align: center; width:100%;">
+	<h2>전체 대기 손님 현황</h2>
+	</div>
 	<div style="width:100%;height:400px; border:1px solid green; text-align: center; margin: 0 auto;">
 		<div data-ax5grid="first-grid" style="height: 100%;"></div>
 	</div>

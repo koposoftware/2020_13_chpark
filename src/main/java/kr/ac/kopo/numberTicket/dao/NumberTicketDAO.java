@@ -49,4 +49,10 @@ public interface NumberTicketDAO {
 	public void insertBasket(HttpSession session, String locations);
 	
 	public List<BasketVO> selectBasketList(String id);
+	
+	public AnalysisVO selectAnalysisTotal(String locations);
+	public AnalysisVO selectAnalysis100(String locations);
+	public AnalysisVO selectAnalysis200(String locations);
+	public AnalysisVO selectAnalysis300(String locations);
+	public AnalysisVO selectAnalysis400(String locations);
 }

@@ -31,12 +31,16 @@ function goWriteForm() {
    location.href = "${ pageContext.request.contextPath }/board/write";
 }
 function doAction(boardNo){
-//   location.href = "${ pageContext.request.contextPath }/board/detail?no=" + boardNo";
+	//location.href = "${ pageContext.request.contextPath }/board/detail?no=" + boardNo";
    location.href = "${ pageContext.request.contextPath }/board/" + boardNo;
 }
 
 </script>
 	
+<style type="text/css">
+ a:link { color: black; text-decoration: none;}
+ a:visited { color: black; text-decoration: none;}
+</style>
 
 </head>
 <body id="body">
@@ -72,38 +76,44 @@ function doAction(boardNo){
 	</header>
 
 	<section class="service-2 section bg-gray">
-   	 <div align="center" class="container">
-         <hr width="80%">
-         <h2>손님의 소리</h2>
-         <hr width="80%">
-         <table border="1" style="width: 80%;">
-            <tr>
-               <th width="7%">번호</th>
-               <th>제목</th>
-               <th width="16%">글쓴이</th>
-               <th width="20%">등록일</th>
-            </tr>
-            <c:forEach items="${ boardList }" var="board" varStatus="loop">
-               <tr <c:if test="${ loop.count mod 2 eq 0 }">class="even"</c:if>>
-                  <td>${ board.no }</td>
-                  <td>
-                  <a href="javascript:doAction(${ board.no })">
-                     <c:out value="${ board.title }" />
-                  </a>
-                  </td>
-                  <td>${ board.writer }</td>
-                  <td>${ board.regDate }</td>
-               </tr>
-            </c:forEach>
-         </table>
-         <br>
-         <c:if test="${ not empty loginVO }">
-            <button onClick="goWriteForm()" class="btn btn-main">새글 등록</button>
-         </c:if>
-      </div>
+		<div align="center" class="container">
+			<div class="row">
+				<div class="col-md-12 mx-auto">
+					<div class="block text-center">
+						<h2>손님의 소리</h2>
+						<br>
+						<table border="1" style="width: 100%;" class="table table-bordered">
+							<tr>
+								<th width="7%">번호</th>
+								<th>제목</th>
+								<th width="16%">글쓴이</th>
+								<th width="20%">등록일</th>
+							</tr>
+							<c:forEach items="${ boardList }" var="board" varStatus="loop">
+								<tr>
+									<td>${ board.no }</td>
+									<td>
+										<a href="javascript:doAction(${ board.no })" class="nav-link"> 
+										<c:out value="${ board.title }" />
+										</a>
+									</td>
+									<td>${ board.writer }</td>
+									<td>${ board.regDate }</td>
+								</tr>
+							</c:forEach>
+						</table>
+						<br>
+						<c:if test="${ not empty loginVO }">
+							<button onClick="goWriteForm()" class="btn btn-main">새글
+								등록</button>
+						</c:if>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
-     <footer>
+	<footer>
 		<%-- contextPath 밑에 webapp가 루트 --%>
 		<%@include file="/WEB-INF/jsp/include/footerBottom.jsp" %>
 	</footer>

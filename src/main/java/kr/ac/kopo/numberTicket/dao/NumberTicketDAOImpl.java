@@ -136,7 +136,7 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 
 	@Override
 	public List<AnalysisVO> selectAnalysis(String tellerId) {
-		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectAnalysis");
+		return sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectAnalysis", tellerId);
 	}
 
 	@Override
@@ -155,6 +155,38 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 		System.out.println(basketList);
 		return basketList;
 	}
+
+	@Override
+	public AnalysisVO selectAnalysisTotal(String locations) {
+		System.out.println(locations);
+		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysisTotal", locations);
+		return total;
+	}
+
+	@Override
+	public AnalysisVO selectAnalysis100(String locations) {
+		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysis100", locations);
+		return total;
+	}
+	
+	@Override
+	public AnalysisVO selectAnalysis200(String locations) {
+		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysis200", locations);
+		return total;
+	}
+	
+	@Override
+	public AnalysisVO selectAnalysis300(String locations) {
+		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysis300", locations);
+		return total;
+	}
+	
+	@Override
+	public AnalysisVO selectAnalysis400(String locations) {
+		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysis400", locations);
+		return total;
+	}
+	
 	
 	
 }

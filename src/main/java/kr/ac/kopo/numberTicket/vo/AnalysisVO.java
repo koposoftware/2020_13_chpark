@@ -11,7 +11,58 @@ public class AnalysisVO {
 	private String branchId;
 	private String tellerId;
 	private String serviceId;
+	private String serviceName;
 	private String branchName;
+	private String tellerName;
+	private int todayTotal;
+	private int today100;
+	private int today200;
+	private int today300;
+	private int today400;
+	
+	
+	public String getTellerName() {
+		return tellerName;
+	}
+	public void setTellerName(String tellerName) {
+		this.tellerName = tellerName;
+	}
+	public String getServiceName() {
+		return serviceName;
+	}
+	public void setServiceName(String serviceName) {
+		this.serviceName = serviceName;
+	}
+	public int getTodayTotal() {
+		return todayTotal;
+	}
+	public int getToday100() {
+		return today100;
+	}
+	public int getToday200() {
+		return today200;
+	}
+	public int getToday300() {
+		return today300;
+	}
+	public int getToday400() {
+		return today400;
+	}
+	public void setTodayTotal(int todayTotal) {
+		this.todayTotal = todayTotal;
+	}
+	public void setToday100(int today100) {
+		this.today100 = today100;
+	}
+	public void setToday200(int today200) {
+		this.today200 = today200;
+	}
+	public void setToday300(int today300) {
+		this.today300 = today300;
+	}
+	public void setToday400(int today400) {
+		this.today400 = today400;
+	}
 	public int getAnalysisSeq() {
 		return analysisSeq;
 	}
@@ -72,8 +123,10 @@ public class AnalysisVO {
 	public void setBranchName(String branchName) {
 		this.branchName = branchName;
 	}
+	
 	public AnalysisVO(int analysisSeq, int analysisNumber, String analysisDate, String analysisTime, String usersId,
-			String usersName, String branchId, String tellerId, String serviceId, String branchName) {
+			String usersName, String branchId, String tellerId, String serviceId, String branchName, int todayTotal,
+			int today100, int today200, int today300, int today400) {
 		super();
 		this.analysisSeq = analysisSeq;
 		this.analysisNumber = analysisNumber;
@@ -85,6 +138,11 @@ public class AnalysisVO {
 		this.tellerId = tellerId;
 		this.serviceId = serviceId;
 		this.branchName = branchName;
+		this.todayTotal = todayTotal;
+		this.today100 = today100;
+		this.today200 = today200;
+		this.today300 = today300;
+		this.today400 = today400;
 	}
 	public AnalysisVO() {
 		super();
@@ -94,7 +152,9 @@ public class AnalysisVO {
 		return "AnalysisVO [analysisSeq=" + analysisSeq + ", analysisNumber=" + analysisNumber + ", analysisDate="
 				+ analysisDate + ", analysisTime=" + analysisTime + ", usersId=" + usersId + ", usersName=" + usersName
 				+ ", branchId=" + branchId + ", tellerId=" + tellerId + ", serviceId=" + serviceId + ", branchName="
-				+ branchName + "]";
+				+ branchName + ", todayTotal=" + todayTotal + ", today100=" + today100 + ", today200=" + today200
+				+ ", today300=" + today300 + ", today400=" + today400 + "]";
 	}
+	
 		
 }

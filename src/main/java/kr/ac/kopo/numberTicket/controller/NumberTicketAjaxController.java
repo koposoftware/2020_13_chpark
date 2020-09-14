@@ -167,15 +167,6 @@ public class NumberTicketAjaxController {
 		numberTicketService.insertBasket(session, locations);
 	}
 	
-	@GetMapping("/location/basketList")
-	@ResponseBody
-	public List<BasketVO> selectBasketList(HttpSession session) {
-		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
-		System.out.println(loginVO);
-		List<BasketVO> basketList = numberTicketService.selectBasketList(loginVO.getId());
-		System.out.println(basketList);
-		return basketList;
-	}
 	@GetMapping("/indexBasketList")
 	@ResponseBody
 	public List<BasketVO> selectIndexBasketList(HttpSession session) {
@@ -184,5 +175,55 @@ public class NumberTicketAjaxController {
 		List<BasketVO> basketList = numberTicketService.selectBasketList(loginVO.getId());
 		System.out.println(basketList);
 		return basketList;
+	}
+	
+	@GetMapping("/numberservice/selectAnalysisTotal")
+	@ResponseBody
+	public AnalysisVO selectAnalysisTotal(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		AnalysisVO total = numberTicketService.selectAnalysisTotal(loginVO.getBranchName());
+		System.out.println(total);
+		return total;
+	}
+	
+	@GetMapping("/numberservice/selectAnalysis100")
+	@ResponseBody
+	public AnalysisVO selectAnalysis100(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		AnalysisVO total = numberTicketService.selectAnalysis100(loginVO.getBranchName());
+		System.out.println(total);
+		return total;
+	}
+	
+	@GetMapping("/numberservice/selectAnalysis200")
+	@ResponseBody
+	public AnalysisVO selectAnalysis200(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		AnalysisVO total = numberTicketService.selectAnalysis200(loginVO.getBranchName());
+		System.out.println(total);
+		return total;
+	}
+	
+	@GetMapping("/numberservice/selectAnalysis300")
+	@ResponseBody
+	public AnalysisVO selectAnalysis300(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		AnalysisVO total = numberTicketService.selectAnalysis300(loginVO.getBranchName());
+		System.out.println(total);
+		return total;
+	}
+	
+	@GetMapping("/numberservice/selectAnalysis400")
+	@ResponseBody
+	public AnalysisVO selectAnalysis400(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		System.out.println(loginVO);
+		AnalysisVO total = numberTicketService.selectAnalysis400(loginVO.getBranchName());
+		System.out.println(total);
+		return total;
 	}
 }

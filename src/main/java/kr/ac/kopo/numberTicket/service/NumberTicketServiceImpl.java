@@ -133,6 +133,28 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	public List<BasketVO> selectBasketList(String id) {
 		return numberTicketDAO.selectBasketList(id);
 	}
+
+	@Override
+	public AnalysisVO selectAnalysisTotal(String locations) {
+		return numberTicketDAO.selectAnalysisTotal(locations);
+	}
+
+	@Override
+	public AnalysisVO selectAnalysis100(String locations) {
+		return numberTicketDAO.selectAnalysis100(locations);
+	}
+	@Override
+	public AnalysisVO selectAnalysis200(String locations) {
+		return numberTicketDAO.selectAnalysis200(locations);
+	}
+	@Override
+	public AnalysisVO selectAnalysis300(String locations) {
+		return numberTicketDAO.selectAnalysis300(locations);
+	}
+	@Override
+	public AnalysisVO selectAnalysis400(String locations) {
+		return numberTicketDAO.selectAnalysis400(locations);
+	}
 	
 	
 	

@@ -65,7 +65,7 @@
       <%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>   
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff2a5b564a26a1c55986504a754e4916&libraries=services,clusterer,drawing""></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services,clusterer,drawing""></script>
 <script>
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 
@@ -129,6 +129,7 @@
     //infodata.지점코드 해서 정보를 가지고 온다.
   	 function displayInfo(infomarker, infodata) {
   		var iwContent = '<div style="text-align: center; padding:5px;">'
+  						+ '<div class="close" onclick="closeCustomOverlay()" title="닫기">X</div>'
   						+ '<div><b>지점명<b> :'
   						+ infodata.branch_name 
   						+ '</div>'
@@ -158,65 +159,9 @@
   			infoCheck = infowindow
   		})
     }
-
-    /*
-  	function displayOverlay(infomarker, content, data) {
-
-        var customOverlay = new kakao.maps.CustomOverlay({
-           content : content,
-           position : infomarker.getPosition(position.branch_latitude, position.branch_longitude) // 마커의 lat lng 
-        });
-        
-        //이벤트 핸드러를 등록한다.
-        kakao.maps.event.addListener(infomarker, 'click', function() {
-           
-        	//customOverlay.setMap(map); // 오버레이를 지도에 올린다.
-           //customOverlay.setZIndex(3); //커스텀overlay z-index 변경
-           //map.panTo(infomarker.getPosition(position.branch_latitude, position.branch_longitude)); //중심좌표 이동
-        });
-     } 
-  	*/
-    /*
-               var content = '<div class="wrap">' + 
-                            '    <div class="info">' + 
-                            '        <div class="title">' + 
-                                        data.aptBasicVO=.kaptName + 
-                            '            <div class="close" onclick="closeCustomOverlay()" title="닫기"></div>' + 
-                            '        </div>' + 
-                            '        <div class="body">' + 
-                            '            <div class="desc">' + 
-                            '                <div class="ellipsis"> <b>(주소)</b><br>' + 
-                                              data.지점주소 + '</div>' + 
-                            '                <div class="ellipsis"> <b>(도로명)</b><br>' + 
-                                                 data.aptDetailVO.doroJuso + '</div>' + '                <div class="jibun ellipsis">| 동수 | ' + data.aptDetailVO.kaptDongCnt + ' |세대수 | ' + data.aptDetailVO.kaptDaCnt + '</div>' + '            </div>' + '        </div>' + '    </div>' + '</div>';
-            }
-         })
-      }
-    }
-    var clickedOverlay = null;
-    
-    //marker클릭시 오버레이가 뜨도록 event등록
-    
-      function displayOverlay(infomarker, content) {
-
-         var customOverlay = new kakao.maps.CustomOverlay({
-            content : content,
-            position : infomarker.getPosition() // 마커의 lat lng 
-         });
-         
-         //이벤트 핸드러를 등록한다.
-         kakao.maps.event.addListener(infomarker, 'click', function() {
-            if (clickedOverlay) {
-               clickedOverlay.setMap(null); // 떠있는 오버레이 없애라
-            }
-            customOverlay.setMap(map); // 오버레이를 지도에 올린다.
-            customOverlay.setZIndex(3); //커스텀overlay z-index 변경
-            map.panTo(infomarker.getPosition()); //중심좌표 이동
-            clickedOverlay = customOverlay;
-         });
-      }
-    
-    */
+    function closeCustomOverlay() {
+    	infoCheck.setMap(null);
+	}
     
     var branch;
     $(document).on('click', "#test", function(){
@@ -269,7 +214,7 @@
        location.href = "${ pageContext.request.contextPath }/location/reservation/" + locations
 
     })
-
+	
   
 </script>
 

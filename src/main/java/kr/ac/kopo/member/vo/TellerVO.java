@@ -8,6 +8,8 @@ public class TellerVO {
 	private String branchId;
 	private String type;
 	private String branchName;
+	private String id;
+	
 	public TellerVO(String tellerId, String tellerPwd, String tellerName, String branchId, String type,
 			String branchName) {
 		super();
@@ -20,6 +22,12 @@ public class TellerVO {
 	}
 	public TellerVO() {
 		super();
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getTellerId() {
 		return tellerId;

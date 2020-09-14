@@ -32,7 +32,6 @@
 	}
 </style>
 <body>
-<section>
 	<header>
 		<%-- contextPath 밑에 webapp가 루트 --%>
 		<%-- 지시자는 복붙 액션은 메소드 호출 화면 자체는 같음  --%>
@@ -40,40 +39,51 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 	</header>
 
-		<div align="center">
-		<hr width="80%">
-		<h2>게시글 등록</h2>
-		<hr width="80%">
-		<br>
+<section class="service-2 section bg-gray">
+	<div align="center" class="container">
+		<div class="row">
+      		<div class="col-md-8 mx-auto">
+        		<div class="block text-center">
+					<h2>게시글 등록</h2>
 		
-		<form:form commandName="boardVO" method="post">
-			<table border="1" style="width: 80%">
+		<form:form commandName="boardVO" method="post" class="text-left clearfix mt-30">
+			<table border="1" style="width: 100%" class="table table-bordered">
 				<tr>
+					
 					<th width="20%">글제목</th>
 					<td>
+						<div class="form-group">
 						<!-- path 는 get.title -->
-						<form:input path="title"/><form:errors path="title" class="error" />
+						<form:input path="title" class="form-control"/><form:errors path="title" class="error" />
+						</div>
 					</td>
 				</tr>
 				<tr>
 					<th width="20%">글쓴이</th>
 					<td>
 						<!-- path 는 get.title -->
-						<form:input path="writer"/><form:errors path="writer" class="error" />
+						<div class="form-group">
+						<form:input path="writer" class="form-control"/><form:errors path="writer" class="error" />
+						</div>
 					</td>			
 				</tr>
 				<tr>
 					<th width="20%">글내용</th>
 					<td>
 						<!-- path 는 get.title -->
-						<form:textarea path="content" rows="7" cols="50"/>
+						<div class="form-group">
+						<form:textarea path="content" rows="7" cols="50" class="form-control"/>
 						<form:errors path="content" class="error" />
+						</div>
 					</td>			
 				</tr>
 			</table>
-			<button type="submit">등록</button>
+			
+			<button type="submit" class="btn btn-main mb-2" style="text-align: center">등록</button>
 		</form:form>
-		
+			   </div>
+      		</div>
+   		 </div>
 		</div>
 	</section>
 	<footer>
