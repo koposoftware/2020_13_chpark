@@ -8,7 +8,7 @@
 	content="Bingo One page parallax responsive HTML Template ">
 <meta name="author" content="Themefisher.com">
 <meta charset="UTF-8">
-<title>템플릿</title>
+<title>분석</title>
 <link rel="shortcut icon" type="image/x-icon"
 	href="${ pageContext.request.contextPath }/resources/images/favicon/favicon.ico" />
 <!-- Mobile Specific Meta
@@ -57,7 +57,7 @@
 
 </style>
 <script type="text/javascript">
-
+	var arr = new Array();
 	$(function(){
 		/* var dialog = new ax5.ui.dialog();
 		var mask = new ax5.ui.mask();
@@ -162,6 +162,7 @@
 			}
         });
   		
+  		//var arr = new Array();
   		
   		//100
 	    let jj;
@@ -188,9 +189,11 @@
                 content +=     '</table>';
 				
                 $('#100').append(content);
+                let test = { label: "입출금", value: json.today100 }
+                arr.push(test)
+                //arr.push(json.today100);
 			}
         });
-  		
   		//200
 	    let kk;
   		$.ajax({
@@ -216,6 +219,8 @@
                 content +=     '</table>';
 				
                 $('#200').append(content);
+                let test = { label: "대출", value: json.today200 }
+                arr.push(test)
 			}
         });
   		
@@ -244,6 +249,8 @@
                 content +=     '</table>';
 				
                 $('#300').append(content);
+                let test = { label: "외환", value: json.today300 }
+                arr.push(test)
 			}
         });
   		
@@ -272,31 +279,33 @@
                 content +=     '</table>';
 				
                 $('#400').append(content);
+                
+                let test = { label: "기업", value: json.today400 }
+                arr.push(test)
+                
+                 // 도넛 차트
+                new Morris.Donut({
+          	        element: 'dayDonut',
+          	        data: arr
+          	    });
 			}
         });
-  		
-  		
+
   		var result = new Array();
   		
-  		let visit, value;
+  		//let visit, value;
   		<c:forEach items="${weekVisit}" var="week">
   			var json = new Object();
   			//if(${week}.day == ) 
   			json.visit = "${week.visit}";
   			json.value = "${week.analysisDate}";
-  			visit = "${week.visit}"
-  			value = "${week.analysisDate}"
+  			//visit = "${week.visit}"
+  			//value = "${week.analysisDate}"
   			result.push(json)
   		</c:forEach>
-  			let d = new Date();
-  			var json = new Object();
-  			//if(${week}.day == ) 
-  			json.visit = "0";
-  			json.value = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + (d.getDate() + 1);
-  			result.push(json)
   		
-  		alert(JSON.stringify(result));
-  		
+  		//alert(JSON.stringify(result));	
+  			
   		new Morris.Line({
   		// ID of the element in which to draw the chart.
   		element: 'myfirstchart',
@@ -307,15 +316,31 @@
   		,
   		// The name of the data record attribute that contains x-values.
   		xkey: 'value',
+  		hideHover: 'auto',
   		// A list of names of data record attributes that contain y-values.
   		ykeys: ['visit'],
   		// Labels for the ykeys -- will be displayed when you hover over the
   		// chart.
-  		labels: ['Value'],
+  		labels: ['방문 손님'],
   		xLabels : 'day',
+  		resize : 'true',
+  		//parseTime: 'false',
   		lineWidth : 4
   		});
-
+		
+  	  // 도넛 차트
+	  //console.log(arr[1]);
+	  //console.log(arr[2]);
+  	   /*new Morris.Donut({
+  	        element: 'dayDonut',
+  	        data: [
+  	            
+  	        	{ label: "입출금", value: 12 },
+  	            { label: "대출", value: 10 },
+  	          	{ label: "외환", value: 30 },
+  	            { label: "기업", value: 20 }
+  	        ]
+  	    });*/
 	})
 	
   		
@@ -354,14 +379,18 @@
 
 	<section class="service-2 section bg-gray">
 	
-	<div>
-		<div id="total"></div>
-		<div id="100" style="text-align: center; width:50%; float: left;"></div>
-		<div id="200" style="text-align: center; width:50%; float: right;"></div>
-		<div id="300" style="text-align: center; width:50%; float: left;"></div>
-		<div id="400" style="text-align: center; width:50%; float: right;"></div>
-	</div>	
+	<div class="row justify-content-center">
+		<div id="total" style="text-align: center; width: 80%;"></div>
+		<div id="100" style="text-align: center; width:40%; float: left;"></div>
+		<div id="200" style="text-align: center; width:40%; float: right;"></div>
+		<div id="300" style="text-align: center; width:40%; float: left;"></div>
+		<div id="400" style="text-align: center; width:40%; float: right;"></div>
+	</div>
 	
+	
+	<div class="row justify-content-center">
+		<div id="dayDonut" style="height: 250px; width: 80%;" ></div>
+ 	</div>
 	<!-- 	<div>
 			<select name="branch">
 				<option value="">지점선택</option>
@@ -377,22 +406,22 @@
 		</div>
  	-->
  		<div>
- 		<br><br><br><br><br>
- 		<br><br><br><br><br>
- 		<br><br><br><br><br>
  		<br><br>
  		</div>
  		
-		<div
-			style="width: 1300px; height: 600px; border: 1px solid green; text-align: center; margin: 0 auto;">
+ 		<div class="row justify-content-center">
+		<div style="width: 80%; height: 600px; border: 1px solid green; text-align: center; margin: 0 auto;">
 			<div data-ax5grid="first-grid" style="height: 100%;"></div>
 		</div>
+ 		</div>
 		
 		<div>
- 		<br><br><br>
+ 		<br><br>
  		</div>
  		
-		<div id="myfirstchart" style="height: 250px;"></div>
+ 		<div class="row justify-content-center">
+		<div id="myfirstchart" style="height: 250px; width: 80%;" ></div>
+ 		</div>
 		
 	</section>
 

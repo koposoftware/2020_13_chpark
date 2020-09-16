@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>지점 검색</title>
 	<link href="${ pageContext.request.contextPath }/resources/css/kakao_map.css" rel="stylesheet">
 	<!-- <script type="text/javascript" src="${ pageContext.request.contextPath }/resources/js/kakao_map.js"></script> -->
   <!-- Mobile Specific Meta

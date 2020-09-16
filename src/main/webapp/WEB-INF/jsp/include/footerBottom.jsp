@@ -15,58 +15,26 @@
         <div class="col-sm-3 col-md-3 col-lg-3">
           <h3>INFORMATION</h3>
           <ul>
-            <li><a href="#">Payment Option</a></li>
-            <li><a href="#">Free Schedule</a></li>
-            <li><a href="#">Getting Started</a></li>
-            <li><a href="#">Bitcoin Calculator</a></li>
+            <li><a href="https://www.hanati.co.kr/kor/main.jsp">하나금융티아이</a></li>
+            <li><a href="https://www.hanafn.com:8002/main.do">하나금융그룹</a></li>
+            <li><a href="https://www.kebhana.com/">하나은행</a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Our Services</h3>
+		
+		<div class="col-sm-3 col-md-3 col-lg-3">
+          <h3>ABOUT US</h3>
           <ul>
-            <li><a href="#">Graphic Design</a></li>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
+            <li><a href="https://www.youtube.com/user/HanabankNewBiz">하나은행 TV</a></li>
+            <li><a href="https://www.youtube.com/channel/UCUqMORjaZEGif1XeSAlqq8Q">하나금융티아이 TV</a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->
-
+       
         <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Quick Links</h3>
+          <h3>ABOUT US</h3>
           <ul>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Badges</a></li>
-          </ul>
-        </div>
-        <!-- End of .col-sm-3 -->
-
-        <div class="col-sm-3 col-md-3 col-lg-3">
-          <h3>Follow Us</h3>
-          <ul>
-              <li>
-                  <a href="">
-                      Facebook
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Twitter
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Linkedin
-                  </a>
-              </li>
-              <li>
-                  <a href="">
-                      Google PLus
-                  </a>
-              </li>
+              <li><a href="https://github.com/koposoftware/2020_13_chpark">GitHub</a></li>
           </ul>
         </div>
         <!-- End of .col-sm-3 -->

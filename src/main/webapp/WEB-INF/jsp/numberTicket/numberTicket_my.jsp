@@ -9,7 +9,7 @@
 <meta name="description" content="Bingo One page parallax responsive HTML Template ">
 <meta name="author" content="Themefisher.com">
 <meta charset="UTF-8">
-<title>번호표 확인</title>
+<title>내 번호표 확인</title>
 <link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/images/favicon/favicon.ico" />
 <!-- Mobile Specific Meta
   ================================================== -->
@@ -161,8 +161,12 @@
 		<jsp:include page="/WEB-INF/jsp/include/topMenu.jsp" />
 </header>
 
-<div style="width:1300px;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
+<div class="row justify-content-center">
+
+<div style="width:70%;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
 	<div data-ax5grid="first-grid" style="height: 100%;"></div>
+</div>
+
 </div>
 
 <footer>

@@ -284,7 +284,7 @@
 	<select id="selectWeekVisit" parameterType="String" resultType="analysisVO">
 		select count(*) as visit, analysis_date as analysisDate
   		from analysis
- 		WHERE ANALYSIS_DATE >= TO_CHAR(SYSDATE-3,'YYYY-MM-DD')
+ 		WHERE ANALYSIS_DATE >= TO_CHAR(SYSDATE-6,'YYYY-MM-DD')
  		and BRANCH_NAME = #{locations} 
  		group by analysis_date
 	</select>

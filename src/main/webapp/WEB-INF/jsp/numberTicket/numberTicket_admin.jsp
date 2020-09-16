@@ -9,7 +9,7 @@
 <meta name="description" content="Bingo One page parallax responsive HTML Template ">
 <meta name="author" content="Themefisher.com">
 <meta charset="UTF-8">
-<title>번호표 확인</title>
+<title>번호표 관리</title>
 <link rel="shortcut icon" type="image/x-icon" href="${ pageContext.request.contextPath }/resources/images/favicon/favicon.ico" />
 <!-- Mobile Specific Meta
   ================================================== -->
@@ -531,7 +531,8 @@
 
 <section class="service-2 section bg-gray">
   <div class="container">
-    <div style="display: inline-block; text-align: center;" id="box">
+    <div class="row justify-content-center">
+    <div style="display: inline-block; text-align: center; width: 100%" id="box">
 	
 	<div style="text-align: center; width:50%; float: left;">
 	<h2>입출금</h2>
@@ -539,27 +540,25 @@
 	<div style="text-align: center; width:50%; float: right;">
 	<h2>대출</h2>
 	</div>
-	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left;">
+	<div style="width:50%; height:400px; border:1px solid green; text-align: center; float: left;">
 		<div data-ax5grid="first-grid100" style="height: 100%;" ></div>
 	</div>
-	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-left: 5px;">
+	<div style="width:50%; height:400px; border:1px solid green; text-align: center; float: left;">
 		<div data-ax5grid="first-grid200" style="height: 100%;"></div>
 	</div>
 	
-	<div style="text-align: center; width:50%; float: left;">
+	<div style="text-align: center; width:50%; float: left; margin-top: 5px;">
 	<h2>외환</h2>
 	</div>
-	<div style="text-align: center; width:50%; float: right;">
+	<div style="text-align: center; width:50%; float: right; margin-top: 5px;">
 	<h2>기업</h2>
 	</div>
 	
-	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-top: 5px;">
+	<div style="width:50%;height:400px; border:1px solid green; text-align: center; float: left; margin-top: 5px;">
 		<div data-ax5grid="first-grid300" style="height: 100%;"></div>
 	</div>
-	<div style="width:680px;height:400px; border:1px solid green; text-align: center; float: left; margin-left: 5px; margin-top: 5px;">
+	<div style="width:50%;height:400px; border:1px solid green; text-align: center; float: left; margin-top: 5px;">
 		<div data-ax5grid="first-grid400" style="height: 100%;"></div>
-	</div>
-	
 	</div>
 	
 	<div style="text-align: center; width:100%;">
@@ -568,7 +567,10 @@
 	<div style="width:100%;height:400px; border:1px solid green; text-align: center; margin: 0 auto;">
 		<div data-ax5grid="first-grid" style="height: 100%;"></div>
 	</div>
+
+	</div> <!-- End box -->
 	
+    </div> <!-- End row justify-content-center -->
   </div>    <!-- End container -->
 </section>   <!-- End section -->
 

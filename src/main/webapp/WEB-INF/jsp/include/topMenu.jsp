@@ -14,7 +14,7 @@
                     <a class="navbar-brand" href="${ pageContext.request.contextPath }/index.jsp">
                         <img src="${ pageContext.request.contextPath }/resources/images/하나은행.png" alt="logo">
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="color: #008375;">
                     <span class="tf-ion-android-menu"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">

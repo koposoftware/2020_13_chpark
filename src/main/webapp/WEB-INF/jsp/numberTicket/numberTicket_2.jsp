@@ -212,7 +212,11 @@
 </header>
 
 <section class="service-2 section bg-gray">
- <div style="width:1200px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+
+ <div class="row justify-content-center">
+
+
+ <div style="width:70%;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
 	<h2>${ locations } 지점 현황 </h2>
 	<button id=${ locations } class="btn btn-main mb-2 basket" style="height: 40px; ">즐겨찾기에 등록</button>
 	<hr>
@@ -264,6 +268,9 @@
 		<div data-ax5grid="first-grid" style="height: calc(100% - 120px);padding-left: 10px;"></div>
 	</div>
  </div>
+ 
+ </div>  <!-- End class="row justify-content-center" -->
+ 
  </section>   <!-- End section -->
 
 <footer>

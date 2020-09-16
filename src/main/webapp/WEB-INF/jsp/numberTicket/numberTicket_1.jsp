@@ -31,7 +31,10 @@
 </header>
 
 <section class="service-2 section bg-gray">
- <div style="width:1300px;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+
+ <div class="row justify-content-center">
+ 
+ <div style="width:70%; height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto; padding: 20px;">
    <h2 style="text-align: center;">지점 선택</h2>
    <hr>
    <div style="width: 50%;height:80%;float: left;" class="col-md-6">
@@ -58,6 +61,9 @@
       
       <div id="map" style="width:50%;height:80%; float:left;"></div>
  </div>
+
+ </div> <!-- End row justify-content-center -->
+ 
 </section>   <!-- End section -->
 
 <footer>
