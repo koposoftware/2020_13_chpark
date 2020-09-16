@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.member.vo.TellerVO;
 import kr.ac.kopo.numberTicket.service.NumberTicketService;
+import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
@@ -87,9 +89,16 @@ public class NumberTicketController {
 	}	
 	
 	@RequestMapping("/numberTicket/analysis")
-	public String numberTicket_analysis() {
-		
-		return "numberTicket/numberTicket_manager";
+	public ModelAndView numberTicket_analysis(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		//System.out.println(loginVO);
+		ModelAndView mav = new ModelAndView();
+		List<AnalysisVO> weekVisit = numberTicketService.selectWeekVisit(loginVO.getBranchName());
+		mav.addObject("weekVisit", weekVisit);
+		for(AnalysisVO a :weekVisit) {
+			System.out.println(a);
+		}
+		mav.setViewName("/numberTicket/numberTicket_manager");
+		return mav;
 	}
-	
 }

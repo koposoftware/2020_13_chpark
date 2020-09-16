@@ -55,4 +55,6 @@ public interface NumberTicketDAO {
 	public AnalysisVO selectAnalysis200(String locations);
 	public AnalysisVO selectAnalysis300(String locations);
 	public AnalysisVO selectAnalysis400(String locations);
+	
+	public List<AnalysisVO> selectWeekVisit(String locations);
 }

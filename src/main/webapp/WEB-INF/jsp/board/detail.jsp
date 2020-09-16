@@ -223,7 +223,6 @@
 							<input type="button" value="수정" id="modify" onclick="doAction('M')" class="btn btn-main mb-2">&nbsp;&nbsp;	
 							<input type="button" value="삭제" onclick="doAction('D')" class="btn btn-main mb-2">&nbsp;&nbsp;	
 						</c:if>
-							<input type="button" value="목록" onclick="doAction('L')" class="btn btn-main mb-2">&nbsp;&nbsp;
 						<c:if test="${ loginVO.type eq 'A'}">
 							<input type="button" value="삭제" onclick="doAction('D')" class="btn btn-main mb-2">&nbsp;&nbsp;
 							<input type="button" value="답글" onclick="doAction('R')" class="btn btn-main mb-2">&nbsp;&nbsp;

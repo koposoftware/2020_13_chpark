@@ -186,6 +186,12 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 		AnalysisVO total = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectAnalysis400", locations);
 		return total;
 	}
+
+	@Override
+	public List<AnalysisVO> selectWeekVisit(String locations) {
+		List<AnalysisVO> weekVisit = sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectWeekVisit", locations);
+		return weekVisit;
+	}
 	
 	
 	

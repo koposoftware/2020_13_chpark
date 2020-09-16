@@ -19,8 +19,15 @@ public class AnalysisVO {
 	private int today200;
 	private int today300;
 	private int today400;
+	private int visit;
 	
 	
+	public int getVisit() {
+		return visit;
+	}
+	public void setVisit(int visit) {
+		this.visit = visit;
+	}
 	public String getTellerName() {
 		return tellerName;
 	}
@@ -125,8 +132,8 @@ public class AnalysisVO {
 	}
 	
 	public AnalysisVO(int analysisSeq, int analysisNumber, String analysisDate, String analysisTime, String usersId,
-			String usersName, String branchId, String tellerId, String serviceId, String branchName, int todayTotal,
-			int today100, int today200, int today300, int today400) {
+			String usersName, String branchId, String tellerId, String serviceId, String serviceName, String branchName,
+			String tellerName, int todayTotal, int today100, int today200, int today300, int today400, int visit) {
 		super();
 		this.analysisSeq = analysisSeq;
 		this.analysisNumber = analysisNumber;
@@ -137,24 +144,29 @@ public class AnalysisVO {
 		this.branchId = branchId;
 		this.tellerId = tellerId;
 		this.serviceId = serviceId;
+		this.serviceName = serviceName;
 		this.branchName = branchName;
+		this.tellerName = tellerName;
 		this.todayTotal = todayTotal;
 		this.today100 = today100;
 		this.today200 = today200;
 		this.today300 = today300;
 		this.today400 = today400;
+		this.visit = visit;
 	}
+	
 	public AnalysisVO() {
 		super();
 	}
+	
 	@Override
 	public String toString() {
 		return "AnalysisVO [analysisSeq=" + analysisSeq + ", analysisNumber=" + analysisNumber + ", analysisDate="
 				+ analysisDate + ", analysisTime=" + analysisTime + ", usersId=" + usersId + ", usersName=" + usersName
-				+ ", branchId=" + branchId + ", tellerId=" + tellerId + ", serviceId=" + serviceId + ", branchName="
-				+ branchName + ", todayTotal=" + todayTotal + ", today100=" + today100 + ", today200=" + today200
-				+ ", today300=" + today300 + ", today400=" + today400 + "]";
+				+ ", branchId=" + branchId + ", tellerId=" + tellerId + ", serviceId=" + serviceId + ", serviceName="
+				+ serviceName + ", branchName=" + branchName + ", tellerName=" + tellerName + ", todayTotal="
+				+ todayTotal + ", today100=" + today100 + ", today200=" + today200 + ", today300=" + today300
+				+ ", today400=" + today400 + ", visit=" + visit + "]";
 	}
-	
 		
 }

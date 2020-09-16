@@ -155,6 +155,12 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	public AnalysisVO selectAnalysis400(String locations) {
 		return numberTicketDAO.selectAnalysis400(locations);
 	}
+
+	@Override
+	public List<AnalysisVO> selectWeekVisit(String locations) {
+		return numberTicketDAO.selectWeekVisit(locations);
+	}
+	
 	
 	
 	

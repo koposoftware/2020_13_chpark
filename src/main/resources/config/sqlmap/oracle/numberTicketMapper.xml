@@ -280,4 +280,12 @@
 		and analysis_date = TO_CHAR(sysdate - 0/24, 'YYYY-MM-DD')
 		and BRANCH_NAME = #{locations}      
 	</select>
+	
+	<select id="selectWeekVisit" parameterType="String" resultType="analysisVO">
+		select count(*) as visit, analysis_date as analysisDate
+  		from analysis
+ 		WHERE ANALYSIS_DATE >= TO_CHAR(SYSDATE-3,'YYYY-MM-DD')
+ 		and BRANCH_NAME = #{locations} 
+ 		group by analysis_date
+	</select>
 </mapper>

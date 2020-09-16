@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,13 +38,15 @@
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.css" />
-
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5core/master/dist/ax5core.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-grid/master/dist/ax5grid.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-dialog/master/dist/ax5dialog.min.js"></script>
 <script type="text/javascript" src="https://cdn.rawgit.com/ax5ui/ax5ui-mask/master/dist/ax5mask.min.js"></script>	
 <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <style type="text/css">
 	.ax5-ui-dialog .ax-dialog-header,.btn-default,.btn-default:hover,.btn-default:focus{
@@ -273,46 +275,50 @@
 			}
         });
   		
+  		
+  		var result = new Array();
+  		
+  		let visit, value;
+  		<c:forEach items="${weekVisit}" var="week">
+  			var json = new Object();
+  			//if(${week}.day == ) 
+  			json.visit = "${week.visit}";
+  			json.value = "${week.analysisDate}";
+  			visit = "${week.visit}"
+  			value = "${week.analysisDate}"
+  			result.push(json)
+  		</c:forEach>
+  			let d = new Date();
+  			var json = new Object();
+  			//if(${week}.day == ) 
+  			json.visit = "0";
+  			json.value = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + (d.getDate() + 1);
+  			result.push(json)
+  		
+  		alert(JSON.stringify(result));
+  		
+  		new Morris.Line({
+  		// ID of the element in which to draw the chart.
+  		element: 'myfirstchart',
+  		// Chart data records -- each entry in this array corresponds to a point on
+  		// the chart. 	
+  		data: 
+  			result
+  		,
+  		// The name of the data record attribute that contains x-values.
+  		xkey: 'value',
+  		// A list of names of data record attributes that contain y-values.
+  		ykeys: ['visit'],
+  		// Labels for the ykeys -- will be displayed when you hover over the
+  		// chart.
+  		labels: ['Value'],
+  		xLabels : 'day',
+  		lineWidth : 4
+  		});
+
 	})
 	
-  		google.charts.load('current', {packages: ['corechart', 'line']});
-  		google.charts.setOnLoadCallback(drawLineColors);
-
-  		function drawLineColors() {
-  		      var data = new google.visualization.DataTable();
-  		      data.addColumn('number', 'X');
-  		      data.addColumn('number', 'Dogs');
-  		      data.addColumn('number', 'Cats');
-
-  		      data.addRows([
-  		        [0, 0, 0],    [1, 10, 5],   [2, 23, 15],  [3, 17, 9],   [4, 18, 10],  [5, 9, 5],
-  		        [6, 11, 3],   [7, 27, 19],  [8, 33, 25],  [9, 40, 32],  [10, 32, 24], [11, 35, 27],
-  		        [12, 30, 22], [13, 40, 32], [14, 42, 34], [15, 47, 39], [16, 44, 36], [17, 48, 40],
-  		        [18, 52, 44], [19, 54, 46], [20, 42, 34], [21, 55, 47], [22, 56, 48], [23, 57, 49],
-  		        [24, 60, 52], [25, 50, 42], [26, 52, 44], [27, 51, 43], [28, 49, 41], [29, 53, 45],
-  		        [30, 55, 47], [31, 60, 52], [32, 61, 53], [33, 59, 51], [34, 62, 54], [35, 65, 57],
-  		        [36, 62, 54], [37, 58, 50], [38, 55, 47], [39, 61, 53], [40, 64, 56], [41, 65, 57],
-  		        [42, 63, 55], [43, 66, 58], [44, 67, 59], [45, 69, 61], [46, 69, 61], [47, 70, 62],
-  		        [48, 72, 64], [49, 68, 60], [50, 66, 58], [51, 65, 57], [52, 67, 59], [53, 70, 62],
-  		        [54, 71, 63], [55, 72, 64], [56, 73, 65], [57, 75, 67], [58, 70, 62], [59, 68, 60],
-  		        [60, 64, 56], [61, 60, 52], [62, 65, 57], [63, 67, 59], [64, 68, 60], [65, 69, 61],
-  		        [66, 70, 62], [67, 72, 64], [68, 75, 67], [69, 80, 72]
-  		      ]);
-
-  		      var options = {
-  		        hAxis: {
-  		          title: '일별'
-  		        },
-  		        vAxis: {
-  		          title: '방문 손님 수'
-  		        },
-  		        colors: ['#a52714', '#097138']
-  		      };
-
-  		      var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-  		      chart.draw(data, options);
-  		    }
-		
+  		
 	
 </script>
 </head>
@@ -386,7 +392,7 @@
  		<br><br><br>
  		</div>
  		
-		<div id="chart_div" style="width: 80%; text-align: center; margin: 0 auto;" ></div>
+		<div id="myfirstchart" style="height: 250px;"></div>
 		
 	</section>
 
