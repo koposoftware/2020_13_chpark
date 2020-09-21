@@ -34,7 +34,7 @@
 
  <div class="row justify-content-center">
  
- <div style="width:70%; height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto; padding: 20px;">
+ <div style="width:100%; height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto; padding: 20px;">
    <h2 style="text-align: center;">지점 선택</h2>
    <hr>
    <div style="width: 50%;height:80%;float: left;" class="col-md-6">
@@ -43,14 +43,14 @@
       <hr>
       <ul>
       <li style="text-align: left;"><span style="color: red;">지점</span>을 선택해주세요</li>
-      <li class="list-group-item" style="float: left">지점명</li>
+      <!--  <li class="list-group-item" style="float: left; width: 30%;">지점명</li>-->
       </ul>
       <form id="form">
       <div id="input">
-      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 300px; height: 48px;" name="branchname" id="InputName" class="form-control mb-2"> 
+      <input type="text" placeholder="지점명을 입력하세요" style="float: left; width: 100%; height: 10%;" name="branchname" id="InputName" class="form-control mb-2"> 
       </div>
       </form>
-      <button id="test" class="btn btn-main mb-2" style="height: 48px;">검색</button>
+      <button id="test" class="btn btn-main mb-2" style="height: 35px;">검색</button>
       <!--<button id="basket" class="btn btn-main mb-2" style="height: 48px;">즐겨찾기에 등록</button>-->
       <h6 style="text-align: left">예) 계동지점  -> 계동</h6> 
 
@@ -71,7 +71,7 @@
       <%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>   
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services,clusterer,drawing""></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaaa&libraries=services,clusterer,drawing""></script>
 <script>
     var map = new kakao.maps.Map(document.getElementById('map'), { // 지도를 표시할 div
         center : new kakao.maps.LatLng(37.5696821, 126.9802171), // 지도의 중심좌표 
@@ -136,20 +136,35 @@
   	 function displayInfo(infomarker, infodata) {
   		var iwContent = '<div style="text-align: center; padding:5px;">'
   						+ '<div class="close" onclick="closeCustomOverlay()" title="닫기">X</div>'
-  						+ '<div><b>지점명<b> :'
+  						+ '<table class="table table-hover" style="width: 100%;">'
+  						+ '<colgroup>'
+  						+ '<col style="width:100px;">'
+  						+ '<col>'
+  						+ '</colgroup>'
+  						+ '<tr>'
+  						+ '<th><b>지점명<b></th>'
+  						+ '<td>'
   						+ infodata.branch_name 
-  						+ '</div>'
-  						+ '<div><b>주소<b> :'
+  						+ '</td>'
+  						+ '</tr>'
+  						
+  						+ '<tr>'
+  						+ '<th><b>주소<b></th>'
+  						+ '<td>'
   						+ infodata.branch_address 
-  						+ '</div>'
-  						+ '<div><b>오픈시간<b> :'
+  						+ '</td>'
+  						+ '</tr>'
+  						
+  						+ '<tr>'
+  						+ '<th><b>영업시간<b></th>'
+  						+ '<td>'
   						+ infodata.branch_open 
-  						+ '</div>'
-  						+ '<div><b>마감시간<b> :'
-  						+ infodata.branch_close 
-  						+ '</div>'
-  						+ '</div>'
-  		,
+  						+ ' / '
+  						+ infodata.branch_close
+  						+ '</td>'
+  						+ '</tr>'
+  						+ '</table>'
+   		,
      	iwPosition = new kakao.maps.LatLng(infodata.branch_latitude,infodata.branch_longitude)
 	  // 인포윈도우를 생성합니다
 	     var infowindow = new kakao.maps.InfoWindow({
@@ -183,18 +198,16 @@
              content +=     '<table class="table table-hover" style="text-align:center">';
              content +=         '<thead>';
              content +=             '<tr>'
-             content +=                 '<th scope="col">지점명</th>';
-             content +=                 '<th scope="col">주소</th>';
-             content +=                 '<th scope="col">오픈시간</th>';
-             content +=                 '<th scope="col">마감시간</th>';
+             content +=                 '<th scope="col" style="width: 15%;">지점명</th>';
+             content +=                 '<th scope="col" style="width: 70%;">주소</th>';
+             content +=                 '<th scope="col" style="width: 15%;">영업시간</th>';
              content +=             '</tr>';
              content +=         '</thead>';
              content +=         '<tbody>';
              content +=             '<tr class="chooselocation" id=' + branch.data[0].branch_name + '>';
-             content +=                   '<td>' + branch.data[0].branch_name + '</td>';
-             content +=                   '<td>' + branch.data[0].branch_address + '</td>';
-             content +=                   '<td>' + branch.data[0].branch_open + '</td>';
-             content +=                   '<td>' + branch.data[0].branch_close + '</td>';
+             content +=                   '<td style="width: 15%;">' + branch.data[0].branch_name + '</td>';
+             content +=                   '<td style="width: 70%;">' + branch.data[0].branch_address + '</td>';
+             content +=                   '<td style="width: 15%;">' + branch.data[0].branch_open + '~' + branch.data[0].branch_close + '</td>';
              content +=             '</tr>';
              content +=         '</tbody>';
              content +=     '</table>';

@@ -108,6 +108,24 @@
 			//location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
 		})
 		
+		
+		var dialogTest = new ax5.ui.dialog();
+		var maskTest = new ax5.ui.mask();
+		dialogTest.setConfig({
+		     title: "번호표 확인",
+		     lang : {
+		    	 ok : '확인'
+		     },
+		     onStateChanged: function () {
+		         if (this.state === "open") {
+		             maskTest.open();
+		         }
+		         else if (this.state === "close") {
+		             maskTest.close();
+		         }
+		     }
+		});
+		//
 		$(document).on('click', ".type", function(){
 			let service = $(this).attr('name');
 			
@@ -119,9 +137,26 @@
 	    firstGrid.setConfig({
             target: $('[data-ax5grid="first-grid"]'),
             columns: [
-                {key: "col1", label: "업무" ,width :'30%'},
+                {key: "col1", label: "업무" ,width :'20%'},
                 {key: "col2", label: "필요서류" , width :'70%'},
-            ]
+                {key: "col3", label: "비대면가능" ,width :'10%'},
+            ],
+            body: {
+            	onDBLClick: function () {
+            		//var json = this.list[this.dindex];
+	    			var tableTag = "";
+	    			tableTag+='<table style="width: 100%;">';
+	    			tableTag+='<colgroup>';
+	    			tableTag+='<col style="width:100px;">';
+	    			tableTag+='<col>';
+	    			tableTag+='</colgroup>';
+	    			tableTag+='<tr>';
+	    			tableTag+='<th>테스트</th>';
+	    			tableTag+='</tr>';
+	    			tableTag+='</table>';
+	    			dialogTest.alert(tableTag);
+				},
+            }
         });
 	    
 	    
@@ -133,11 +168,13 @@
 		    };
 		    
 	    <c:forEach items="${ serviceDescList }" var="serviceDesc" varStatus="loop">
-	    	dataMap['${serviceDesc.serviceId}'].push({col1:'${serviceDesc.name}',col2:'${serviceDesc.etc}'});
+	    	dataMap['${serviceDesc.serviceId}'].push({col1:'${serviceDesc.name}',col2:'${serviceDesc.etc}',col3:'${serviceDesc.untact}'});
 	 	</c:forEach>
 	 	firstGrid.setData(dataMap[100]);
-	
 	 	
+	 	
+		
+	 	<%-- 즐겨찾기 등록 하는 함수 --%>
 	 	$(document).on('click', ".basket", function(){
 	        let locations = $(this).attr('id');
 	        
@@ -154,9 +191,6 @@
 		})
 	       
 	})
-	
-	
-	
 	
   </script>
 <style type="text/css">
@@ -216,7 +250,7 @@
  <div class="row justify-content-center">
 
 
- <div style="width:70%;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
+ <div style="width:100%;height:600px; border:1px solid rgba(0,0,0,.1); text-align: center; margin: 0 auto;padding: 20px;">
 	<h2>${ locations } 지점 현황 </h2>
 	<button id=${ locations } class="btn btn-main mb-2 basket" style="height: 40px; ">즐겨찾기에 등록</button>
 	<hr>
@@ -237,22 +271,22 @@
 			</tr>
 			
 			<tr>
-				<th class="type" name="100">입출금 업무</th>
+				<th class="type" name="100" style="width: 33%">입출금 업무</th>
 				<td>${ nt100.standby } 명</td>
 				<td  id="100" class="tdBtn">번호표발급</td>
 			</tr>
 			<tr>
-				<th class="type" name="200">대출 업무</th>
+				<th class="type" name="200" style="width: 33%">대출 업무</th>
 				<td>${ nt200.standby } 명</td>
 				<td  id="200" class="tdBtn">번호표발급</td>
 			</tr>
 			<tr>
-				<th class="type" name="300">외환 업무</th>
+				<th class="type" name="300" style="width: 33%">외환 업무</th>
 				<td>${ nt300.standby } 명</td>
 				<td  id="300" class="tdBtn">번호표발급</td>
 			</tr>	
 			<tr>
-				<th class="type" name="400">기업 업무</th>
+				<th class="type" name="400" style="width: 33%">기업 업무</th>
 				<td>${ nt400.standby } 명</td>
 				<td  id="400" class="tdBtn">번호표발급</td>
 			</tr>

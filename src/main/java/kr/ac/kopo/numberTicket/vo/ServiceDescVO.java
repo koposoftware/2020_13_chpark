@@ -6,6 +6,8 @@ public class ServiceDescVO {
 	private int seq;
 	private String name;
 	private String etc;
+	private String untact;
+	
 	@Override
 	public String toString() {
 		return "ServiceDescVO [serviceId=" + serviceId + ", serviceName=" + serviceName + ", seq=" + seq + ", name="
@@ -42,13 +44,20 @@ public class ServiceDescVO {
 	public void setEtc(String etc) {
 		this.etc = etc;
 	}
-	public ServiceDescVO(String serviceId, String serviceName, int seq, String name, String etc) {
+	public String getUntact() {
+		return untact;
+	}
+	public void setUntact(String untact) {
+		this.untact = untact;
+	}
+	public ServiceDescVO(String serviceId, String serviceName, int seq, String name, String etc, String untact) {
 		super();
 		this.serviceId = serviceId;
 		this.serviceName = serviceName;
 		this.seq = seq;
 		this.name = name;
 		this.etc = etc;
+		this.untact = untact;
 	}
 	public ServiceDescVO() {
 		super();

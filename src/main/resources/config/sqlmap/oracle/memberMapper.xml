@@ -5,7 +5,7 @@
 <mapper namespace="member.dao.MemberDAO">
 
 	<select id="login" parameterType="memberVO" resultType="memberVO">
-		select USERS_ID id, USERS_PWD pwd, USERS_TYPE type, USERS_NAME name
+		select USERS_ID id, USERS_PWD pwd, USERS_TYPE type, USERS_NAME name, USERS_PHONE phone
 		from USERS
 		where USERS_ID = #{id} and USERS_PWD = #{pwd}
 	</select>

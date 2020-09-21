@@ -167,6 +167,46 @@
 	<div data-ax5grid="first-grid" style="height: 100%;"></div>
 </div>
 
+<div style="width:70%;">
+사전서식작성 
+
+	<section class="signin-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="block text-center">
+          <h2 class="text-center">사전서식작성</h2>
+          <form class="text-left clearfix mt-30" action="#" method="post" name="mForm" onsubmit="return doModify()">
+            <div class="form-group">
+                <table border="1">
+				<tr>
+					<th class="form-control">성함</th>
+					<td><input type="text" name="name" size="50" value="${ memberVO.name }" class="form-control"></td>
+				</tr>
+				<tr>
+					<th class="form-control">보내는 계좌 번호</th>
+					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+				</tr>
+				<tr>
+					<th class="form-control">받는 계좌 번호</th>
+					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+				</tr>
+				<tr>
+					<th class="form-control">송금액</th>
+					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+				</tr>
+			</table>     
+            </div>
+			<input type="button" value="전송" id="btnList" onclick="goMemberDetail()" class="btn btn-main text-center">
+          </form>
+         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
 </div>
 
 <footer>

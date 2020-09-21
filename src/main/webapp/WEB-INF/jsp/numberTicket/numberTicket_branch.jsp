@@ -57,7 +57,7 @@
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=key&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript">
 //마커를 담을 배열입니다
 var markers = [];

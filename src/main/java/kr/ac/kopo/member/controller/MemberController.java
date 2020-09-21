@@ -80,7 +80,7 @@ public class MemberController {
 		else {
 			tellerVO.setType("A");
 			System.out.println(tellerVO);
-			mav.setViewName("redirect:/");
+			mav.setViewName("indexAdmin");
 			mav.addObject("loginVO", tellerVO);
 		}
 		return mav;
