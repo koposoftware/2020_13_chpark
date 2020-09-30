@@ -7,6 +7,19 @@
   		border-top: 1px solid #404040;
   		padding: 30px 0 30px;
 	}	
+	
+	*{
+    font-family: "Hana CM"
+	}
+	
+	body{
+    font-family: "Hana CM";
+      
+   }
+   @font-face {
+      font-family: Hana CM;
+      src: url('${ pageContext.request.contextPath }/resources/css/font/HanaCM.TTF');
+   }
 </style>  
 <footer id="footer" class="bg-one">
   <div class="top-footer">

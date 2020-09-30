@@ -52,20 +52,35 @@ VERSION :	1.0
   TYPOGRAPHY
 ==================================================================*/
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,700|Roboto:400,500,700,900");
+@import url('${ pageContext.request.contextPath }/resources/css/font/HanaCM.TTF');
+
+	*{
+    font-family: "Hana CM"
+	}
+	
+	body{
+      font-family: "Hana CM";
+      
+   }
+   @font-face {
+      font-family: Hana CM;
+      src: url('${ pageContext.request.contextPath }/resources/css/font/HanaCM.TTF');
+   }
+   
 body {
   line-height: 1.4;
-  font-family: "Roboto", sans-serif;
+  font-family: "Hana CM";
   -webkit-font-smoothing: antialiased;
 }
 
 p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Hana CM";
   color: #9a9a9a;
   font-size: 16px;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Playfair Display", serif;
+  font-family: "Hana CM";
   font-weight: 600;
 }
 
@@ -430,7 +445,7 @@ a:focus, a:hover {
 .header-bradcrumb a, .header-bradcrumb .active {
   color: #cfcfcf;
   font-weight: 200;
-  font-family: "Playfair Display", serif;
+  font-family: "Hana CM"
 }
 
 .header-bradcrumb a:hover {
@@ -1778,7 +1793,7 @@ a:focus, a:hover {
   letter-spacing: 1px;
   text-transform: capitalize;
   transition: color .3s;
-  font-family: "Playfair Display", serif;
+  font-family: "Hana CM"
   display: block;
 }
 

@@ -11,11 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.ac.kopo.member.vo.MemberVO;
+import kr.ac.kopo.member.vo.TellerVO;
 import kr.ac.kopo.numberTicket.vo.AdminTicketVO;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.PreSubmitVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
 import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
@@ -191,6 +193,40 @@ public class NumberTicketDAOImpl implements NumberTicketDAO{
 	public List<AnalysisVO> selectWeekVisit(String locations) {
 		List<AnalysisVO> weekVisit = sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectWeekVisit", locations);
 		return weekVisit;
+	}
+
+	@Override
+	public void insertPreSubmit(HttpSession session, PreSubmitVO pre) {
+		MemberVO loginVO = (MemberVO)session.getAttribute("loginVO");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("userId", loginVO.getName());
+		map.put("preSubmitBankName", pre.getPreSubmitBankName());
+		map.put("preSubmitInputAccountNumber", pre.getPreSubmitInputAccountNumber());
+		map.put("preSubmitCashInput", pre.getPreSubmitCashInput());
+		map.put("preSubmitCheckInput", pre.getPreSubmitCheckInput());
+		map.put("preSubmitMemo", pre.getPreSubmitMemo());
+		map.put("serviceId", pre.getServiceId());
+		map.put("serviceName", pre.getServiceName());
+		map.put("branchName", pre.getBranchName());
+		map.put("numberticketNumber", pre.getNumberticketNumber());
+		sqlSession.insert("numberTicket.dao.NumberTicketDAO.insertPreSubmit",map);
+		
+	}
+
+	@Override
+	public List<PreSubmitVO> selectAllPre(String locations) {
+		List<PreSubmitVO> preList = sqlSession.selectList("numberTicket.dao.NumberTicketDAO.selectAllPre", locations);
+		return preList;
+	}
+
+	@Override
+	public PreSubmitVO selectDetailByNo(int numberticketNumber, HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("branchName", loginVO.getBranchName());
+		map.put("numberticketNumber", numberticketNumber);
+		PreSubmitVO pre = sqlSession.selectOne("numberTicket.dao.NumberTicketDAO.selectDetailByNo", map);
+		return pre;
 	}
 	
 	

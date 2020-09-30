@@ -9,6 +9,7 @@ import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.PreSubmitVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
 import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
@@ -57,4 +58,11 @@ public interface NumberTicketDAO {
 	public AnalysisVO selectAnalysis400(String locations);
 	
 	public List<AnalysisVO> selectWeekVisit(String locations);
+	
+	public void insertPreSubmit(HttpSession session, PreSubmitVO pre);
+	
+	public List<PreSubmitVO> selectAllPre(String locations);
+	
+	public PreSubmitVO selectDetailByNo(int numberticketNumber, HttpSession session);
+	
 }

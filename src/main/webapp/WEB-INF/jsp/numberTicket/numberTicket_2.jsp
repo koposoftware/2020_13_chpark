@@ -41,7 +41,7 @@
   <script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript">
 
-	$(function(){
+  $(function(){
 		var dialog = new ax5.ui.dialog();
 		var mask = new ax5.ui.mask();
 		dialog.setConfig({
@@ -59,6 +59,7 @@
 		     }
 		});
 		
+		
 		$(document).on('click', ".tdBtn", function(){
 			let service = $(this).attr('id');
 			
@@ -69,7 +70,6 @@
 	    		success : function (data){
 	    			
 	    			var json = JSON.parse(data)['data'];
-
 	    			var tableTag = "";
 	    			tableTag+='<table style="width: 100%;">';
 	    			
@@ -103,8 +103,13 @@
 	    			tableTag+='</tr>';
 	    			tableTag+='</table>';
 	    			dialog.alert(tableTag);
+	    			
+	    			console.log(json['numberticketNumber']);
+	    			let number = (json['numberticketNumber']);
+	    			
+	    			sendLink(number);    			
 	    		}
-    		});
+  		});
 			//location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
 		})
 		
@@ -135,15 +140,15 @@
 		var firstGrid = new ax5.ui.grid();
 		
 	    firstGrid.setConfig({
-            target: $('[data-ax5grid="first-grid"]'),
-            columns: [
-                {key: "col1", label: "업무" ,width :'20%'},
-                {key: "col2", label: "필요서류" , width :'70%'},
-                {key: "col3", label: "비대면가능" ,width :'10%'},
-            ],
-            body: {
-            	onDBLClick: function () {
-            		//var json = this.list[this.dindex];
+          target: $('[data-ax5grid="first-grid"]'),
+          columns: [
+              {key: "col1", label: "업무" ,width :'20%'},
+              {key: "col2", label: "필요서류" , width :'70%'},
+              {key: "col3", label: "비대면가능" ,width :'10%'},
+          ],
+          body: {
+          	onDBLClick: function () {
+          		//var json = this.list[this.dindex];
 	    			var tableTag = "";
 	    			tableTag+='<table style="width: 100%;">';
 	    			tableTag+='<colgroup>';
@@ -155,9 +160,9 @@
 	    			tableTag+='</tr>';
 	    			tableTag+='</table>';
 	    			dialogTest.alert(tableTag);
-				},
-            }
-        });
+					},
+          }
+      });
 	    
 	    
 	    var dataMap = {
@@ -185,7 +190,7 @@
 	    		type : 'get',
 	    		success : function (data){
 	    			alert(locations+"지점을 즐겨찾기에 등록 했습니다.")
-    			}
+  				}
 	        });
 			//location.href = "${ pageContext.request.contextPath }/numberservice/" + "${ locations }" + "/" + service
 		})
@@ -310,6 +315,40 @@
 <footer>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>
+
+
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	<!-- javaScript 키를 할당하여 초기화 함수를 호출 -->
+	Kakao.init('ff2a5b564a26a1c55986504a754e4916');		//자신의 appkey 삽입
+	console.log(Kakao.isInitialized());
+</script>
+<script type="text/javascript">
+
+/* $(document).ready(function(){
+		$('.tdBtn').click(function(){
+			sendLink()
+		})
+}) */
+function sendLink(number) {
+	console.log(number)
+    Kakao.Link.sendCustom({
+        templateId: 37293,
+        templateArgs: {
+        	title:
+                '${loginVO.name}',
+            description:
+                '${locations}',
+            number:
+            	number
+        },	
+        callback: function(){
+       	alert("번호표 안내가 전송되었습니다");
+       	}
+      })
+	}
+</script>
+
 
     <!-- 
     Essential Scripts

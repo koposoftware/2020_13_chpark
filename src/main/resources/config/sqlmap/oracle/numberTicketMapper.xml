@@ -289,4 +289,54 @@
  		and BRANCH_NAME = #{locations} 
  		group by analysis_date
 	</select>
+	
+	<insert id="insertPreSubmit" parameterType="HashMap">
+		insert into PRESUBMIT(
+			USERS_ID,
+   			PRESUBMIT_BANKNAME,
+    	 	PRESUBMIT_INPUTACCOUNTNUMBER,
+    	 	PRESUBMIT_CASHINPUT,
+    		PRESUBMIT_CHECKINPUT,
+    		PRESUBMIT_MEMO,
+    		SERVICE_ID,
+    		SERVICE_NAME,
+    		BRANCH_NAME,
+    		NUMBERTICKET_NUMBER
+    		)
+    	values(#{userId},#{preSubmitBankName},#{preSubmitInputAccountNumber},#{preSubmitCashInput},#{preSubmitCheckInput},#{preSubmitMemo},#{serviceId},#{serviceName},#{branchName},#{numberticketNumber})
+	</insert>
+	
+	<select id="selectAllPre" resultType="preSubmitVO">
+		select 
+    		USERS_ID as userId,
+    		PRESUBMIT_BANKNAME as preSubmitBranchName,
+    		PRESUBMIT_INPUTACCOUNTNUMBER as preSubmitInputAccountNumber,
+    		PRESUBMIT_CASHINPUT as preSubmitCashInput,
+    		PRESUBMIT_CHECKINPUT as preSubmitCheckInput,
+    		PRESUBMIT_MEMO as preSubmitMemo,
+    		SERVICE_ID as serviceId,
+    		SERVICE_NAME as serviceName,
+    		BRANCH_NAME as branchName,
+    		NUMBERTICKET_NUMBER as numberticketNumber
+		from PRESUBMIT
+		where BRANCH_NAME = #{locations}
+	
+	</select>
+		
+	<select id="selectDetailByNo" resultType="preSubmitVO">
+		select 
+    		USERS_ID as userId,
+    		PRESUBMIT_BANKNAME as preSubmitBankName,
+    		PRESUBMIT_INPUTACCOUNTNUMBER as preSubmitInputAccountNumber,
+    		PRESUBMIT_CASHINPUT as preSubmitCashInput,
+    		PRESUBMIT_CHECKINPUT as preSubmitCheckInput,
+    		PRESUBMIT_MEMO as preSubmitMemo,
+    		SERVICE_ID as serviceId,
+    		SERVICE_NAME as serviceName,
+    		BRANCH_NAME as branchName,
+    		NUMBERTICKET_NUMBER as numberticketNumber
+		from PRESUBMIT
+		where BRANCH_NAME = #{branchName}
+		and NUMBERTICKET_NUMBER = #{numberticketNumber}	
+	</select>
 </mapper>

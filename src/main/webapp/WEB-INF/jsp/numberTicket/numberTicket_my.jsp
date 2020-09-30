@@ -126,9 +126,41 @@
     		success : function (data){
     			var json = JSON.parse(data);
     			firstGrid.setData(json);
+    			console.log(json);
+    			console.log(json[0].branchName);
+    			console.log(json[0].serviceName);
+    			console.log(json[0].numberticketNumber);
+    			$('#serviceName').val(json[0].serviceName);
+    			$('#branchName').val(json[0].branchName);
+    			$('#numberticketNumber').val(json[0].numberticketNumber);
     		}
 	    })
 	    
+	    
+	    function doPresubmit() {
+	    //지금은 굳이 onload안써도 됨
+
+	    let p = document.pForm;
+	    if (p.bankName.value == '') {
+	       alert('입금 은행명을 선택하세요')
+	       p.bankName.focus();
+	       return false;
+	    }
+
+	    if (p.inputAccountNumber.value == '') {
+	       alert('입금 계좌 번호를 입력 해주세요')
+	       p.inputAccountNumber.focus();
+	       return false;
+	    }
+
+	    if (p.cashInput.value == '' || p.checkInput.value == '') {
+	       alert('비밀번호를 입력 해주세요')
+	       p.cashInput.focus();
+	       p.checkInput.focus();
+	       return false;
+	    }
+	    return true
+	}
 	})
 </script>
 </head>
@@ -163,51 +195,71 @@
 
 <div class="row justify-content-center">
 
-<div style="width:70%;height:600px; border:1px solid green; text-align: center; margin: 0 auto;">
+<div style="width:70%;height:300px; border:1px solid green; text-align: center; margin: 0 auto;">
 	<div data-ax5grid="first-grid" style="height: 100%;"></div>
 </div>
-
+<div>
+<br>
+<br>
+</div>
 <div style="width:70%;">
-사전서식작성 
 
-	<section class="signin-page account">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 mx-auto">
-        <div class="block text-center">
-          <h2 class="text-center">사전서식작성</h2>
-          <form class="text-left clearfix mt-30" action="#" method="post" name="mForm" onsubmit="return doModify()">
+<h2>사전 서식작성</h2> 
+<P>아래의 서식 중 원하는 서식을 미리 작성하시면 고객님의 소중한 시간을 절약할 수 있습니다.</P>
+
+<details>
+<summary style="border: 1px solid black; padding: 3px;">입금(무통장, 수표)</summary>
+        <div class="block text-center" style="border: 1px solid black; padding: 3px;">
+          <form class="text-left clearfix mt-30" action="${ pageContext.request.contextPath }/numberTicket/preSubmit" method="post" name="pForm" onsubmit="return doPresubmit()">
             <div class="form-group">
                 <table border="1">
+                <input type="hidden" name="userId" value="${ loginVO.name }">
+                <input type="hidden" name="serviceId" value="100">
+                <input type="hidden" name="serviceName" id="serviceName">
+                <input type="hidden" name="branchName" id="branchName">
+                <input type="hidden" name="numberticketNumber" id="numberticketNumber">
 				<tr>
-					<th class="form-control">성함</th>
-					<td><input type="text" name="name" size="50" value="${ memberVO.name }" class="form-control"></td>
+					<th class="form-control">입금 계좌 은행</th>
+					<td>
+						<select name="preSubmitBankName">
+							<option value="하나은행">하나은행</option>
+							<option value="신한은행">신한은행</option>
+							<option value="국민은행">국민은행</option>
+							<option value="우리은행">우리은행</option>
+						</select>
+					</td>
 				</tr>
 				<tr>
-					<th class="form-control">보내는 계좌 번호</th>
-					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+					<th class="form-control">입금 계좌 번호</th>
+					<td><input type="text" name="preSubmitInputAccountNumber" size="30" class="form-control"></td>
 				</tr>
 				<tr>
-					<th class="form-control">받는 계좌 번호</th>
-					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+					<th class="form-control">현금 금액 입력</th>
+					<td><input type="text" name="preSubmitCashInput" size="30" class="form-control"></td>
 				</tr>
 				<tr>
-					<th class="form-control">송금액</th>
-					<td><input type="text" name="test" size="30" value="" class="form-control"></td>
+					<th class="form-control">수표 금액 입력</th>
+					<td><input type="text" name="preSubmitCheckInput" size="30" class="form-control"></td>
 				</tr>
-			</table>     
+				<tr>
+					<th class="form-control">메모</th>
+					<td><input type="text" name="preSubmitMemo" size="30" class="form-control"></td>
+				</tr>
+				</table>    
+				<br>
+				<p>* 통장을 소지하고 계시지 않아도 현금 또는 수표 입금이 가능합니다.</p>
+				<p>* 본인 또는 타인의 하나은행 뿐만 아니라 타행계좌로도 입금이 가능합니다.</p> 
             </div>
-			<input type="button" value="전송" id="btnList" onclick="goMemberDetail()" class="btn btn-main text-center">
+            <button type="submit" class="btn btn-main text-center" id="btnList" name="submit">확인</button>
           </form>
          </div>
-      </div>
-    </div>
-  </div>
-</section>
+</details>
 
 </div>
 
 </div>
+
+<br><br>
 
 <footer>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	

@@ -90,6 +90,8 @@
 			<mvc:exclude-mapping path="/signup/**" />
 			<mvc:exclude-mapping path="/adminLogin" />
 			<mvc:exclude-mapping path="/numberTicket_admin" />
+			<mvc:exclude-mapping path="/numberTicket_1/**" />
+			<mvc:exclude-mapping path="/numberTicket_pre/**" />
 			<mvc:exclude-mapping path="/location/**" />
 			<mvc:exclude-mapping path="/numberservice/**" />
 			<mvc:exclude-mapping path="/numberTicket/**" />

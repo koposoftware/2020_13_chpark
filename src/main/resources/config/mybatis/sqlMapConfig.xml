@@ -23,6 +23,7 @@
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.AdminTicketVO" alias="adminTicketVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.AnalysisVO" alias="analysisVO"/>
 		<typeAlias type="kr.ac.kopo.numberTicket.vo.BasketVO" alias="basketVO"/>
+		<typeAlias type="kr.ac.kopo.numberTicket.vo.PreSubmitVO" alias="preSubmitVO"/>
 		
 		
 	</typeAliases>

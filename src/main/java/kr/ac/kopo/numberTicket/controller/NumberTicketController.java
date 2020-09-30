@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,6 +21,7 @@ import kr.ac.kopo.numberTicket.service.NumberTicketService;
 import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.PreSubmitVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
 import kr.ac.kopo.numberTicket.vo.TicketVO;
 
@@ -99,6 +101,29 @@ public class NumberTicketController {
 			System.out.println(a);
 		}
 		mav.setViewName("/numberTicket/numberTicket_manager");
+		return mav;
+	}
+	//사전서류 제출 페이지
+	@PostMapping("/numberTicket/preSubmit")
+	public String numberTicket_presubmit(HttpSession session, PreSubmitVO pre) {
+		numberTicketService.insertPreSubmit(session, pre);
+		return "redirect:/numberTicket_my";
+	}
+	//사전 서류 제출 리스트 지점별
+	@RequestMapping("/numberTicket_pre")
+	public ModelAndView list(HttpSession session) {
+		TellerVO loginVO = (TellerVO)session.getAttribute("loginVO");
+		List<PreSubmitVO> preList = numberTicketService.selectAllPre(loginVO.getBranchName());
+		ModelAndView mav = new ModelAndView("/numberTicket/numberTicket_pre");
+		mav.addObject("preList", preList);
+		return mav;
+	}
+	//사전서류 제출 세부 확인
+	@RequestMapping("/numberTicket/numberTicket_pre/{numberTicketNo}")
+	public ModelAndView detail(@PathVariable("numberTicketNo") int numberticketNumber, HttpSession session) {
+		PreSubmitVO pre = numberTicketService.selectDetailByNo(numberticketNumber, session);
+		ModelAndView mav = new ModelAndView("numberTicket/numberTicket_preDetail");
+		mav.addObject("pre", pre);
 		return mav;
 	}
 }

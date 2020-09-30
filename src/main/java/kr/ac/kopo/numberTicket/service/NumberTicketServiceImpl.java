@@ -13,6 +13,7 @@ import kr.ac.kopo.numberTicket.vo.AnalysisVO;
 import kr.ac.kopo.numberTicket.vo.BasketVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_LatLngVO;
 import kr.ac.kopo.numberTicket.vo.NumberTicket_NumberTicketVO;
+import kr.ac.kopo.numberTicket.vo.PreSubmitVO;
 import kr.ac.kopo.numberTicket.vo.ServiceDescVO;
 import kr.ac.kopo.numberTicket.vo.UserTicketVO;
 
@@ -159,6 +160,22 @@ public class NumberTicketServiceImpl implements NumberTicketService{
 	@Override
 	public List<AnalysisVO> selectWeekVisit(String locations) {
 		return numberTicketDAO.selectWeekVisit(locations);
+	}
+
+	@Override
+	public void insertPreSubmit(HttpSession session, PreSubmitVO pre) {
+		numberTicketDAO.insertPreSubmit(session, pre);
+		
+	}
+
+	@Override
+	public List<PreSubmitVO> selectAllPre(String locations) {
+		return numberTicketDAO.selectAllPre(locations);
+	}
+
+	@Override
+	public PreSubmitVO selectDetailByNo(int numberticketNumber, HttpSession session) {
+		return numberTicketDAO.selectDetailByNo(numberticketNumber, session);
 	}
 	
 	

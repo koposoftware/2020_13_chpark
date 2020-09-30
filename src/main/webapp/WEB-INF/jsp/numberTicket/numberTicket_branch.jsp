@@ -25,6 +25,14 @@
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/plugins/slick-carousel/slick/slick-theme.css">
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="${ pageContext.request.contextPath }/resources/css/style.css">
+
+<script src="${ pageContext.request.contextPath }/resources/plugins/jquery/dist/jquery.min.js"></script>
+<style type="text/css">
+	#menu_wrap {
+		position: absolute;
+		left: 150px;
+		margin-top: 0px;
+</style>  
 </head>
 <body>
 
@@ -34,14 +42,14 @@
 
 
 
-<div class="map_wrap" align="center">
+<div class="map_wrap" >
     <div id="map" style="width:80%;height:80%;position:relative;overflow:hidden;"></div>
 
-    <div id="menu_wrap" class="bg_white" align="left">
+    <div id="menu_wrap" class="bg_white">
         <div class="option">
             <div>
                 <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="종로구 하나은행" id="keyword" size="15"> 
+                   	 키워드 : <input type="text" value="하나은행" id="keyword" size="15"> 
                     <button type="submit">검색하기</button> 
                 </form>
             </div>
@@ -51,13 +59,43 @@
         <div id="pagination"></div>
     </div>
 </div>
+<button id="kakao-link-btn">
+  <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"/>
+</button>
+<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+<script>
+	<!-- javaScript 키를 할당하여 초기화 함수를 호출 -->
+	Kakao.init('ff2a5b564a26a1c55986504a754e4916');		//자신의 appkey 삽입
+	console.log(Kakao.isInitialized());
+</script>
+<script type="text/javascript">
 
+$(document).ready(function(){
+		$('#kakao-link-btn').click(function(){
+			sendLink()
+		})
+})
+function sendLink() {
+    Kakao.Link.sendCustom({
+        templateId: 37293,
+        templateArgs: {
+        	title:
+                '하나은행 번호표 발급 안내',
+              description:
+                '번호표가 발급 되었습니다. ',
+        },	
+        callback: function(){
+       	alert("번호표 안내가 전송되었습니다");
+       	}
+      })
+	}
+</script>
 <footer>
 		<%--include forward .xml은 root = / 가 Mission-WEB/ 임 --%>
 		<%@ include file="/WEB-INF/jsp/include/footerBottom.jsp" %>	
 </footer>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=aaa&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ff2a5b564a26a1c55986504a754e4916&libraries=services,clusterer,drawing"></script>
 <script type="text/javascript">
 //마커를 담을 배열입니다
 var markers = [];

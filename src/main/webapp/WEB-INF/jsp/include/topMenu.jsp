@@ -3,8 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <style>
 	*{
-    font-family: "Roboto", sans-serif !important;
+    font-family: "Hana CM"
 	}
+	
+	body{
+      font-family: "Hana CM";
+      
+   }
+   @font-face {
+      font-family: Hana CM;
+      src: url('${ pageContext.request.contextPath }/resources/css/font/HanaCM.TTF');
+   }
 </style>
 <section class="header  navigation" style="color: dee2e6">
     <div class="container">
@@ -21,6 +30,16 @@
                         <ul class="navbar-nav ml-auto">
                             <c:choose>
 							    <c:when test="${empty loginVO }">
+		                            <li class="nav-item dropdown">
+		                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                                    	모바일 번호표
+		                                </a>
+		                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
+		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
+		                                </div>
+		                            </li>
        	                            <li class="nav-item">
 		                                <a class="nav-link" href="${ pageContext.request.contextPath }/login">로그인</a>
 		                            </li>
@@ -34,21 +53,14 @@
 		                                <a class="nav-link" href="http://pr.kebhana.com/contents/kor/index.jsp">하나은행 소개</a>
 		                            </li>
 		
-		                            <li class="nav-item dropdown">
-		                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		                                    	모바일 번호표
-		                                </a>
-		                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
-		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
-		                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
-		                                </div>
-		                            </li>
 							    </c:when>
 							    <c:otherwise>
 							    	<c:if test="${loginVO.type eq 'A'}">
 								    	<li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/numberTicket_admin">대기인원확인</a>
+			                            </li>
+			                            <li class="nav-item">
+			                                <a class="nav-link" href="${ pageContext.request.contextPath }/numberTicket_pre">사전제출서류</a>
 			                            </li>
 			                            <li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/board">손님의 소리</a>
@@ -65,6 +77,16 @@
 							    	</c:if>
 							    	
 							    	<c:if test="${loginVO.type eq 'U'}">
+								    	 <li class="nav-item dropdown">
+			                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			                                    	디지털 번호표
+			                                </a>
+			                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
+			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
+			                                </div>
+			                            </li>
 								    	<li class="nav-item">
 			                                <a class="nav-link" href="${ pageContext.request.contextPath }/mypage/${loginVO.id}">마이페이지</a>
 			                            </li>
@@ -76,17 +98,6 @@
 			                            </li>
 			                            <li class="nav-item">
 			                                <a class="nav-link" href="http://pr.kebhana.com/contents/kor/index.jsp">하나은행 소개</a>
-			                            </li>
-			
-			                            <li class="nav-item dropdown">
-			                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			                                    	디지털 번호표
-			                                </a>
-			                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_1">번호표 발급</a>
-			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_my">번호표 확인</a>
-			                                    <a class="dropdown-item" href="${ pageContext.request.contextPath }/numberTicket_branch">지점 검색</a>
-			                                </div>
 			                            </li>
 			                            <li class="nav-item">
 			                                [${ loginVO.name }님 환영합니다.]
