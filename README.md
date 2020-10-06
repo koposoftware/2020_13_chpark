@@ -10,7 +10,7 @@
 
 프로젝트 제안서를 설명하세요. 발표자료와 동영상을 추가하세요. 시스템의 아키텍쳐 설명도 추가하세요.
 
-   <img src="ppt.jpg"/>[발표자료](/project.pptx)<br>
+   <img src="proposal.pdf"/>[발표자료](/document/proposal.pdf)<br>
    <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6LxbdIjWP04" frameborder="0"></iframe>
  
 
@@ -22,7 +22,7 @@
 
 ## 시연 동영상 
 
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/6LxbdIjWP04" frameborder="0"></iframe>
+   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtu.be/jsTUPG-s5-E" frameborder="0"></iframe>
 
 # 4. 본인 소개
 
