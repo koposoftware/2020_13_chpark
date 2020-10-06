@@ -25,23 +25,12 @@
 
 # 4. 본인 소개
 
-|이름 |고길동|![gdKO](document/pch.jpg)|
+|이름 |박천호|![gdKO](document/pch.jpg)|
 |연락처 | cheonho08@naver.com|
 |skill set| Frontend - HTML, CSS, Javascript|
 | | Backend - Java, Spring, Oracle|
 
 # 5. 기타
 
-# 홈페이지 설정
- 본인 repository에서 "Setting"를 들어가서 GitHub Pages에서 설정 변경.
- <Source>
- Source에서 원하는 branch와 directory 설정한다. 
- 기본값은 master 에 root를 설정 
- Save 버튼 꼭 누른다.
- 
- <Theme Chooser>
- theme을 변경하여 좀더 이쁜 홈페이지를 만든다.
-   
-   <img src="homepage.JPG"/><br>
    
  
