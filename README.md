@@ -1,7 +1,5 @@
 # 디지털 번호표 개선을 통한 방문예약 서비스
 
-[프로젝트 홈페이지 - https://koposoftware.github.io/template/](https://koposoftware.github.io/2020_13_chpark/)
-
 # 1. 프로젝트 개요
 <img src="document/1.png"/><br>
 기존의 하나1Q에서 제공한 대기표 발급 서비스에서 WeakPoint를 개선하여 
