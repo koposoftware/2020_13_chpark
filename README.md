@@ -20,9 +20,9 @@
    <img src="document/first.png"/>[발표자료](document/finalPt.pdf)<br>
 
 ## 시연 동영상 
-
-   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://youtu.be/jsTUPG-s5-E" frameborder="0"></iframe>
-
+   
+   <iframe id="ytplayer" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/jsTUPG-s5-E" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+   
 # 4. 본인 소개
 
 |이름 |박천호|![gdKO](document/pch.jpg)|
